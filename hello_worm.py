@@ -343,7 +343,7 @@ def frequencyCalcuation(G,timesteps, iteration, activations):
 				activeNodes += 1
 		if 	activeNodes > 0 and activationTotal > 0:
 			frequency[i] = float(1)/(float(activationTotal)/float(activeNodes)/float(timesteps))		
-	print frequency	
+	print (frequency)	
 	return frequency	
 
 frequencies = frequencyCalcuation(G,timesteps, simulation_no, activationData)
