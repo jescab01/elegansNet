@@ -20,7 +20,7 @@ except ImportError:
 
 #import Graph Data and set layout position
 G = nx.read_graphml("data/c.elegans.herm_pharynx_1.graphml")
-pos = graphviz_layout(G, prog='sfdp', args='')
+pos = graphviz_layout(G, prog='sfdp', root=None, args='')
 
 #assign neurodata type to nodes
 def assign_neuro_type():
