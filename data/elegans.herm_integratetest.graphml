@@ -11,7 +11,9 @@
   <key id="v_name" for="node" attr.name="name" attr.type="string"/>
   <key id="v_cell_name" for="node" attr.name="cell_name" attr.type="string"/>
   <key id="v_cell_class" for="node" attr.name="cell_class" attr.type="string"/>
-  <key id="v_soma_pos" for="node" attr.name="soma_pos" attr.type="double"/>
+  <key id="v_soma_posx" for="node" attr.name="soma_posx" attr.type="double"/>
+  <key id="v_soma_posy" for="node" attr.name="soma_posy" attr.type="double"/>
+  <key id="v_soma_posz" for="node" attr.name="soma_posz" attr.type="double"/>
   <key id="v_neurotransmitters" for="node" attr.name="neurotransmitters" attr.type="string"/>
   <key id="v_role" for="node" attr.name="role" attr.type="string"/>
   <key id="e_synapse_type" for="edge" attr.name="synapse_type" attr.type="string"/>
@@ -25,7 +27,9 @@
       <data key="v_name">1</data>
       <data key="v_cell_name">ADAL</data>
       <data key="v_cell_class">ADA</data>
-      <data key="v_soma_pos">0.21</data>
+      <data key="v_soma_posx">0.5</data>
+      <data key="v_soma_posy">0.8</data>
+      <data key="v_soma_posz">0.8</data>
       <data key="v_neurotransmitters">NA</data>
       <data key="v_role">NA</data>
     </node>
@@ -33,7 +37,7 @@
       <data key="v_name">2</data>
       <data key="v_cell_name">ADAR</data>
       <data key="v_cell_class">ADA</data>
-      <data key="v_soma_pos">0.21</data>
+      <data key="v_soma_pos">0.3</data>
       <data key="v_neurotransmitters">NA</data>
       <data key="v_role">NA</data>
     </node>
