@@ -19,7 +19,7 @@ except ImportError:
                           "PyGraphviz or PyDotPlus")
 
 #import Graph Data and set layout position
-G = nx.read_graphml("data/c.elegans.herm_pharynx_1.graphml")
+G = nx.read_graphml("data/elegans.herm_integrated.graphml")
 pos = graphviz_layout(G, prog='sfdp', root=None, args='')
 
 #assign neurodata type to nodes
