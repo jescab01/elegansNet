@@ -1,0 +1,302 @@
+ADA,ADAL,Glu
+ ,ADAR,Glu
+ADE,ADEL,DA
+ ,ADER,DA
+ADF,ADFL,Ach-5HT
+ ,ADFR,Ach-5HT
+ADL,ADLL,Glu
+ ,ADLR,Glu
+AFD,AFDL,Glu
+ ,AFDR,Glu
+AIA,AIAL,Ach
+ ,AIAR,Ach
+AIB,AIBL,Glu
+ ,AIBR,Glu
+AIM,AIML,Glu-5HT
+ ,AIMR,Glu-5HT
+AIN,AINL,Ach
+ ,AINR,Ach
+AIY,AIYL,Ach
+ ,AIYR,Ach
+AIZ,AIZL,Glu
+ ,AIZR,Glu
+ALA,ALA,Unknown
+ALM,ALML,Glu
+ ,ALMR,Glu
+ALN,ALNL,Ach
+ ,ALNR,Ach
+AQR,AQR,Glu
+AS,AS1,Ach
+ ,AS2,Ach
+ ,AS3,Ach
+ ,AS4,Ach
+ ,AS5,Ach
+ ,AS6,Ach
+ ,AS7,Ach
+ ,AS8,Ach
+ ,AS9,Ach
+ ,AS10,Ach
+ ,AS11,Ach
+ASE,ASEL,Glu
+ ,ASER,Glu
+ASG,ASGL,Glu
+ ,ASGR,Glu
+ASH,ASHL,Glu
+ ,ASHR,Glu
+ASI,ASIL,Unknown
+ ,ASIR,Unknown
+ASJ,ASJL,Ach
+ ,ASJR,Ach
+ASK,ASKL,Glu
+ ,ASKR,Glu
+AUA,AUAL,Glu
+ ,AUAR,Glu
+AVA,AVAL,Ach
+ ,AVAR,Ach
+AVB,AVBL,Ach
+ ,AVBR,Ach
+AVD,AVDL,Ach
+ ,AVDR,Ach
+AVE,AVEL,Ach
+ ,AVER,Ach
+AVF,AVFL,Unknown
+ ,AVFR,Unknown
+AVG,AVG,Ach
+AVH,AVHL,Unknown
+ ,AVHR,Unknown
+AVJ,AVJL,Unknown
+ ,AVJR,Unknown
+AVK,AVKL,Unknown
+ ,AVKR,Unknown
+AVL,AVL,GABA
+AVM,AVM,Glu
+AWA,AWAL,Unknown
+ ,AWAR,Unknown
+AWB,AWBL,Ach
+ ,AWBR,Ach
+AWC,AWCL,Glu
+ ,AWCR,Glu
+BAG,BAGL,Glu
+ ,BAGR,Glu
+BDU,BDUL,Unknown
+ ,BDUR,Unknown
+CAN,CANL,Unknown
+ ,CANR,Unknown
+CEP,CEPDL,DA
+ ,CEPDR,DA
+ ,CEPVL,DA
+ ,CEPVR,DA
+DA,DA1,Ach
+ ,DA2,Ach
+ ,DA3,Ach
+ ,DA4,Ach
+ ,DA5,Ach
+ ,DA6,Ach
+ ,DA7,Ach
+ ,DA8,Ach
+ ,DA9,Ach
+DB,DB1,Ach
+ ,DB2,Ach
+ ,DB3,Ach
+ ,DB4,Ach
+ ,DB5,Ach
+ ,DB6,Ach
+ ,DB7,Ach
+DD,DD1,GABA
+ ,DD2,GABA
+ ,DD3,GABA
+ ,DD4,GABA
+ ,DD5,GABA
+ ,DD6,GABA
+DVA,DVA,Ach
+DVB,DVB,GABA
+DVC,DVC,Glu
+FLP,FLPL,Glu
+ ,FLPR,Glu
+HSN,HSNL,Ach-5HT
+ ,HSNR,Ach-5HT
+IL1,IL1DL,Glu
+ ,IL1DR,Glu
+ ,IL1L,Glu
+ ,IL1R,Glu
+ ,IL1VL,Glu
+ ,IL1VR,Glu
+IL2,IL2DL,Ach
+ ,IL2DR,Ach
+ ,IL2L,Ach
+ ,IL2R,Ach
+ ,IL2VL,Ach
+ ,IL2VR,Ach
+LUA,LUAL,Glu
+ ,LUAR,Glu
+OLL,OLLL,Glu
+ ,OLLR,Glu
+OLQ,OLQDL,Glu
+ ,OLQDR,Glu
+ ,OLQVL,Glu
+ ,OLQVR,Glu
+PDA,PDA,Ach
+PDB,PDB,Ach
+PDE,PDEL,DA
+ ,PDER,DA
+PHA,PHAL,Glu
+ ,PHAR,Glu
+PHB,PHBL,Glu
+ ,PHBR,Glu
+PHC,PHCL,Glu
+ ,PHCR,Glu
+PLM,PLML,Glu
+ ,PLMR,Glu
+PLN,PLNL,Ach
+ ,PLNR,Ach
+PQR,PQR,Glu
+PVC,PVCL,Ach
+ ,PVCR,Ach
+PVD,PVDL,Glu
+ ,PVDR,Glu
+PVM,PVM,Unknown
+PVN,PVNL,Ach
+ ,PVNR,Ach
+PVP,PVPL,Ach
+ ,PVPR,Ach
+PVQ,PVQL,Glu
+ ,PVQR,Glu
+PVR,PVR,Glu
+PVT,PVT,Unknown
+PVW,PVWL,Unknown
+ ,PVWR,Unknown
+RIA,RIAL,Glu
+ ,RIAR,Glu
+RIB,RIBL,Ach
+ ,RIBR,Ach
+RIC,RICL,Octopamine
+ ,RICR,Octopamine
+RID,RID,Unknown
+RIF,RIFL,Ach
+ ,RIFR,Ach
+RIG,RIGL,Glu
+ ,RIGR,Glu
+RIH,RIH,Ach-5HT
+RIM,RIML,Glu-Tyramine
+ ,RIMR,Glu-Tyramine
+RIP,RIPL,Unknown
+ ,RIPR,Unknown
+RIR,RIR,Ach
+RIS,RIS,GABA
+RIV,RIVL,Ach
+ ,RIVR,Ach
+RMD,RMDDL,Ach
+ ,RMDDR,Ach
+ ,RMDL,Ach
+ ,RMDR,Ach
+ ,RMDVL,Ach
+ ,RMDVR,Ach
+RME,RMED,GABA
+ ,RMEL,GABA
+ ,RMER,GABA
+ ,RMEV,GABA
+RMF,RMFL,Ach
+ ,RMFR,Ach
+RMG,RMGL,Unknown
+ ,RMGR,Unknown
+RMH,RMHL,Ach
+ ,RMHR,Ach
+SAA,SAADL,Ach
+ ,SAADR,Ach
+ ,SAAVL,Ach
+ ,SAAVR,Ach
+SAB,SABD,Ach
+ ,SABVL,Ach
+ ,SABVR,Ach
+SDQ,SDQL,Ach
+ ,SDQR,Ach
+SIA,SIADL,Ach
+ ,SIADR,Ach
+ ,SIAVL,Ach
+ ,SIAVR,Ach
+SIB,SIBDL,Ach
+ ,SIBDR,Ach
+ ,SIBVL,Ach
+ ,SIBVR,Ach
+SMB,SMBDL,Ach
+ ,SMBDR,Ach
+ ,SMBVL,Ach
+ ,SMBVR,Ach
+SMD,SMDDL,Ach
+ ,SMDDR,Ach
+ ,SMDVL,Ach
+ ,SMDVR,Ach
+URA,URADL,Ach
+ ,URADR,Ach
+ ,URAVL,Ach
+ ,URAVR,Ach
+URB,URBL,Ach
+ ,URBR,Ach
+URX,URXL,Ach
+ ,URXR,Ach
+URY,URYDL,Glu
+ ,URYDR,Glu
+ ,URYVL,Glu
+ ,URYVR,Glu
+VA,VA1,Ach
+ ,VA2,Ach
+ ,VA3,Ach
+ ,VA4,Ach
+ ,VA5,Ach
+ ,VA6,Ach
+ ,VA7,Ach
+ ,VA8,Ach
+ ,VA9,Ach
+ ,VA10,Ach
+ ,VA11,Ach
+ ,VA12,Ach
+VB,VB1,Ach
+ ,VB2,Ach
+ ,VB3,Ach
+ ,VB4,Ach
+ ,VB5,Ach
+ ,VB6,Ach
+ ,VB7,Ach
+ ,VB8,Ach
+ ,VB9,Ach
+ ,VB10,Ach
+ ,VB11,Ach
+VC,VC1,Ach
+ ,VC2,Ach
+ ,VC3,Ach
+ ,VC4,Ach-5HT
+ ,VC5,Ach-5HT
+ ,VC6,Ach
+VD,VD1,GABA
+ ,VD2,GABA
+ ,VD3,GABA
+ ,VD4,GABA
+ ,VD5,GABA
+ ,VD6,GABA
+ ,VD7,GABA
+ ,VD8,GABA
+ ,VD9,GABA
+ ,VD10,GABA
+ ,VD11,GABA
+ ,VD12,GABA
+ ,VD13,GABA
+I1,I1L,Ach
+ ,I1R,Ach
+I2,I2L,Glu
+ ,I2R,Glu
+I3,I3,Ach
+I4,I4,Unknown
+I5,I5,Glu-5HT
+I6,I6,Unknown
+M1,M1,Ach
+M2,M2L,Ach
+ ,M2R,Ach
+M3,M3L,Glu
+ ,M3R,Glu
+M4,M4,Ach
+M5,M5,Ach
+MC,MCL,Ach
+ ,MCR,Ach
+MI,MI,Glu
+NSM,NSML,5HT
+ ,NSMR,5HT

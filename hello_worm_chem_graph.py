@@ -19,39 +19,30 @@ except ImportError:
                           "PyGraphviz or PyDotPlus")
 
 #import Graph Data and set layout position
-G = nx.read_graphml("data/c.elegans.herm_pharynx_1.graphml")
+G = nx.read_graphml("data/elegans.herm_connectome.graphml")
 pos = graphviz_layout(G, prog='sfdp', args='')
 
-#assign neurodata type to nodes
-def assign_neuro_type():
-	colnames = ['NAME', 'GROUP', 'TYPE']
-	data = pandas.read_csv('data/neurogroup.csv', names=colnames)
-	names = data.NAME.tolist()
-	groups = data.GROUP.tolist()
-	types = data.TYPE.tolist()
-	for n,nbrs in G.adjacency_iter():
-		for i in range(len(names)):
-			if G.node[n]['cell_name'] == names[i]:
-				G.node[n]['cell_type'] = types[i]
 
 #determine if a neuron is excitory or inhibitory
 def exin():
-	i = 1.0 
-	for n,nbrs in G.adjacency_iter():
-		NT_types = ['Ach', 'DA', 'GABA', '5-HT']
-		if G.node[n]['neurotransmitters'] == NT_types[0]:
-			G.node[n]['exin'] = 1
-		elif G.node[n]['neurotransmitters'] == NT_types[1]:
-			G.node[n]['exin'] = 1
-		elif G.node[n]['neurotransmitters'] == NT_types[2]:
-			#10% are labeled inhibitory
-			G.node[n]['exin'] = -1
-			i += 1.0
-		else:
-			#63% of nodes are unassigned
-			G.node[n]['exin'] = 1
-	ratio_inhibitory = i / 270.0		
-	return ratio_inhibitory
+       	
+    NT_types = ['ACh', 'DA', '5HT', 'Glu', 'ACh-5HT', 'Octopamine','Glu-5HT', 'Glu-Tyramine', 'GABA']
+    inh_t=0
+    
+    for i in range(302):
+    	if G.node['n'+str(i)]['neurotransmitters'] in NT_types[:8]:
+    		G.node['n'+str(i)]['exin'] = 1
+    	elif G.node['n'+str(i)]['neurotransmitters'] == NT_types[8]:
+    		G.node['n'+str(i)]['exin'] = -1
+    	else:
+    		G.node['n'+str(i)]['exin'] = 1
+            
+    for i in range (302):        
+        if G.node['n'+str(i)]['exin']==-1:
+            inh_t +=1 
+    
+    ratio_inhibitory = inh_t / 302	
+    return ratio_inhibitory
 
 #initialise all perimeter nodes to have the parameter activity
 def init_activity_perimeter():
@@ -154,20 +145,21 @@ def normalize_synapse_weight():
 	for n,nbrs in G.adjacency_iter():
 		for nbr,eattr in nbrs.items():
 			for attr, data in eattr.items():
-				if data['synapse_type'] == 'E':
-					if data['weight'] > max_e_weight:
-						max_e_weight = data['weight']
-				if data['synapse_type'] == 'C':	
-					if data['weight'] > max_c_weight:
-						max_c_weight = data['weight']
-	#normalize for each synapse
+				if data['Esyn'] == 'True':
+					if data['Eweight'] > max_e_weight:
+						max_e_weight = data['Eweight']
+				if data['Csyn'] == 'True':	
+					if data['Cweight'] > max_c_weight:
+						max_c_weight = data['Cweight']
+
+
 	for n,nbrs in G.adjacency_iter():
 		for nbr,eattr in nbrs.items():
 			for attr, data in eattr.items():
-				if data['synapse_type'] == 'E':
-					data['normal_weight'] = data['weight'] / max_e_weight
-				if data['synapse_type'] == 'C':
-					data['normal_weight'] = data['weight'] / max_c_weight	
+				if data['Esyn'] == 'True':
+					data['Enormal_weight'] = data['Eweight'] / max_e_weight
+				if data['Csyn'] == 'True':
+					data['Cnormal_weight'] = data['Cweight'] / max_c_weight	
 
 #interate over all nodes to propogate neural activity
 def single_time_step(node_sizes,iteration,refractory):
@@ -198,9 +190,9 @@ def single_time_step(node_sizes,iteration,refractory):
 			for nbr,eattr in nbrs.items():
 				for attr, data in eattr.items():
 					#'E' for electrical synapse
-					if data['synapse_type'] == 'C':
+					if data['Csyn'] == 'True':
 						#summing the activity input into a node and store integral into a list
-						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * data['normal_weight']
+						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * data['Cnormal_weight']
 			#this threshold activation limit is chosen based on the proportion of neuron action potential			
 			if integral[m] > 2:
 				G.node[n]['activity'] = 100
@@ -216,7 +208,6 @@ def single_time_step(node_sizes,iteration,refractory):
 
 #main function for time iteration that contain all smaller functions
 def time_itr(time,iteration,refractory):
-	assign_neuro_type()
 	exin()
 	percentageActivation = init_activity_random()
 	init_refractory()
@@ -307,7 +298,7 @@ def time_itr(time,iteration,refractory):
 
 #a list that stores all the data from 
 timesteps = 50
-simulation_no = 20
+simulation_no = 10
 activitydata = {}
 dieDownTime = {}
 activationData = {}
@@ -346,11 +337,11 @@ def frequencyCalcuation(G,timesteps, iteration, activations):
 				activeNodes += 1
 		if 	activeNodes > 0 and activationTotal > 0:
 			frequency[i] = float(1)/(float(activationTotal)/float(activeNodes)/float(timesteps))		
-	print frequency	
+	print (frequency)	
 	return frequency	
 
 frequencies = frequencyCalcuation(G,timesteps, simulation_no, activationData)
-print frequencies
+print (frequencies)
 '''
 with open('data/randomResults/frequencies.txt', 'wb') as f:
 	pickle.dump(frequencies, f)	
