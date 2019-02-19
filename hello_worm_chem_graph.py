@@ -139,27 +139,25 @@ def node_size_map():
 
 def normalize_synapse_weight():
 	#find maximum weights for each types of synapses
-	max_e_weight = 1
-	max_c_weight = 1
-
-	for n,nbrs in G.adjacency_iter():
-		for nbr,eattr in nbrs.items():
-			for attr, data in eattr.items():
-				if data['Esyn'] == 'True':
-					if data['Eweight'] > max_e_weight:
-						max_e_weight = data['Eweight']
-				if data['Csyn'] == 'True':	
-					if data['Cweight'] > max_c_weight:
-						max_c_weight = data['Cweight']
-
-
-	for n,nbrs in G.adjacency_iter():
-		for nbr,eattr in nbrs.items():
-			for attr, data in eattr.items():
-				if data['Esyn'] == 'True':
-					data['Enormal_weight'] = data['Eweight'] / max_e_weight
-				if data['Csyn'] == 'True':
-					data['Cnormal_weight'] = data['Cweight'] / max_c_weight	
+    max_e_weight = 1
+    max_c_weight = 1
+    
+    for n,nbrs in G.adjacency_iter():
+    	for nbr,attrs in nbrs.items():
+    			if attrs['Esyn'] == 'True':
+    				if attrs['Eweight'] > max_e_weight:
+    					max_e_weight = attrs['Eweight']
+    			if attrs['Csyn'] == 'True':	
+    				if attrs['Cweight'] > max_c_weight:
+    					max_c_weight = attrs['Cweight']
+    
+    
+    for n,nbrs in G.adjacency_iter():
+    	for nbr,attrs in nbrs.items():
+    			if attrs['Esyn'] == 'True':
+    				attrs['Enormal_weight'] = attrs['Eweight'] / max_e_weight
+    			if attrs['Csyn'] == 'True':
+    				attrs['Cnormal_weight'] = attrs['Cweight'] / max_c_weight	
 
 #interate over all nodes to propogate neural activity
 def single_time_step(node_sizes,iteration,refractory):
@@ -187,12 +185,11 @@ def single_time_step(node_sizes,iteration,refractory):
 		
 		else:
 			#initialize integral
-			for nbr,eattr in nbrs.items():
-				for attr, data in eattr.items():
+			for nbr,attrs in nbrs.items():
 					#'E' for electrical synapse
-					if data['Csyn'] == 'True':
+					if attrs['Csyn'] == 'True':
 						#summing the activity input into a node and store integral into a list
-						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * data['Cnormal_weight']
+						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * attrs['Cnormal_weight']
 			#this threshold activation limit is chosen based on the proportion of neuron action potential			
 			if integral[m] > 2:
 				G.node[n]['activity'] = 100
@@ -297,8 +294,8 @@ def time_itr(time,iteration,refractory):
 #if __name__ == "__main__":
 
 #a list that stores all the data from 
-timesteps = 50
-simulation_no = 10
+timesteps = 25
+simulation_no = 2
 activitydata = {}
 dieDownTime = {}
 activationData = {}
