@@ -100,10 +100,17 @@ for a in range(len(cleansource)):
 for i in range(len(n_cleansource)):
     if cleansyn[i]=='chemical':
         G.add_edge(n_cleansource[i],n_cleantarget[i],
-                   attr_dict={'Csyn':'True', 'Cweight':cleanweight[i], 'Esyn':'False'})
+                   attr_dict={'Csyn':'True', 'Cweight':cleanweight[i]})
         
     else: G.add_edge(n_cleansource[i],n_cleantarget[i],
-                     attr_dict={'Esyn':'True', 'Eweight':cleanweight[i], 'Csyn':'False'})
+                     attr_dict={'Esyn':'True', 'Eweight':cleanweight[i]})
+    
+for a,b in G.adjacency_iter():
+    for c,d in b.items():
+        if 'Csyn' not in d:
+            d['Csyn']='False'
+        elif 'Esyn' not in d:
+            d['Esyn']='False'
 
 
 ##### Add characteristic neurotransmitter to nodes as attribute
@@ -123,8 +130,8 @@ for a in range(302):
 
 ##### Clear variables
 
-del a,b,c,i,colnames,data,source,syn,target,weight,nsNAME,connectome,cleansource,cleantarget
-del n_cleantarget, n_cleansource, cleanweight, cleansyn, neuron, nttr
+#del a,b,c,i,colnames,data,source,syn,target,weight,nsNAME,connectome,cleansource,cleantarget
+#del n_cleantarget, n_cleansource, cleanweight, cleansyn, neuron, nttr
             
             
 
