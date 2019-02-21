@@ -4,13 +4,18 @@
 Created on Fri Feb 15 10:14:54 2019
 
 @author: jescab01
+
+This code will process raw data from different sources (go to readme.txt)
+and update a basic banch of nodes with defined topology.
+
+Include connections and neurotransmitter type.
 """
 
 import networkx as nx
 import pandas
 
 ##### Load .graphml
-G = nx.read_graphml("elegans.herm_onlynodes.graphml")
+G = nx.read_graphml("elegans.herm_nodesPos.graphml")
 
 
 #####Generate a list of nodes names (two ways)
@@ -19,9 +24,9 @@ G = nx.read_graphml("elegans.herm_onlynodes.graphml")
 #for i in range(303):
 #    ns[i]='n'+str(i)
 
-nsNAME=list(range(303))
+nsNAME=list(range(302))
 
-for i in range(303):
+for i in range(302):
     nsNAME[i]=G.node['n'+str(i)]['cell_name']
 
 
@@ -89,10 +94,6 @@ for a in range(len(cleansource)):
             n_cleantarget.append('n'+str(b))
 
 
-##### Clear variables
-
-del a,b,c,i,colnames,data,source,syn,target,weight,nsNAME,connectome,cleansource,cleantarget
-
 
 ############## Now we actually can add edges to our G networkx
 
@@ -103,11 +104,39 @@ for i in range(len(n_cleansource)):
         
     else: G.add_edge(n_cleansource[i],n_cleantarget[i],
                      attr_dict={'Esyn':'True', 'Eweight':cleanweight[i]})
+    
+for a,b in G.adjacency_iter():
+    for c,d in b.items():
+        if 'Csyn' not in d:
+            d['Csyn']='False'
+        elif 'Esyn' not in d:
+            d['Esyn']='False'
+
+
+##### Add characteristic neurotransmitter to nodes as attribute
+
+colnames = ['Neuron_class', 'Neuron', 'Neurotransmitter']
+data = pandas.read_csv('NeurotransmitterMap.csv', names=colnames)
+neuron = data.Neuron.tolist()
+nttr = data.Neurotransmitter.tolist()
 
 
 
+for a in range(302):
+    for b in range(302):
+        if G.node['n'+str(a)]['cell_name'] in neuron[b]:
+            G.node['n'+str(a)]['neurotransmitters']=nttr[b]
 
 
+##### Clear variables
 
+#del a,b,c,i,colnames,data,source,syn,target,weight,nsNAME,connectome,cleansource,cleantarget
+#del n_cleantarget, n_cleansource, cleanweight, cleansyn, neuron, nttr
+            
+            
+
+##### Rewrite Graphml
+
+nx.write_graphml(G, 'elegans.herm_connectome.graphml')
 
 
