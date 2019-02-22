@@ -11,8 +11,10 @@ import networkx as nx
 G = nx.read_graphml("data/elegans.herm_connectome.graphml")
 
 
-
 timesteps = 25
 simulation_no = 2
 refractoryPeriod=1
 
+electricalWorm()
+chemicalWorm()
+mainWorm()
