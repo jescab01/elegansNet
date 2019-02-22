@@ -188,8 +188,7 @@ def time_itr(time,iteration,refractory):
 #if __name__ == "__main__":
 
 #a list that stores all the data from 
-timesteps = 25
-simulation_no = 2
+
 activitydata = {}
 dieDownTime = {}
 activationData = {}
@@ -205,7 +204,7 @@ hopcountdata = nx.all_pairs_shortest_path_length(G)
 r = 1
 for i in range(simulation_no):
 	activitydata[i] = {}
-	time_itr(timesteps,i,r)
+	time_itr(timesteps,i,refractoryPeriod)
 '''
 #save data in file
 with open('data/randomResults/dieDownTime_chem.txt', 'wb') as f:

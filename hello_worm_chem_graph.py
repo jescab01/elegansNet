@@ -205,7 +205,7 @@ hopcountdata = nx.all_pairs_shortest_path_length(G)
 r = 1
 for i in range(simulation_no):
 	activitydata[i] = {}
-	time_itr(timesteps,i,r)
+	time_itr(timesteps,i,refractoryPeriod)
 '''
 #save data in file
 with open('data/randomResults/dieDownTime_chem.txt', 'wb') as f:
