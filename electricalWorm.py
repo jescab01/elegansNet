@@ -145,9 +145,9 @@ def single_time_step(node_sizes,iteration,refractory):
 			#initialize integral
 			for nbr,attrs in nbrs.items():
 					#'E' for electrical synapse
-					if attrs['Csyn'] == 'True':
+					if attrs['Esyn'] == 'True':
 						#summing the activity input into a node and store integral into a list
-						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * attrs['CnormWeight']
+						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * attrs['EnormWeight']
 			#this threshold activation limit is chosen based on the proportion of neuron action potential			
 			if integral[m] > 2:
 				G.node[n]['activity'] = 100
