@@ -114,11 +114,11 @@ for a in range(simulation_no):
         fig['layout']['scene'].update(go.layout.Scene(aspectmode='manual',
                        aspectratio=go.layout.scene.Aspectratio(x=1,y=1,z=1)))
         
-        pio.write_image(fig, '3Dplots/sim'+str(a)+'time'+str(b)+'.jpg')
+        pio.write_image(fig, '3Dplots/sim'+str(a)+'t'+str(b)+'.jpg')
         
         
 '''
-Plot one specific simulation and time in .html to deepen
+Deepen. Plot one specific simulation at specific time in .html to deepen
 '''
 
 #sim=1
