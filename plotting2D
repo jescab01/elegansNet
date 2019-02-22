@@ -59,9 +59,9 @@ for a in range(simulation_no):
 #'''
 #	    
         #percentage of initial activation
-#        plt.text(0.97, 0.94,  "Percentage of node activated at t0 = " + "{0:.2f}".format(initActivity), 
-#	             horizontalalignment='right',
-#	             transform=plt.gca().transAxes)
+        plt.text(0.97, 0.94,  "Percentage of node activated at t0 = " + "{0:.2f}".format(initActivity[a]), 
+	             horizontalalignment='right',
+	             transform=plt.gca().transAxes)
 
 	    #iteration
         plt.text(0.97, 0.91,  "Simulation number = " + str(a),
@@ -72,6 +72,6 @@ for a in range(simulation_no):
 	             horizontalalignment='right',
 	             transform=plt.gca().transAxes)
 
-        plt.savefig("imgChem/" + str(refractory) + "_" + str(a) + "step_n1_"  + str(b) + ".jpg")
+        plt.savefig("imgChem/" + str(refractory) + "_____" + str(a) + "step_n1_"  + str(b) + ".jpg")
         plt.close()
 
