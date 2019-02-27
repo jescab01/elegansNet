@@ -1,24 +1,22 @@
 '''
 
-Specifying functions for 'Chemical' connectome
+Specifying functions for 'electrical' connectome
 
 '''
 
-
-###prepare chemicalInfo for storage
-def infoC(G, sim_no):
-    chemicalInfo={'activitydata':{}, 'fireCount': {}, 'deactivated': {}}
+def infoE(G, sim_no):
+    electricalInfo={'activitydata':{}, 'fireCount': {}, 'deactivated': {}}
     for sim in range(sim_no):
-        chemicalInfo['activitydata'][sim]={}
-        chemicalInfo['fireCount'][sim]={}
-        chemicalInfo['deactivated'][sim]='None'
+        electricalInfo['activitydata'][sim]={}
+        electricalInfo['fireCount'][sim]={}
+        electricalInfo['deactivated'][sim]='None'
         for n,nbrs in G.adjacency_iter():
-            chemicalInfo['fireCount'][sim][n] = 0
-    return chemicalInfo
+            electricalInfo['fireCount'][sim][n] = 0
+    return electricalInfo
         
 
-    ### Start simulation    
-def chemicalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, chemicalInfo):
+
+def electricalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, electricalInfo):
     
          ### assign initial activity to nodes as attribute   
     for i in range(302):
@@ -27,16 +25,14 @@ def chemicalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic,
         ### run specific simulation for timesteps
     for i in range(timesteps):
         if sum(activity) == 0:
-            chemicalInfo['deactivated'][sim] = i
-            print('Chemical network deactivation at: simulation ' + str(sim) + ', time ' + str(i) +'.')
+            electricalInfo['deactivated'][sim] = i
+            print('Electrical network deactivation at: simulation ' + str(sim) + ', time ' + str(i) +'.')
             break
-        chemicalInfo['activitydata'][sim][i] = activityDic
-        single_time_step(G, sim, refractoryPeriod, chemicalInfo)
+        electricalInfo['activitydata'][sim][i] = activityDic
+        single_time_step(G, sim, refractoryPeriod, electricalInfo)
         activity, activityDic = getActivity(G)
     
-    return chemicalInfo
-    
-
+    return electricalInfo
 
 def getActivity(G):
     activity = []
@@ -46,9 +42,11 @@ def getActivity(G):
     for i in range(302):
         activityDic['n'+str(i)]=G.node['n'+str(i)]['activity']
     return activity, activityDic
-        
 
-def single_time_step(G, iteration, refractory, chemicalInfo):
+    
+
+
+def single_time_step(G, iteration, refractory, electricalInfo):
 	integral= [0] * G.number_of_nodes()
 	m = 0
 	for n,nbrs in G.adjacency_iter():
@@ -75,18 +73,13 @@ def single_time_step(G, iteration, refractory, chemicalInfo):
 			for nbr,eattr in nbrs.items():
 				#for attr, data in eattr.items():
 					#'E' for electrical synapse
-					if eattr['Csyn'] == 'True':
+					if eattr['Esyn'] == 'True':
 						#summing the activity input into a node and store integral into a list
-						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * eattr['CnormWeight']
+						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * eattr['EnormWeight']
 			#this threshold activation limit is chosen based on the proportion of neuron action potential			
 			if integral[m] > 2:
 				G.node[n]['activity'] = 100
-				chemicalInfo['fireCount'][iteration][n] += 1 
+				electricalInfo['fireCount'][iteration][n] += 1 
 		#for tracking the integral list		
 		m += 1
        
-        
-
-
-
-

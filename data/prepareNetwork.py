@@ -184,6 +184,10 @@ for i in range(302):
             G.node['n'+str(i)]['exin'] = -1
 
 
+##### Prepare attribute for refractory online update of refractory period
+
+for n,nbrs in G.adjacency_iter():
+	G.node[n]['refractory'] = 0
 
 
 ##### Clear variables
