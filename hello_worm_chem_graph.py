@@ -23,27 +23,6 @@ G = nx.read_graphml("data/elegans.herm_connectome.graphml")
 pos = graphviz_layout(G, prog='sfdp', args='')
 
 
-#determine if a neuron is excitory or inhibitory
-def exin():
-       	
-    NT_types = ['ACh', 'DA', '5HT', 'Glu', 'ACh-5HT', 'Octopamine','Glu-5HT', 'Glu-Tyramine', 'GABA']
-    inh_t=0
-    
-    for i in range(302):
-    	if G.node['n'+str(i)]['neurotransmitters'] in NT_types[:8]:
-    		G.node['n'+str(i)]['exin'] = 1
-    	elif G.node['n'+str(i)]['neurotransmitters'] == NT_types[8]:
-    		G.node['n'+str(i)]['exin'] = -1
-    	else:
-    		G.node['n'+str(i)]['exin'] = 1
-            
-    for i in range (302):        
-        if G.node['n'+str(i)]['exin']==-1:
-            inh_t +=1 
-    
-    ratio_inhibitory = inh_t / 302	
-    return ratio_inhibitory
-
 #initialise all perimeter nodes to have the parameter activity
 def init_activity_perimeter():
 	init_active_nodes = 0
@@ -137,27 +116,6 @@ def node_size_map():
 		i += 1
 	return size_array
 
-def normalize_synapse_weight():
-	#find maximum weights for each types of synapses
-    max_e_weight = 1
-    max_c_weight = 1
-    
-    for n,nbrs in G.adjacency_iter():
-    	for nbr,attrs in nbrs.items():
-    			if attrs['Esyn'] == 'True':
-    				if attrs['Eweight'] > max_e_weight:
-    					max_e_weight = attrs['Eweight']
-    			if attrs['Csyn'] == 'True':	
-    				if attrs['Cweight'] > max_c_weight:
-    					max_c_weight = attrs['Cweight']
-    
-    
-    for n,nbrs in G.adjacency_iter():
-    	for nbr,attrs in nbrs.items():
-    			if attrs['Esyn'] == 'True':
-    				attrs['Enormal_weight'] = attrs['Eweight'] / max_e_weight
-    			if attrs['Csyn'] == 'True':
-    				attrs['Cnormal_weight'] = attrs['Cweight'] / max_c_weight	
 
 #interate over all nodes to propogate neural activity
 def single_time_step(node_sizes,iteration,refractory):
@@ -189,7 +147,7 @@ def single_time_step(node_sizes,iteration,refractory):
 					#'E' for electrical synapse
 					if attrs['Csyn'] == 'True':
 						#summing the activity input into a node and store integral into a list
-						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * attrs['Cnormal_weight']
+						integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * attrs['CnormWeight']
 			#this threshold activation limit is chosen based on the proportion of neuron action potential			
 			if integral[m] > 2:
 				G.node[n]['activity'] = 100
@@ -205,89 +163,25 @@ def single_time_step(node_sizes,iteration,refractory):
 
 #main function for time iteration that contain all smaller functions
 def time_itr(time,iteration,refractory):
-	exin()
-	percentageActivation = init_activity_random()
-	init_refractory()
-	normalize_synapse_weight()
-	node_sizes = node_size_map()
-	activations = {}
-	for i in range(time):
-		if sum(get_activity_int()) == 0:
-			dieDownTime[iteration] = i
-			died[iteration] = 1
-
-			break
-
-
-			'''
-			for t in range(i,timesteps):
-				activitydata[iteration][time] = null_activity_int()
-			break
-			'''
-
-		#figure perimeter set up
+    percentageActivation = init_activity_random()
+    initActivity.append(percentageActivation)
+    init_refractory()
+    node_sizes = node_size_map()
+    activations = {}
+    for i in range(time):
+        if sum(get_activity_int()) == 0:
+            dieDownTime[iteration] = i
+            died[iteration] = 1
+            
+            break
+        
+        activitydata[iteration][i] = get_activity()
+        
+        single_time_step(node_sizes, iteration, refractory)
+        
+    return activations
+	
 		
-		#pos=nx.spring_layout(G,iterations=100,scale=2.0)
-		#n_colors=range(279)
-		#e_colors=range(3225)
-		#draw graphs so propogation can be seen in real time
-		#nx.draw_spectral(G)
-
-		#nx.draw_circular(G, node_color=get_activity(), node_size=node_sizes, width=1, style='dotted', arrows=False, cmap=plt.cm.Blues)
-
-		#plt.savefig("img/step_cr3_" + str(i) + ".png")
-		#plt.show()
-		activitydata[iteration][i] = get_activity()
-
-
-		plt.figure(figsize=(7,7))
-		nx.draw(G, pos, node_color = get_activity_int(), node_size=node_sizes, width=1, style='dotted', arrows=False, cmap=plt.cm.Blues)
-		
-		font = {'fontname'   : 'Helvetica',
-	            'color'      : 'k',
-	            'fontweight' : 'bold',
-	            'fontsize'   : 11}
-
-		plt.title("C.Elegans Neural Activity", font)
-
-	    # change font and write text (using data coordinates)
-		font = {'fontname'   : 'Helvetica',
-	    'color'      : 'r',
-	    'fontweight' : 'bold',
-	    'fontsize'   : 11}
-
-	    #type of activation
-		plt.text(0.97, 0.97, "Initial node activation method = Random",
-	             horizontalalignment='right',
-	             transform=plt.gca().transAxes)
-		'''
-		#activation period to refractory period ratio
-		plt.text(0.97, 0.94,  "AR = " + str(10.0/refractory),
-	             horizontalalignment='right',
-	             transform=plt.gca().transAxes)
-		'''
-	    #percentage of initial activation
-		plt.text(0.97, 0.94,  "Percentage of node activated at t0 = " + "{0:.2f}".format(percentageActivation), 
-	             horizontalalignment='right',
-	             transform=plt.gca().transAxes)
-
-	    #iteration
-		plt.text(0.97, 0.91,  "Simulation number = " + str(iteration),
-	             horizontalalignment='right',
-	             transform=plt.gca().transAxes)
-	    #time
-		plt.text(0.97, 0.88,  "t = " + str(i),
-	             horizontalalignment='right',
-	             transform=plt.gca().transAxes)
-
-		plt.savefig("imgChem/" + str(refractory) + "_" + str(iteration) + "step_n1_"  + str(i) + ".jpg")
-		plt.close()
-
-
-		
-		single_time_step(node_sizes, iteration, refractory)
-	return activations
-
 
 #importing the wormNet data from graphml file
 
@@ -300,6 +194,7 @@ activitydata = {}
 dieDownTime = {}
 activationData = {}
 died = {}
+initActivity=[]
 
 #initialize activation data and set all nodes to 0
 init_activationCount(simulation_no, activationData)
@@ -310,7 +205,7 @@ hopcountdata = nx.all_pairs_shortest_path_length(G)
 r = 1
 for i in range(simulation_no):
 	activitydata[i] = {}
-	time_itr(timesteps,i,r)
+	time_itr(timesteps,i,refractoryPeriod)
 '''
 #save data in file
 with open('data/randomResults/dieDownTime_chem.txt', 'wb') as f:
