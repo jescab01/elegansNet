@@ -21,7 +21,7 @@ def nxWriter(info, folder):
     import os
     
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output/'+str(info)+'Plots/'+str(folder)+'/Nx'+str(info)+'.avi',fourcc, 5.0, (504,504))
+    out = cv2.VideoWriter('output/'+str(info)+'Plots/'+str(folder)+'/Nx'+str(info)+'.avi',fourcc, 3.0, (504,504))
     
     image_list=glob.glob(f'output/'+str(info)+'Plots/'+str(folder)+'/*.jpg')
     sorted_images = sorted(image_list, key=os.path.getmtime)
@@ -44,7 +44,7 @@ def plotlyWriter(info, folder):
     import os
     
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output/'+str(info)+'Plots/'+str(folder)+'/Plotly'+str(info)+'.avi',fourcc, 5.0, (1000,750))
+    out = cv2.VideoWriter('output/'+str(info)+'Plots/'+str(folder)+'/Plotly'+str(info)+'.avi',fourcc, 3.0, (1000,750))
     
     image_list=glob.glob(f'output/'+str(info)+'Plots/'+str(folder)+'/*.jpg')
     sorted_images = sorted(image_list, key=os.path.getmtime)

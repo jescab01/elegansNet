@@ -18,21 +18,22 @@ import pandas
 import numpy.random
 
 ##### Load .graphml
-G = nx.read_graphml("elegans.herm_nodesPos.graphml")
+G = nx.read_graphml("networkSetup/1.4elegans.herm_Nodestypes.graphml")
+nbr=G.number_of_nodes()
 
 
 ##### Generate a list of cell names
 
-nsNAME=list(range(302))
+nsNAME=list(range(nbr))
 
-for i in range(302):
+for i in range(nbr):
     nsNAME[i]=G.node['n'+str(i)]['cell_name']
 
 
 ##### Read csv and extract lists
     
 colnames=['source','target','weight','syn']
-data = pandas.read_csv('herm_full_edgelist_MODIFIED.csv', names=colnames)
+data = pandas.read_csv('networkSetup/2.0herm_full_edgelist_MODIFIED.csv', names=colnames)
 source=data.source.tolist()
 target=data.target.tolist()
 weight=data.weight.tolist()
@@ -56,14 +57,11 @@ cleanweight=[]
 cleansyn=[]
 
 for a in range(len(source)):
-    for b in range(len(nsNAME)):
-        if source[a]==nsNAME[b]:
-            for c in range(len(nsNAME)):
-                if target[a]==nsNAME[c]:
-                    cleansource.append(source[a])
-                    cleantarget.append(target[a])
-                    cleanweight.append(weight[a])
-                    cleansyn.append(syn[a])
+    if source[a] in nsNAME and target[a] in nsNAME:
+        cleansource.append(source[a])
+        cleantarget.append(target[a])
+        cleanweight.append(weight[a])
+        cleansyn.append(syn[a])
 
 
 ##### Lists to .csv. First, generate a dictionary with keys:column names, values:column content.
@@ -74,7 +72,7 @@ cleandic={'Source':cleansource,'Target':cleantarget,
 ##### Write new .csv
 
 connectome=pandas.DataFrame(cleandic, columns=['Source','Target','Weight','Syn'])
-connectome.to_csv('/home/jescab01/elegansProject/elegansNet/data/herm_connectome.csv')
+connectome.to_csv('networkSetup/2.1herm_connections.csv')
 
 
 ##### Translate cleansource and cleantarget to 'nx' names
@@ -140,14 +138,14 @@ for n,nbrs in G.adjacency_iter():
 ##### Add characteristic neurotransmitter to nodes as attribute
 
 colnames = ['Neuron_class', 'Neuron', 'Neurotransmitter']
-data = pandas.read_csv('NeurotransmitterMap.csv', names=colnames)
+data = pandas.read_csv('networkSetup/2.2NeurotransmitterMap.csv', names=colnames)
 neuron = data.Neuron.tolist()
 nttr = data.Neurotransmitter.tolist()
 
 
 
-for a in range(302):
-    for b in range(302):
+for a in range(len(nsNAME)):
+    for b in range(len(nsNAME)):
         if G.node['n'+str(a)]['cell_name'] == neuron[b]:
             G.node['n'+str(a)]['neurotransmitters']=nttr[b]
 
@@ -158,7 +156,7 @@ NT_types = ['Ach', 'DA', '5HT', 'Glu', 'Ach-5HT', 'Octopamine','Glu-5HT', 'Glu-T
 inh_t=0
 
 
-for i in range(302):
+for i in range(len(nsNAME)):
     if G.node['n'+str(i)]['neurotransmitters'] in NT_types[:8]:
         G.node['n'+str(i)]['exin']=1
     elif G.node['n'+str(i)]['neurotransmitters']==NT_types[8]:
@@ -168,7 +166,7 @@ for i in range(302):
 
 ### Calculate ratio of inhibitory neurons
 
-for i in range(302):
+for i in range(len(nsNAME)):
    if G.node['n'+str(i)]['exin']==-1:
         inh_t = inh_t + 1
 inh_ratio = inh_t / 302	
@@ -176,7 +174,7 @@ inh_ratio = inh_t / 302
 
 ## For those cells whose neurotransmitter is unknown, assign ex/inh by ratio
 
-for i in range(302):
+for i in range(len(nsNAME)):
     if G.node['n'+str(i)]['exin']==0:
         if numpy.random.random()>inh_ratio:
             G.node['n'+str(i)]['exin'] = 1

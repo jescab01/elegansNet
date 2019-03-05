@@ -6,7 +6,7 @@ Created on Wed Feb 13 12:19:56 2019
 @author: jescab01
 """
 
-def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
+def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcountdata):
     
     import networkx as nx
     from networkx.drawing.nx_agraph import graphviz_layout
@@ -29,7 +29,7 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
 
     for a in range(timesteps):
         color=[]
-        for b in range(302):
+        for b in range(len(hopcountdata)):
             color.append(activitydata[a]['n'+str(b)])
             
         plt.figure(figsize=(7,7))
