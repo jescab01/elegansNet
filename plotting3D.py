@@ -25,29 +25,7 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcount
     for i in range(len(hopcountdata)):
         posz[i] = G.node['n'+str(i)]['soma_posz']
         
-    
-    '''
-    generating colour from activity
-    '''
-#        
-#    import copy
-#    
-#    colors=copy.deepcopy(activitydata)
-#    
-#    for times, nodescolors in colors.items():
-#        for node, color in nodescolors.items():
-#            if color==100:
-#                color=5
-#            elif color==60:
-#                color=4
-#            elif color==50:
-#                color=3
-#            elif color==30:
-#                color=2
-#            elif color==10:
-#                color=1
-#            else: color=0
-    
+       
     
     
     '''
@@ -65,17 +43,23 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcount
     for a in range(timesteps):
         color=[]
         for b in range(len(hopcountdata)):
-            if G.node['n'+str(b)]['cell_type']=='Motor' and activitydata[a]['n'+str(b)]==100:
-                color.append(100)
-            elif activitydata[a]['n'+str(b)]==100:
-                color.append(80)
-            elif activitydata[a]['n'+str(b)]==50:
-                color.append(30)
-            elif activitydata[a]['n'+str(b)]==66:
-                color.append(20)
-            elif activitydata[a]['n'+str(b)]==33:
-                color.append(10)
-            else: color.append(0)
+            color.append(activitydata[a]['n'+str(b)])
+        
+        
+###  Give different color to motor nodes
+
+#        for b in range(len(hopcountdata)):
+#            if G.node['n'+str(b)]['cell_type']=='Motor' and activitydata[a]['n'+str(b)]==100:
+#                color.append(100)
+#            elif activitydata[a]['n'+str(b)]==100:
+#                color.append(80)
+#            elif activitydata[a]['n'+str(b)]==50:
+#                color.append(30)
+#            elif activitydata[a]['n'+str(b)]==66:
+#                color.append(20)
+#            elif activitydata[a]['n'+str(b)]==33:
+#                color.append(10)
+#            else: color.append(0)
 
         '''## realistic layout'''
         

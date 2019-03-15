@@ -16,7 +16,7 @@ def infoM(G, sim_no):
         
 
 
-def mainWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, mainInfo):
+def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c):
     
          ### assign initial activity to nodes as attribute   
     for i in range(302):
@@ -24,12 +24,18 @@ def mainWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, act
         
         ### run specific simulation for timesteps
     for i in range(timesteps):
-        if sum(activity) == 0:
-            mainInfo['deactivated'][sim]= i
-            print('Main network deactivation at: simulation ' + str(sim) + ', time ' + str(i) +'.')
-            break
+        chemtime = i-2
+        if chemtime>=0:
+            chemdata = []
+            for a in range(302):
+                chemdata.append(mainInfo['activitydata'][sim][chemtime]['n'+str(a)])
+            if sum(activity)==0:
+                if sum(chemdata) == 0:
+                    mainInfo['deactivated'][sim]= i
+                    print('Main network deactivation at: simulation ' + str(sim) + ', time ' + str(i) +'.')
+                    break
         mainInfo['activitydata'][sim][i] = activityDic
-        single_time_step(G, sim, refractoryPeriod, mainInfo)
+        single_time_step(G, sim, mainInfo, sim, chemtime, c)
         activity, activityDic = getActivity(G)
     
     return mainInfo
@@ -46,57 +52,48 @@ def getActivity(G):
     
 
 
-def single_time_step(G, iteration, refractory, mainInfo):
+def single_time_step(G, iteration, mainInfo, sim, chemtime, c):
     integral= [0] * G.number_of_nodes()
     m = 0
     for n,nbrs in G.adjacency_iter():
-        if G.node[n]['activity'] in [50,100]: 		#decay of activity in 2 time steps
-            G.node[n]['activity'] -= 50
-            
-            
-            current_activity = G.node[n]['activity']         #set refractory period if activity of the node just ended
-            if current_activity == 0:
-                G.node[n]['refractory'] = refractory
-
-		#if the node is in the refractory period reduce its count	
-        elif G.node[n]['refractory'] > 0:
-            G.node[n]['refractory'] -= 1
-        
-        elif G.node[n]['activity'] in [33,66]:
-            if G.node[n]['activity']==33:
-                G.node[n]['activity']+=33
-            elif G.node[n]['activity']==66:
-                G.node[n]['activity']+=34
-
+        if G.node[n]['activity'] == 100: 		#decay of activity in 1 time steps as absolute refractory period
+            G.node[n]['activity'] -= 115
             
 		
-		#determine input from neighbours  and decide if the integral is sufficient for firing	
-        else:
-			#initialize integral
+		#determine input from neighbours and decide if the integral is sufficient for firing	
+        elif G.node[n]['activity']!=100:
             for nbr,eattr in nbrs.items():
-                if eattr['Esyn'] == 'True' and eattr['Csyn']=='True':
-					#summing the activity input into a node and store integral into a list
-                    integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * eattr['EnormWeight']
-                    integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * eattr['CnormWeight']
+                if chemtime >= 0: 
+                    if eattr['Esyn']=='True' and eattr['Csyn']=='True':
+                        if G.node[nbr]['activity']==100 and mainInfo['activitydata'][sim][chemtime][nbr] == 100:
+                            integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity']*c * eattr['EnormWeight']
+                            integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][chemtime][nbr]*c * eattr['CnormWeight']
+                            
+                        if G.node[nbr]['activity']==100:
+                            integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity']*c * eattr['EnormWeight']
+                            
+                        if mainInfo['activitydata'][sim][chemtime][nbr] == 100:
+                            integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][chemtime][nbr]*c * eattr['CnormWeight']
+                            
+    
+                    elif eattr['Esyn'] == 'True' and G.node[nbr]['activity']==100:
+                        integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity']*c * eattr['EnormWeight']
                     
-                    if integral[m] > 2:
-                        G.node[n]['activity'] = 100
-                        mainInfo['fireCount'][iteration][n] += 1 
-                    
-                    
-                if eattr['Csyn'] == 'True':
-                    integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * eattr['CnormWeight']
-                    
-                    if integral[m] > 2:
-                        G.node[n]['activity'] = 33
-                        mainInfo['fireCount'][iteration][n] += 1 
-                                        
+                    elif eattr['Csyn'] == 'True' and mainInfo['activitydata'][sim][chemtime][nbr] == 100:
+                        integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity']*c * eattr['CnormWeight']
+                        
+                        
                 else: 
-                    integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity'] * eattr['EnormWeight']
+                    if eattr['Esyn'] == 'True' and G.node[nbr]['activity']==100:
+                        integral[m] +=  G.node[nbr]['exin'] * G.node[nbr]['activity']*c * eattr['EnormWeight']
+              
                     
-                    if integral[m] > 2:
-                        G.node[n]['activity'] = 100
-                        mainInfo['fireCount'][iteration][n] += 1 
+            if integral[m] > 13:
+                G.node[n]['activity'] = 100
+                mainInfo['fireCount'][iteration][n] += 1 
+                
+            elif G.node[n]['activity'] == -15: 		#relative refractory period in one timestep
+                G.node[n]['activity'] = 0
                 
 		#for tracking the integral list		
         m += 1

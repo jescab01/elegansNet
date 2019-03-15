@@ -32,9 +32,9 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcount
         for b in range(len(hopcountdata)):
             color.append(activitydata[a]['n'+str(b)])
             
-        plt.figure(figsize=(7,7))
+        plt.figure(figsize=(18,10))
         nx.draw(G, pos, node_color = color, node_size=node_sizes, width=1,
-                style='dotted', arrows=False, cmap=plt.cm.Blues)
+                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=100, vmin=-10)
 
 
         font = {'fontname'   : 'DejaVu Sans',
