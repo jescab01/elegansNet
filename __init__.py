@@ -25,13 +25,13 @@ hopcountdata = nx.all_pairs_shortest_path_length(G)   #define path lengths
 Define simulation variables
 '''
 
-timesteps = 200
-sim_no = 1
+timesteps = 5
+sim_no = 2
 refractoryPeriod=1
 
 timehtml=7  ## Time for html graph to deepen
 
-ratioRandomInit=0.05  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
+ratioRandomInit=0.15  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
 c=0.45           # free parameter influence of weights [exin*(100*c)*weight]
 
 ##### Sensor stimulation parameters. 
@@ -81,7 +81,6 @@ def stimulateSensors(sensor, area, LRb):
 def getActivity(nodesRandomActive,nodesSensorActive):
     activity = []
     activityDic={}
-    simInitActivity=[]
     for n,nbrs in G.adjacency_iter():
         activity.append(G.node[n]['activity'])
     for i in range(len(hopcountdata)):
@@ -101,10 +100,11 @@ Start simulations
 '''
 
 
-#chemicalInfo=infoC(G, sim_no)
-#electricalInfo=infoE(G,sim_no)
+chemicalInfo=infoC(G, sim_no)
+electricalInfo=infoE(G,sim_no)
 mainInfo=infoM(G, sim_no)
 
+simInitActivity=[]
 
 for sim in range(sim_no):
     initActivity, nodesRandomActive = initCommonActivity(sim)
@@ -115,14 +115,14 @@ for sim in range(sim_no):
         break
     
       
-    #chemicalInfo=chemicalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, chemicalInfo)
-    #electricalInfo=electricalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, electricalInfo)
+    chemicalInfo=chemicalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, chemicalInfo)
+    electricalInfo=electricalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, electricalInfo)
     mainInfo=mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c)
     
 
 masterInfo={}
-#masterInfo['chemicalInfo']=chemicalInfo
-#masterInfo['electricalInfo']=electricalInfo
+masterInfo['chemicalInfo']=chemicalInfo
+masterInfo['electricalInfo']=electricalInfo
 masterInfo['mainInfo']=mainInfo
 
 
@@ -149,16 +149,16 @@ del dirPath, fileList, #fileName
 
 ### 2D/3D/3Dhtml representations
 
-#for infos, datasets in masterInfo.items():
-#    for sim in range(sim_no):
-#        if datasets['deactivated'][sim]=='None':
-#            plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
-##            plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
-#
-#        else:
-#            timeplt=datasets['deactivated'][sim]
-#            plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
-##            plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
+for infos, datasets in masterInfo.items():
+    for sim in range(sim_no):
+        if datasets['deactivated'][sim]=='None':
+            plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
+            plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
+
+        else:
+            timeplt=datasets['deactivated'][sim]
+            plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
+            plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
 
 
 ### Ad-hoc 3Dhtml representation to deepen
@@ -177,11 +177,11 @@ del dirPath, fileList, #fileName
     
 ### Video generator
             
-#for infos in masterInfo:
-#    for folder in folders:
-#        videoWriter(infos, folder)
-#        
-#del folder, folders, infos, fileName
+for infos in masterInfo:
+    for folder in folders:
+        videoWriter(infos, folder)
+        
+del folder, folders, infos, fileName
    
     
 
