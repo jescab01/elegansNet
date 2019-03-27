@@ -83,10 +83,10 @@ Launcher
 
 ## standard simulation Launcher
 
-#masterInfo, simInitActivity, hopcountdata=standardInit()
+#masterInfo, simInitActivity, hopcountdata = standardInit()
 
 ## paramTest Launcher
-from exports import exportParamTest
+from exports import exportParamTest, clearParamTestfolders
 
 paramTestDic={}
 
@@ -95,7 +95,7 @@ for i in range(10):
     name='paramTest'+str(i)
     paramTestDic[name]=paramTest
 
-
+clearParamTestfolders()
 exportParamTest(paramTestDic)
             
             
