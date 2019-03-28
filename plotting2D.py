@@ -6,35 +6,32 @@ Created on Wed Feb 13 12:19:56 2019
 @author: jescab01
 """
 
-def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcountdata):
+def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
     
     import networkx as nx
-    from networkx.drawing.nx_agraph import graphviz_layout
     import matplotlib.pyplot as plt
     
     
-    #G = nx.read_graphml("elegansNet/data/elegans.herm_connectome.graphml")
-    pos = graphviz_layout(G, prog='sfdp', args='')
+    pos = nx.nx_agraph.graphviz_layout(G)
     
     ### Determine node size by node degree
     node_sizes = [0] * G.number_of_nodes()
     i = 0
-    for n,nbrs in G.adjacency_iter():
+    for n,nbrs in G.adj.items():
         node_sizes[i] = G.degree(n) * 5
         i += 1
     
     
-    ### Loop for plotting each timestep in one simulation
-        
+    ### Loop for plotting each simulation's timestep
 
     for a in range(timesteps):
         color=[]
-        for b in range(len(hopcountdata)):
+        for b in range(302):
             color.append(activitydata[a]['n'+str(b)])
             
         plt.figure(figsize=(18,10))
         nx.draw(G, pos, node_color = color, node_size=node_sizes, width=1,
-                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=100, vmin=-10)
+                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=40, vmin=-80)
 
 
         font = {'fontname'   : 'DejaVu Sans',

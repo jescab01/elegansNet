@@ -2,8 +2,8 @@ backports.functools-lru-cache==1.5
 cycler==0.10.0
 decorator==4.3.0
 kiwisolver==1.0.1
-matplotlib==2.2.3
-networkx==1.10
+matplotlib==3.0.3
+networkx==2.2
 numpy==1.15.4
 pandas==0.24.1
 Pillow==5.4.1

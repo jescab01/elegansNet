@@ -6,23 +6,23 @@ Created on Wed Feb 13 12:19:56 2019
 @author: jescab01
 """
 
-def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcountdata):
+def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos):
         
     '''
     listing positions 3D
     '''
-    posx=list(range(len(hopcountdata)))
-    for i in range(len(hopcountdata)):
+    posx=list(range(302))
+    for i in range(302):
         posx[i] = G.node['n'+str(i)]['soma_posx']
     
     #listing y positions
-    posy=list(range(len(hopcountdata)))
-    for i in range(len(hopcountdata)):
+    posy=list(range(302))
+    for i in range(302):
         posy[i] = G.node['n'+str(i)]['soma_posy']
     
     #listing z positions
-    posz=list(range(len(hopcountdata)))
-    for i in range(len(hopcountdata)):
+    posz=list(range(302))
+    for i in range(302):
         posz[i] = G.node['n'+str(i)]['soma_posz']
         
        
@@ -42,32 +42,26 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcount
 
     for a in range(timesteps):
         color=[]
-        for b in range(len(hopcountdata)):
+        for b in range(302):
             color.append(activitydata[a]['n'+str(b)])
         
         
-###  Give different color to motor nodes
+###  Give different color to motor nodes  (NOT TESTED)
 
-#        for b in range(len(hopcountdata)):
-#            if G.node['n'+str(b)]['cell_type']=='Motor' and activitydata[a]['n'+str(b)]==100:
-#                color.append(100)
-#            elif activitydata[a]['n'+str(b)]==100:
-#                color.append(80)
-#            elif activitydata[a]['n'+str(b)]==50:
+#        for b in range(302):
+#            if G.node['n'+str(b)]['cell_type']=='Motor' and activitydata[a]['n'+str(b)]==40:
 #                color.append(30)
-#            elif activitydata[a]['n'+str(b)]==66:
-#                color.append(20)
-#            elif activitydata[a]['n'+str(b)]==33:
-#                color.append(10)
-#            else: color.append(0)
+#            else: color.append(activitydata[a]['n'+str(b)])
+
+
 
         '''## realistic layout'''
         
 #        trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
 #                             marker=dict(size=2,
 #                                         color=color,
-#                                         cmax=100,
-#                                         cmin=0,
+#                                         cmax=40,
+#                                         cmin=-80,
 #                                         colorscale='Viridis',
 #                                         line=dict(width=0.2),
 #                                         opacity=0.8))
@@ -92,8 +86,8 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcount
                              marker=dict(size=4,
                                          color=color,
                                          colorscale='Viridis',
-                                         cmax=100,
-                                         cmin=0,
+                                         cmax=40,
+                                         cmin=-80,
                                          colorbar=dict(title='Colorbar'),
                                          line=dict(width=0.5),
                                          opacity=0.8))
@@ -128,23 +122,23 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hopcount
 Deepen. Plot one specific simulation at specific time in .html to deepen
 '''
 
-def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos, hopcountdata):   
+def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos):   
     
     '''
     listing positions 3D
     '''
-    posx=list(range(len(hopcountdata)))
-    for i in range(len(hopcountdata)):
+    posx=list(range(302))
+    for i in range(302):
         posx[i] = G.node['n'+str(i)]['soma_posx']
     
     #listing y positions
-    posy=list(range(len(hopcountdata)))
-    for i in range(len(hopcountdata)):
+    posy=list(range(302))
+    for i in range(302):
         posy[i] = G.node['n'+str(i)]['soma_posy']
     
     #listing z positions
-    posz=list(range(len(hopcountdata)))
-    for i in range(len(hopcountdata)):
+    posz=list(range(302))
+    for i in range(302):
         posz[i] = G.node['n'+str(i)]['soma_posz']
         
         
@@ -159,27 +153,18 @@ def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos, hopcountd
     
     color=[]
     
-
-    for c in range(len(hopcountdata)):
-        if G.node['n'+str(c)]['cell_type']=='Motor' and activitydata['n'+str(c)]==100:
-            color.append(100)
-        elif activitydata['n'+str(c)]==100:
-            color.append(80)
-        elif activitydata['n'+str(c)]==50:
+    for a in range(302):
+        if G.node['n'+str(a)]['cell_type']=='Motor' and activitydata[a]['n'+str(a)]==40:
             color.append(30)
-        elif activitydata['n'+str(c)]==66:
-            color.append(20)
-        elif activitydata['n'+str(c)]==33:
-            color.append(10)
-        else: color.append(0)
+        else: color.append(activitydata[a]['n'+str(a)])
     
     '''##realistic layout'''
     
     #trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
     #                     marker=dict(size=4,
     #                                 color=color,
-#                                     cmax=100,
-#                                     cmin=0,
+#                                     cmax=40,
+#                                     cmin=-80,
     #                                 colorscale='Viridis',
     #                                 line=dict(width=0.2),
     #                                 opacity=0.8))
@@ -203,8 +188,8 @@ def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos, hopcountd
     trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
                          marker=dict(size=4,
                                      color=color,
-                                     cmax=100,
-                                     cmin=0,
+                                     cmax=40,
+                                     cmin=-80,
                                      colorscale='Viridis',
                                      line=dict(width=0.5),
                                      opacity=0.8))

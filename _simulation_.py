@@ -8,44 +8,44 @@ Created on Fri Feb 22 19:58:17 2019
 'Defining auxiliary functions'
 
 ## Generate common initial activity
-def initCommonActivity(G, sim, hopcountdata, ratioRandomInit):
+def initCommonActivity(G, sim, nodesNumber, ratioRandomInit):
     import random
     nodesRandomActive=0
     initActivity={}
     initActivity[sim]={}
     
     
-    for a in range(len(hopcountdata)):
+    for a in range(nodesNumber):
         if random.random() > ratioRandomInit:
-            initActivity[sim]['n'+str(a)] = 0
+            initActivity[sim]['n'+str(a)] = -70
         else:
-            initActivity[sim]['n'+str(a)] = 100
+            initActivity[sim]['n'+str(a)] = 40
             nodesRandomActive= nodesRandomActive + 1
     
     ### assign initial activity to nodes as attribute 
-    for b in range(len(hopcountdata)):
+    for b in range(nodesNumber):
         G.node['n'+str(b)]['activity']=initActivity[sim]['n'+str(b)]
     
     return initActivity, nodesRandomActive
 
 
 ## Generate activity stimulating sensors   
-def stimulateSensors(G, sensor, area, LRb, hopcountdata):
+def stimulateSensors(G, sensor, area, LRb, nodesNumber):
     nodesSensorActive=0
-    for i in range(len(hopcountdata)):
+    for i in range(nodesNumber):
             if G.node['n'+str(i)]['sensor'] in sensor and G.node['n'+str(i)]['area'] in area and G.node['n'+str(i)]['LRb'] in LRb:
-                G.node['n'+str(i)]['activity']=100
+                G.node['n'+str(i)]['activity']=40
                 nodesSensorActive = nodesSensorActive + 1
            
     return nodesSensorActive
 
     
-def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, hopcountdata):
+def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesNumber):
     activity = []
     activityDic={}
-    for n,nbrs in G.adjacency_iter():
+    for n,nbrs in G.adj.items():
         activity.append(G.node[n]['activity'])
-    for i in range(len(hopcountdata)):
+    for i in range(nodesNumber):
         activityDic['n'+str(i)]=G.node['n'+str(i)]['activity']
     
     rInitActivity=(nodesRandomActive+nodesSensorActive)/G.number_of_nodes()
@@ -61,7 +61,7 @@ def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, hopcou
 
 '''
 
-def simulation(timesteps, sim_no, refractoryPeriod, ratioRandomInit, c, area, LRb, sensor):
+def simulation(timesteps, sim_no, hpV, ratioRandomInit, c, area, LRb, sensor):
     
     import networkx as nx
 #    from chemicalWorm import infoC, chemicalWorm
@@ -71,7 +71,8 @@ def simulation(timesteps, sim_no, refractoryPeriod, ratioRandomInit, c, area, LR
     
     ## Load network prepared by prepareNetwork.py, inhibitory ratio=0.08609271523178808.
     G = nx.read_graphml("data/elegans.herm_connectome.graphml")
-    hopcountdata = nx.all_pairs_shortest_path_length(G)   #define path lengths
+    nodesNumber = nx.number_of_nodes(G)
+    pathLength=dict(nx.all_pairs_shortest_path_length(G))  #define path lengths
     
     
     '''
@@ -81,20 +82,25 @@ def simulation(timesteps, sim_no, refractoryPeriod, ratioRandomInit, c, area, LR
 #    electricalInfo=infoE(G,sim_no)
     mainInfo=infoM(G, sim_no)
     
+    hpTest={}
+
     simInitActivity=[]
     
     for sim in range(sim_no):
-        initActivity, nodesRandomActive = initCommonActivity(G, sim, hopcountdata, ratioRandomInit)
-        nodesSensorActive = stimulateSensors(G, sensor, area, LRb, hopcountdata)
-        activity, activityDic, simInitActivity = getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, hopcountdata)
-        if sum(activity) == 0:
+        initActivity, nodesRandomActive = initCommonActivity(G, sim, nodesNumber, ratioRandomInit)
+        nodesSensorActive = stimulateSensors(G, sensor, area, LRb, nodesNumber)
+        activity, activityDic, simInitActivity = getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesNumber)
+        
+        hpTest[sim]={}
+        
+        if sum(activity)/302 == -70:
             print('Initially deactivated for: simulation ' + str(sim))
             break
         
           
-#        chemicalInfo=chemicalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, chemicalInfo)
-#        electricalInfo=electricalWorm(G, sim, timesteps, refractoryPeriod, initActivity, activityDic, activity, electricalInfo)
-        mainInfo=mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c)
+#        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, hpV, c)
+#        electricalInfo=electricalWorm(G, sim, timesteps, initActivity, activityDic, activity, electricalInfo, hpV, c)
+        mainInfo,hpTest=mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, hpV, c, hpTest)
         
     
     masterInfo={}
@@ -103,7 +109,7 @@ def simulation(timesteps, sim_no, refractoryPeriod, ratioRandomInit, c, area, LR
     masterInfo['mainInfo']=mainInfo
     
     
-    return G, masterInfo, simInitActivity, hopcountdata
+    return G, masterInfo, simInitActivity, pathLength, hpTest
     #del activity, activityDic, #chemicalInfo, #electricalInfo, mainInfo, initActivity, 
 
 
@@ -111,7 +117,7 @@ def simulation(timesteps, sim_no, refractoryPeriod, ratioRandomInit, c, area, LR
 Representations: 2D, 3D images and videos
 '''
 
-def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hopcountdata):
+def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
     
     import os
     from plotting2D import plotting2D
@@ -135,13 +141,13 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hopcountda
     for infos, datasets in masterInfo.items():
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
-                plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
-                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
+                plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
             else:
                 timeplt=datasets['deactivated'][sim]
-                plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
-                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hopcountdata)
+                plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
     
     ## Ad-hoc 3Dhtml representation to deepen
@@ -151,7 +157,7 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hopcountda
 #    htmlinfos='mainInfo'    ## 'chemicalInfo', 'electricalInfo' or 'mainInfo'.
 #    
 #    plotting3Dhtml(G, htmlsim, htmltimestep, masterInfo[htmlinfos]['activitydata'][htmlsim][htmltimestep], 
-#                   simInitActivity[htmlsim], htmlinfos, hopcountdata)
+#                   simInitActivity[htmlsim], htmlinfos, nodesNumber)
 #        
 #    del datasets, sim
         
@@ -162,5 +168,5 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hopcountda
         for folder in folders:
             videoWriter(infos, folder)
             
-    del folder, folders, infos, fileName
+    del folder, folders, infos
     
