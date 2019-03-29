@@ -18,8 +18,7 @@ def infoM(G, sim_no):
 
 def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, hpV, c, hpTest):
     
-    
-    
+  
     
          ### assign initial activity to nodes as attribute   
     for i in range(302):

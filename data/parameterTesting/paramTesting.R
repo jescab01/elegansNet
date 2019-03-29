@@ -6,10 +6,10 @@ dfBinary=list()
 probTimes=list()
 probBinary=list()
 
-foldernames=list.files('experimentalData', full.names = FALSE)
+foldernames=list.files('RIcData', full.names = FALSE)
 
 for (folder in foldernames) {
-  dfnames=list.files(paste('experimentalData/',folder, sep = ''))
+  dfnames=list.files(paste('RIcData/',folder, sep = ''))
   dfTimes[[folder]]=list()
   dfBinary[[folder]]=list()
   probTimes[[folder]]=list()
@@ -17,7 +17,7 @@ for (folder in foldernames) {
   
   
   for (n in dfnames){
-    df=read.csv(paste('experimentalData/',folder,'/',n, sep=''), na.strings = 'None', check.names = FALSE)
+    df=read.csv(paste('RIcData/',folder,'/',n, sep=''), na.strings = 'None', check.names = FALSE)
     df[is.na(df)]=50
     
     dfTimes[[folder]][[n]]=df
@@ -42,10 +42,10 @@ for (folder in foldernames) {
 # probabilities for success of simulation [with dfBinary data frame]
 # probabilities for success of timestep [with dfTimes data frame]
 
-RI=c(0.05,0.1,0.15,0.2)
+RI=c(0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5)
 
 for (ri in RI){
-  for (i in 0:1){  ## How many completed tests do you have? check at dfTimes.
+  for (i in 0:9){  ## How many completed tests do you have? check at dfTimes.
     plot(colnames(dfBinary[["paramTest0"]][['RI0.05.csv']]),
          probBinary[[paste('paramTest',i,sep = '')]][[paste('RI',ri,'.csv',sep='')]],
          main = paste('RandomInit=',as.character(ri),sep = ''),sub=paste('paramTest',i,'/binary',sep = ''), xlab='c', ylab='probability',
