@@ -61,7 +61,7 @@ def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesN
 
 '''
 
-def simulation(timesteps, sim_no, hpV, ratioRandomInit, c, area, LRb, sensor):
+def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
     
     import networkx as nx
 #    from chemicalWorm import infoC, chemicalWorm
@@ -100,7 +100,7 @@ def simulation(timesteps, sim_no, hpV, ratioRandomInit, c, area, LRb, sensor):
           
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, hpV, c)
 #        electricalInfo=electricalWorm(G, sim, timesteps, initActivity, activityDic, activity, electricalInfo, hpV, c)
-        mainInfo,hpTest=mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, hpV, c, hpTest)
+        mainInfo, hpTest = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest)
         
     
     masterInfo={}

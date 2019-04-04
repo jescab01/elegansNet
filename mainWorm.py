@@ -16,7 +16,7 @@ def infoM(G, sim_no):
         
 
 
-def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, hpV, c, hpTest):
+def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest):
     
   
     
@@ -38,7 +38,7 @@ def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, h
                     break
         mainInfo['activitydata'][sim][i] = activityDic
         hpTest[sim][i]=[]
-        hpTest[sim][i]=single_time_step(G, sim, mainInfo, chemtime, hpV, c, hpTest[sim][i])
+        hpTest[sim][i]=single_time_step(G, sim, mainInfo, chemtime, c, hpV, hpTest[sim][i])
         activity, activityDic = getActivity(G)
     
     ##removing last row of hpTest=='inRRP' 
@@ -73,7 +73,7 @@ def getActivity(G):
     
 
 
-def single_time_step(G, sim, mainInfo, chemtime, hpV, c, hpTest):  
+def single_time_step(G, sim, mainInfo, chemtime, c, hpV, hpTest):  
     
     integral= [0] * G.number_of_nodes()
     m = 0
