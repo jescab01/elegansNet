@@ -41,11 +41,11 @@ def paramTest():
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
              
     ##Independent Variable 1 (RI)
-    ratioRandomInit=[0.05, 0.1, 0.15, 0.2, 0.25] 
+    ratioRandomInit=[0.05]#, 0.1, 0.15, 0.2, 0.25] 
     
     
     ## Independent Variable 2 (c): free parameter influence of weights [exin*(100*c)*weight]
-    clist=[0.1, 0.2, 0.3, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75,       # free parameter influence of weights [exin*(100*c)*weight]
+    clist=[0.05,0.1, 0.2, 0.3, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75,       # free parameter influence of weights [exin*(100*c)*weight]
        0.76, 0.78, 0.8, 0.82, 0.84, 0.86, 0.88, 0.9, 0.92, 0.94, 0.96, 0.98, 
        1.0, 1.02, 1.04, 1.06, 1.08, 1.1, 1.12, 1.14, 1.15, 1.2, 1.25,
        1.3, 1.35, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.3, 2.6]
@@ -59,18 +59,18 @@ def paramTest():
          -83, -84, -85, -86, -87, -88, -89, -90, -91, -92, -93, -94, -95,
          -96, -97, -98, -99,-100,-102,-104,-106,-108,-110]
 
-    surviveBinary={}  
+    surviveTime={}  
     rrp2spike={}
     rrp2rest={}
     
     for ri in ratioRandomInit:
-        surviveBinary[ri]={}
+        surviveTime[ri]={}
         rrp2spike[ri]={}
         rrp2rest[ri]={}
 
         
         for c in clist:
-            surviveBinary[ri][c]=pandas.DataFrame()
+            surviveTime[ri][c]=pandas.DataFrame()
             rrp2spike[ri][c]=pandas.DataFrame()
             rrp2rest[ri][c]=pandas.DataFrame()
 
@@ -78,9 +78,8 @@ def paramTest():
             for hpV in hps:
                 G, masterInfo, simInitActivity, pathLength, hpTest = simulation (timesteps, sim_no, ri, c, hpV, area, LRb, sensor)
                 
-                surviveBinary[ri][c][hpV]=masterInfo['mainInfo']['deactivated'].values()
-                surviveBinary[ri][c][hpV]=surviveBinary[ri][c][hpV].replace(list(range(1,50)), 0)
-                surviveBinary[ri][c][hpV]=surviveBinary[ri][c][hpV].replace('None', 1)
+                surviveTime[ri][c][hpV]=masterInfo['mainInfo']['deactivated'].values()
+                surviveTime[ri][c][hpV]=surviveTime[ri][c][hpV].replace('None', timesteps)
                 
             ### manipulate data to obtain probability of rrp to spike
                 rrp2spikeList=[]
@@ -108,7 +107,7 @@ def paramTest():
                 rrp2rest[ri][c][hpV]=rrp2restList
 
 
-    return masterInfo, surviveBinary, rrp2spike, rrp2rest  
+    return masterInfo, surviveTime, rrp2spike, rrp2rest  
 
 
 
@@ -132,14 +131,14 @@ import time
 paramTestData=pandas.DataFrame()
 
 ## Run simulations
-masterInfo, surviveBinary, rrp2spike, rrp2rest = paramTest()
+masterInfo, surviveTime, rrp2spike, rrp2rest = paramTest()
 
 ## Gather data from simulations
-for ri, cs in surviveBinary.items():
+for ri, cs in surviveTime.items():
     for c, hpVs in cs.items():
-        for hpV in list(surviveBinary[ri][c]):
-            for i in list(surviveBinary[ri][c].index):
-                dic={'RI':ri,'c':c,'hpV':hpV,'surviveBinary':surviveBinary[ri][c][hpV][i],
+        for hpV in list(surviveTime[ri][c]):
+            for i in list(surviveTime[ri][c].index):
+                dic={'RI':ri,'c':c,'hpV':hpV,'surviveTime':surviveTime[ri][c][hpV][i],
                      'rrp2spike':rrp2spike[ri][c][hpV][i], 'rrp2rest':rrp2rest[ri][c][hpV][i]}
                 paramTestData=paramTestData.append(dic, ignore_index=True)
 
@@ -148,7 +147,7 @@ localtime = time.asctime(time.localtime(time.time()))
 paramTestData.to_csv('data/parameterTesting/data_'+localtime+'.csv', index=False)
 
 ## Clear variables
-del c, cs, hpV, hpVs, ri, dic, i, localtime, rrp2rest, rrp2spike, surviveBinary
+del c, cs, hpV, hpVs, ri, dic, i, localtime, rrp2rest, rrp2spike, surviveTime
 
 
             
