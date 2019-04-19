@@ -6,14 +6,14 @@ Created on Wed Feb 13 12:19:56 2019
 @author: jescab01
 """
 
-def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
+def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
     
     import networkx as nx
     import matplotlib.pyplot as plt
     
     
-    pos = nx.nx_agraph.graphviz_layout(G)
-    
+    #pos = nx.nx_agraph.graphviz_layout(G)
+    pos=nx.kamada_kawai_layout(G)
     ### Determine node size by node degree
     node_sizes = [0] * G.number_of_nodes()
     i = 0
@@ -29,15 +29,15 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
         for b in range(302):
             color.append(activitydata[a]['n'+str(b)])
             
-        plt.figure(figsize=(18,10))
+        plt.figure(figsize=(11,11))
         nx.draw(G, pos, node_color = color, node_size=node_sizes, width=1,
-                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=40, vmin=-80)
+                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=40, vmin=hpV)
 
 
         font = {'fontname'   : 'DejaVu Sans',
 	            'color'      : 'k',
 	            'fontweight' : 'bold',
-	            'fontsize'   : 11}
+	            'fontsize'   : 16}
 
         plt.title("C.Elegans Neural Activity", font)
 
@@ -45,7 +45,7 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
         font = {'fontname'   : 'Helvetica',
 	    'color'      : 'r',
 	    'fontweight' : 'bold',
-	    'fontsize'   : 11}
+	    'fontsize'   : 15}
 
 	    #type of activation
         plt.figtext(0.97, 0.97, str(infos) + ' - InitMethod: Random',

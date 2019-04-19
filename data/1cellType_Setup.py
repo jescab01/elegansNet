@@ -140,7 +140,7 @@ del i, notrecognized, recognized, edges,
 del sensorycellsdic, cleansensorycells
 
 
-#%% Once manually updated '1sensorycells.csv' with attributes 'sensor', 'area' and 'LRb'
+#%% Once manually updated '1.2sensorycells.csv' with attributes 'sensor', 'area' and 'LRb'
 ''' Add attributes 'sensor', 'area' and 'LRb' to nodes '''
 
 sensoryUpdate=pandas.read_csv('networkSetup/1.2sensorycells.csv')

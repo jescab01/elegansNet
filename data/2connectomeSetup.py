@@ -16,6 +16,7 @@ Also prepare fixed attributes as ex/inh and normalized weight.
 import networkx as nx
 import pandas
 import numpy.random
+import math
 
 ##### Load .graphml
 G = nx.read_graphml("networkSetup/1.4elegans.herm_Nodestypes.graphml")
@@ -32,12 +33,12 @@ for i in range(nbr):
 
 ##### Read csv and extract lists
     
-colnames=['source','target','weight','syn']
-data = pandas.read_csv('networkSetup/2.0herm_full_edgelist_MODIFIED.csv', names=colnames)
-source=data.source.tolist()
-target=data.target.tolist()
-weight=data.weight.tolist()
-syn=data.syn.tolist()
+#colnames=['source','target','weight','syn']
+data = pandas.read_csv('networkSetup/2.0herm_full_edgelist.csv')
+source=data.Source.tolist()
+target=data.Target.tolist()
+weight=data.Weight.tolist()
+syn=data.Type.tolist()
 
 ##### Remove space before and after str
 
@@ -48,7 +49,7 @@ for i in range(len(source)):
 
 
 ##### Write lists with connections only beteween neurons
-####  Thus, removing connections from/to non-neuron cells (sensory/muscles)
+####  Thus, removing connections from/to non-neuron cells (muscles)
     
 cleandic={}
 cleansource=[]
@@ -64,19 +65,26 @@ for a in range(len(source)):
         cleansyn.append(syn[a])
 
 
+### Transforming weights to counter kurtosis
+        ## Original weights based on number of layers where the synapse was found (Jarrel et al., 2012)
+        ## But synapse size and weight doesnt seem to be highly correlated, so:
+        
+logWeight=[math.log(x)+1 for x in cleanweight]
+
+
+
 ##### Lists to .csv. First, generate a dictionary with keys:column names, values:column content.
             
 cleandic={'Source':cleansource,'Target':cleantarget,
-          'Weight':cleanweight,'Syn':cleansyn}
+          'Weight':cleanweight, 'logWeight': logWeight, 'Syn':cleansyn}
 
 ##### Write new .csv
 
-connectome=pandas.DataFrame(cleandic, columns=['Source','Target','Weight','Syn'])
-connectome.to_csv('networkSetup/2.1herm_connections.csv')
+connectome=pandas.DataFrame(cleandic, columns=['Source','Target','Weight','logWeight','Syn'])
+connectome.to_csv('networkSetup/2.1herm_connections.csv', index=False)
 
 
-##### Translate cleansource and cleantarget to 'nx' names
-
+## Translate cleansource and cleantarget to 'nx' names
 n_cleansource=[]
 n_cleantarget=[]
 
@@ -91,33 +99,30 @@ for a in range(len(cleansource)):
             n_cleantarget.append('n'+str(b))
 
 
-
+#%%
 ############## Now we actually can add edges to our G networkx
 
 for i in range(len(n_cleansource)):
     if cleansyn[i]=='chemical':
-        G.add_edge(n_cleansource[i],n_cleantarget[i],
-                   attr_dict={'Csyn':'True', 'Cweight':cleanweight[i]})
-        
-    else: G.add_edge(n_cleansource[i],n_cleantarget[i],
-                     attr_dict={'Esyn':'True', 'Eweight':cleanweight[i]})
+        G.add_edge(n_cleansource[i],n_cleantarget[i], Csyn='True', Cweight=logWeight[i])
+    else: G.add_edge(n_cleansource[i],n_cleantarget[i],Esyn='True', Eweight=logWeight[i])
     
     
 ##### Complete edge attributes with Csyn/Esyn=False where necessary.
     
-for a,b in G.adjacency_iter():
+for a,b in G.adj.items():
     for c,d in b.items():
         if 'Csyn' not in d:
             d['Csyn']='False'
         elif 'Esyn' not in d:
             d['Esyn']='False'
             
-            
+
 #### Normalize synaptic weights
 max_e_weight = 1
 max_c_weight = 1
 
-for n,nbrs in G.adjacency_iter():
+for n,nbrs in G.adj.items():
 	for nbr,attrs in nbrs.items():
 			if attrs['Esyn'] == 'True':
 				if attrs['Eweight'] > max_e_weight:
@@ -127,7 +132,7 @@ for n,nbrs in G.adjacency_iter():
 					max_c_weight = attrs['Cweight']
 
 
-for n,nbrs in G.adjacency_iter():
+for n,nbrs in G.adj.items():
 	for nbr,attrs in nbrs.items():
 			if attrs['Esyn'] == 'True':
 				attrs['EnormWeight'] = attrs['Eweight'] / max_e_weight
@@ -184,7 +189,7 @@ for i in range(len(nsNAME)):
 
 ##### Prepare attribute for refractory online update of refractory period
 
-for n,nbrs in G.adjacency_iter():
+for n,nbrs in G.adj.items():
 	G.node[n]['refractory'] = 0
 
 
@@ -192,7 +197,7 @@ for n,nbrs in G.adjacency_iter():
 
 del a,b,c,d,i,colnames,data,source,syn,target,weight,nsNAME,connectome,cleansource,cleantarget
 del n_cleantarget, n_cleansource, cleanweight, cleansyn, neuron, nttr, NT_types, inh_t
-del attrs, max_c_weight, max_e_weight, n, nbrs, nbr
+del n, nbr
             
             
 

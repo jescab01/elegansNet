@@ -9,20 +9,22 @@ Created on Tue Mar 26 17:33:34 2019
 def standardInit():
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 25
-    sim_no = 2
-    hpV=-80
-    ratioRandomInit=0.1  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=1.5  # free parameter influence of weights [exin*(100*c)*weight]
+    timesteps = 100
+    sim_no = 1
+    Psens=0.15   # Parameter for sensory neurons being excited by environment
+    
+    hpV=-90
+    ratioRandomInit=0.2  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
+    c=0.3  # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
     sensor=[] ## Sensor: 'oxygen', 'mechanosensor', 'propioSomatic', 'propioTail', 'propioPharynx',
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
     
-    G, masterInfo, simInitActivity,  pathLength, hpTest = simulation(timesteps, sim_no, hpV, ratioRandomInit, c, area, LRb, sensor)
-    representation(G, masterInfo, sim_no, timesteps, simInitActivity)
-    return masterInfo, simInitActivity, pathLength
+    G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens)
+    representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV)
+    return masterInfo, simInitActivity, pathLength, envActivation
 
 
     
@@ -33,11 +35,12 @@ def paramTest():
     ### Define simulation variables
     timesteps = 50
     sim_no = 100
+    Psenss=[0,0.05,0.1,0.15,0.2,0.25]   # Probability of sensory neurons being excited by environment
 
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
-    sensor=[] ## Sensor: 'oxygen', 'mechanosensor', 'propioSomatic', 'propioTail', 'propioPharynx',
+    sensor=[] ## Sensor: 'oxygen', 'mechanosensor', 'propioSomatic', 'propioTail', 'propioPharynx', 'odorsensor',
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
              
     ##Independent Variable 1 (RI)
@@ -45,70 +48,79 @@ def paramTest():
     
     
     ## Independent Variable 2 (c): free parameter influence of weights [exin*(100*c)*weight]
-    clist=[0.05,0.1, 0.2]#, 0.3, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75,       # free parameter influence of weights [exin*(100*c)*weight]
-       #0.76, 0.78, 0.8, 0.82, 0.84, 0.86, 0.88, 0.9, 0.92, 0.94, 0.96, 0.98, 
-       #1.0, 1.02, 1.04, 1.06, 1.08, 1.1, 1.12, 1.14, 1.15, 1.2, 1.25,
-       #1.3, 1.35, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.3, 2.6]
+    clist=[0.05,0.1,0.12,0.14,0.16,0.18,0.2,0.21,
+           0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,
+           0.31,0.32,0.33,0.34,0.35,0.36,0.38,0.4,0.45,0.5,0.6]
+    
+
 
     
    
     ## Independent variable 3(hpV)
 #    lis=list(range(-71,-80,-0.5))
-    hps=[-71, -71.5, -72, -72.5, -73, -73.5, -74, -74.5, -75, -75.5,
-         -76, -76.5, -77, -77.5, -78, -78.5, -79, -79.5, -80, -81, -82,
-         -83, -84, -85, -86, -87, -88, -89, -90, -91, -92, -93, -94, -95,
-         -96, -97, -98, -99,-100,-102,-104,-106,-108,-110]
+    hps=[-75, -76, -77, -78, -79, -80, -81, -82,
+         -83, -84, -85, -86, -87, -88, -89, -90,
+         -91, -92, -93, -94, -95, -97.5,-100,-105]
 
     surviveTime={}  
-    
     rrp2spike={}
     rrp2rest={}
+    envActiv={}
     
-    for ri in ratioRandomInit:
-        surviveTime[ri]={}
-        rrp2spike[ri]={}
-        rrp2rest[ri]={}
-
-        
-        for c in clist:
-            surviveTime[ri][c]=pandas.DataFrame()
-            rrp2spike[ri][c]=pandas.DataFrame()
-            rrp2rest[ri][c]=pandas.DataFrame()
-
+    for Psens in Psenss:
+        surviveTime[Psens]={}
+        rrp2spike[Psens]={}
+        rrp2rest[Psens]={} 
+        envActiv[Psens]={}
+        for ri in ratioRandomInit:
+            surviveTime[Psens][ri]={}
+            rrp2spike[Psens][ri]={}
+            rrp2rest[Psens][ri]={}
+            envActiv[Psens][ri]={}
+    
             
-            for hpV in hps:
-                G, masterInfo, simInitActivity, pathLength, hpTest = simulation (timesteps, sim_no, ri, c, hpV, area, LRb, sensor)
+            for c in clist:
+                surviveTime[Psens][ri][c]=pandas.DataFrame()
+                rrp2spike[Psens][ri][c]=pandas.DataFrame()
+                rrp2rest[Psens][ri][c]=pandas.DataFrame()
+                envActiv[Psens][ri][c]={}
+    
                 
-                surviveTime[ri][c][hpV]=masterInfo['mainInfo']['deactivated'].values()
-                surviveTime[ri][c][hpV]=surviveTime[ri][c][hpV].replace('None', timesteps)
-                
-            ### manipulate data to obtain probability of rrp to spike
-                rrp2spikeList=[]
-                rrp2restList=[]
-                for sim in range(sim_no):
-                    inRRPcount=0
-                    rrp2restCount=0
-                    if masterInfo['mainInfo']['deactivated'][sim]=='None':
-                        for timestep in range(timesteps):
-                            inRRPcount+=hpTest[sim][timestep].count('inRRP')
-                            rrp2restCount+=hpTest[sim][timestep].count('rrp2rest')
-                        ## compute probability of using the refractory period and add it to a list. 
-                        rrp2spikeList.append(inRRPcount-rrp2restCount)
-                        rrp2restList.append(rrp2restCount)
+                for hpV in hps:
+                    G, masterInfo, simInitActivity, pathLength, hpTest, envActivation = simulation (timesteps, sim_no, ri, c, hpV, area, LRb, sensor, Psens)
                     
-                    else:
-                        for timestep in range(masterInfo['mainInfo']['deactivated'][sim]):
-                            inRRPcount+=hpTest[sim][timestep].count('inRRP')
-                            rrp2restCount+=hpTest[sim][timestep].count('rrp2rest')
-                        ## compute probability of using the refractory period and add it to a list. 
-                        rrp2spikeList.append(inRRPcount-rrp2restCount)
-                        rrp2restList.append(rrp2restCount)
-                
-                rrp2spike[ri][c][hpV]=rrp2spikeList
-                rrp2rest[ri][c][hpV]=rrp2restList
+                    surviveTime[Psens][ri][c][hpV]=masterInfo['mainInfo']['deactivated'].values()
+                    surviveTime[Psens][ri][c][hpV]=surviveTime[Psens][ri][c][hpV].replace('None', timesteps)
+                    
+                    envActiv[Psens][ri][c][hpV]=envActivation
+                    
+                ### manipulate data to obtain probability of rrp to spike
+                    rrp2spikeList=[]
+                    rrp2restList=[]
+                    for sim in range(sim_no):
+                        inRRPcount=0
+                        rrp2restCount=0
+                        if masterInfo['mainInfo']['deactivated'][sim]=='None':
+                            for timestep in range(timesteps):
+                                inRRPcount+=hpTest[sim][timestep].count('inRRP')
+                                rrp2restCount+=hpTest[sim][timestep].count('rrp2rest')
+                            ## compute probability of using the refractory period and add it to a list. 
+                            rrp2spikeList.append(inRRPcount-rrp2restCount)
+                            rrp2restList.append(rrp2restCount)
+                        
+                        else:
+                            for timestep in range(masterInfo['mainInfo']['deactivated'][sim]):
+                                inRRPcount+=hpTest[sim][timestep].count('inRRP')
+                                rrp2restCount+=hpTest[sim][timestep].count('rrp2rest')
+                            ## compute probability of using the refractory period and add it to a list. 
+                            rrp2spikeList.append(inRRPcount-rrp2restCount)
+                            rrp2restList.append(rrp2restCount)
+                    
+                    rrp2spike[Psens][ri][c][hpV]=rrp2spikeList
+                    rrp2rest[Psens][ri][c][hpV]=rrp2restList
 
 
-    return masterInfo, surviveTime, rrp2spike, rrp2rest  
+    return masterInfo, surviveTime, rrp2spike, rrp2rest, envActiv
 
 
 
@@ -120,35 +132,39 @@ Launcher
 
 '''## standard simulation Launcher'''
 
-#masterInfo, simInitActivity, pathLength = standardInit()
-
+masterInfo, simInitActivity, pathLength, envActivation = standardInit()
 
 
 
 ''' ## parameter Testing Launcher'''
-import pandas
-import time
-
-paramTestData=pandas.DataFrame()
-
-## Run simulations
-masterInfo, surviveTime, rrp2spike, rrp2rest = paramTest()
-
-## Gather data from simulations
-for ri, cs in surviveTime.items():
-    for c, hpVs in cs.items():
-        for hpV in list(surviveTime[ri][c]):
-            for i in list(surviveTime[ri][c].index):
-                dic={'RI':ri,'c':c,'hpV':hpV,'surviveTime':surviveTime[ri][c][hpV][i],
-                     'rrp2spike':rrp2spike[ri][c][hpV][i], 'rrp2rest':rrp2rest[ri][c][hpV][i]}
-                paramTestData=paramTestData.append(dic, ignore_index=True)
-
-## Export data to .csv
-localtime = time.asctime(time.localtime(time.time()))
-paramTestData.to_csv('data/parameterTesting/data_'+localtime+'.csv', index=False)
-
-## Clear variables
-del c, cs, hpV, hpVs, ri, dic, i, localtime, rrp2rest, rrp2spike, surviveTime
+#import pandas
+#import time
+#
+#paramTestData=pandas.DataFrame()
+#
+### Run simulations
+#masterInfo, surviveTime, rrp2spike, rrp2rest, envActiv= paramTest()
+#
+### Gather data from simulations
+#for Psens, ris in surviveTime.items():
+#    for ri, cs in ris.items():
+#        for c, hpVs in cs.items():
+#            for hpV in list(surviveTime[Psens][ri][c]):
+#                for i in list(surviveTime[Psens][ri][c].index):
+#                    dic={'Psens':Psens,'RI':ri,'c':c,'hpV':hpV,'surviveTime':surviveTime[Psens][ri][c][hpV][i],
+#                         'rrp2spike':rrp2spike[Psens][ri][c][hpV][i], 'rrp2rest':rrp2rest[Psens][ri][c][hpV][i],
+#                         'active':len(envActiv[Psens][ri][c][hpV][i]['active']),'activeG':len(envActiv[Psens][ri][c][hpV][i]['activeG']),
+#                         'activeSG':len(envActiv[Psens][ri][c][hpV][i]['activeSG']),'activeNode':len(envActiv[Psens][ri][c][hpV][i]['activeNode'])}
+#                    
+#                    paramTestData=paramTestData.append(dic, ignore_index=True)
+#
+### Export data to .csv
+#localtime = time.asctime(time.localtime(time.time()))
+#paramTestData.to_csv('data/parameterTesting/dataN_'+localtime+'.csv', index=False)
+#
+### Clear variables
+#del c, cs, hpV, hpVs, ri, dic, i, localtime, surviveTime, Psens
+#del envActiv, rrp2spike, rrp2rest, ris
 
 
             

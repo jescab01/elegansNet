@@ -61,7 +61,7 @@ def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesN
 
 '''
 
-def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
+def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens):
     
     import networkx as nx
 #    from chemicalWorm import infoC, chemicalWorm
@@ -83,6 +83,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
     mainInfo=infoM(G, sim_no)
     
     hpTest={}
+    envActivation={}
 
     simInitActivity=[]
     
@@ -92,6 +93,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
         activity, activityDic, simInitActivity = getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesNumber)
         
         hpTest[sim]={}
+        envActivation[sim]={'active':[], 'activeG':[], 'activeSG':[], 'activeNode':[]}
         
         if sum(activity)/302 == -70:
             print('Initially deactivated for: simulation ' + str(sim))
@@ -100,7 +102,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
           
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, hpV, c)
 #        electricalInfo=electricalWorm(G, sim, timesteps, initActivity, activityDic, activity, electricalInfo, hpV, c)
-        mainInfo, hpTest = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest)
+        mainInfo, hpTest, envActivation = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest, Psens, envActivation)
         
     
     masterInfo={}
@@ -109,7 +111,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
     masterInfo['mainInfo']=mainInfo
     
     
-    return G, masterInfo, simInitActivity, pathLength, hpTest
+    return G, masterInfo, simInitActivity, pathLength, hpTest, envActivation
     #del activity, activityDic, #chemicalInfo, #electricalInfo, mainInfo, initActivity, 
 
 
@@ -117,7 +119,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor):
 Representations: 2D, 3D images and videos
 '''
 
-def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
+def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV):
     
     import os
     from plotting2D import plotting2D
@@ -141,13 +143,13 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
     for infos, datasets in masterInfo.items():
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
-                plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
-                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+                plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
             else:
                 timeplt=datasets['deactivated'][sim]
-                plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
-                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+                plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
     
     ## Ad-hoc 3Dhtml representation to deepen

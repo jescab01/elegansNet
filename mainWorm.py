@@ -16,9 +16,9 @@ def infoM(G, sim_no):
         
 
 
-def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest):
+def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest, Psens, envActivation):
     
-  
+    from envInput import randomSensInput
     
          ### assign initial activity to nodes as attribute   
     for i in range(302):
@@ -26,8 +26,8 @@ def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c
         
         ### run specific simulation for timesteps
     for i in range(timesteps):
-        chemtime = i-2
-        if chemtime>=0:
+        chemtime = i-3          ## Define temporal difference between electrical and chemical synapses
+        if chemtime>=0:    
             chemdata = []
             for a in range(302):
                 chemdata.append(mainInfo['activitydata'][sim][chemtime]['n'+str(a)])
@@ -39,6 +39,7 @@ def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c
         mainInfo['activitydata'][sim][i] = activityDic
         hpTest[sim][i]=[]
         hpTest[sim][i]=single_time_step(G, sim, mainInfo, chemtime, c, hpV, hpTest[sim][i])
+        envActivation=randomSensInput(G, Psens, sim, envActivation, i)
         activity, activityDic = getActivity(G)
     
     ##removing last row of hpTest=='inRRP' 
@@ -55,11 +56,10 @@ def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c
                 if hpTest[sim][timeplt][i]=='inRRP':
                     hpTest[sim][timeplt].remove('inRRP')
                     break
-                
 
-            
-            
-    return mainInfo, hpTest
+    return mainInfo, hpTest, envActivation
+
+
 
 def getActivity(G):
     activity = []
@@ -70,7 +70,6 @@ def getActivity(G):
         activityDic['n'+str(i)]=G.node['n'+str(i)]['activity']
     return activity, activityDic
 
-    
 
 
 def single_time_step(G, sim, mainInfo, chemtime, c, hpV, hpTest):  
@@ -80,11 +79,14 @@ def single_time_step(G, sim, mainInfo, chemtime, c, hpV, hpTest):
     
     for n,nbrs in G.adj.items():
         if G.node[n]['activity'] == 40: 		
+            G.node[n]['activity'] = -60
+            
+        elif G.node[n]['activity'] == -60: 		
             G.node[n]['activity'] = hpV
-            hpTest.append('inRRP')
+            hpTest.append('inRRP')        
 		
 		#determine input from neighbours and decide if the integral is sufficient for firing	
-        elif G.node[n]['activity']!=40:
+        elif G.node[n]['activity']!=40 and G.node[n]['activity'] != -60:
             for nbr,eattr in nbrs.items():
                 if chemtime >= 0: 
                     if eattr['Esyn']=='True' and eattr['Csyn']=='True':
