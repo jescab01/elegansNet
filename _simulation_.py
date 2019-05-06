@@ -24,7 +24,7 @@ def initCommonActivity(G, sim, nodesNumber, ratioRandomInit):
     
     ### assign initial activity to nodes as attribute 
     for b in range(nodesNumber):
-        G.node['n'+str(b)]['activity']=initActivity[sim]['n'+str(b)]
+        G.node['n'+str(b)]['mV']=initActivity[sim]['n'+str(b)]
     
     return initActivity, nodesRandomActive
 
@@ -34,7 +34,7 @@ def stimulateSensors(G, sensor, area, LRb, nodesNumber):
     nodesSensorActive=0
     for i in range(nodesNumber):
             if G.node['n'+str(i)]['sensor'] in sensor and G.node['n'+str(i)]['area'] in area and G.node['n'+str(i)]['LRb'] in LRb:
-                G.node['n'+str(i)]['activity']=40
+                G.node['n'+str(i)]['mV']=40
                 nodesSensorActive = nodesSensorActive + 1
            
     return nodesSensorActive
@@ -44,9 +44,9 @@ def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesN
     activity = []
     activityDic={}
     for n,nbrs in G.adj.items():
-        activity.append(G.node[n]['activity'])
+        activity.append(G.node[n]['mV'])
     for i in range(nodesNumber):
-        activityDic['n'+str(i)]=G.node['n'+str(i)]['activity']
+        activityDic['n'+str(i)]=G.node['n'+str(i)]['mV']
     
     rInitActivity=(nodesRandomActive+nodesSensorActive)/G.number_of_nodes()
     print(rInitActivity)
@@ -144,12 +144,12 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV):
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
                 plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
-                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+         #       plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
             else:
                 timeplt=datasets['deactivated'][sim]
                 plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
-                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+        #        plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
     
     ## Ad-hoc 3Dhtml representation to deepen

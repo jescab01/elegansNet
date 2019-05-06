@@ -9,13 +9,13 @@ Created on Tue Mar 26 17:33:34 2019
 def standardInit():
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 100
+    timesteps = 50
     sim_no = 1
     Psens=0.15   # Parameter for sensory neurons being excited by environment
     
     hpV=-90
     ratioRandomInit=0.2  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=0.3  # free parameter influence of weights [exin*(100*c)*weight]
+    c=0.2  # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
@@ -34,8 +34,8 @@ def paramTest():
     
     ### Define simulation variables
     timesteps = 50
-    sim_no = 100
-    Psenss=[0,0.05,0.1,0.15,0.2,0.25]   # Probability of sensory neurons being excited by environment
+    sim_no = 50
+    Psenss=[0,0.1,0.2]   # Probability of sensory neurons being excited by environment
 
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
@@ -48,9 +48,10 @@ def paramTest():
     
     
     ## Independent Variable 2 (c): free parameter influence of weights [exin*(100*c)*weight]
-    clist=[0.05,0.1,0.12,0.14,0.16,0.18,0.2,0.21,
-           0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,
-           0.31,0.32,0.33,0.34,0.35,0.36,0.38,0.4,0.45,0.5,0.6]
+    clist=[0.05,0.075,0.1,0.12,0.14,0.15,
+           0.16,0.17,0.18,0.19,0.2,0.21,
+           0.22,0.23,0.24,0.25,0.275,0.3,
+           0.325,0.35,0.375,0.4,0.45,0.5]
     
 
 
@@ -58,9 +59,9 @@ def paramTest():
    
     ## Independent variable 3(hpV)
 #    lis=list(range(-71,-80,-0.5))
-    hps=[-75, -76, -77, -78, -79, -80, -81, -82,
-         -83, -84, -85, -86, -87, -88, -89, -90,
-         -91, -92, -93, -94, -95, -97.5,-100,-105]
+    hps=[-76, -78, -80, -82, -84, -85, -86, 
+         -87, -88, -89, -90, -91, -92, -93,
+         -94, -96, -98, -100, -104]
 
     surviveTime={}  
     rrp2spike={}
