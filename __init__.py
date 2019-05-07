@@ -9,7 +9,7 @@ Created on Tue Mar 26 17:33:34 2019
 def standardInit():
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 10
+    timesteps = 100
     sim_no = 1
     Psens=0.15   # Parameter for sensory neurons being excited by environment
     
@@ -23,7 +23,7 @@ def standardInit():
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
     
     G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens)
-   # representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV)
+    representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV)
     return masterInfo, simInitActivity, pathLength, envActivation
 
 
