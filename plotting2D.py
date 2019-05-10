@@ -31,7 +31,7 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
             
         plt.figure(figsize=(11,11))
         nx.draw(G, pos, node_color = color, node_size=node_sizes, width=1,
-                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=40, vmin=hpV)
+                style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=-30, vmin=-70)
 
 
         font = {'fontname'   : 'DejaVu Sans',

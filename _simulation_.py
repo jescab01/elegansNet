@@ -19,7 +19,7 @@ def initCommonActivity(G, sim, nodesNumber, ratioRandomInit):
         if random.random() > ratioRandomInit:
             initActivity[sim]['n'+str(a)] = -70
         else:
-            initActivity[sim]['n'+str(a)] = -20
+            initActivity[sim]['n'+str(a)] =-30
             nodesRandomActive= nodesRandomActive + 1
     
     ### assign initial activity to nodes as attribute 
@@ -61,12 +61,12 @@ def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesN
 
 '''
 
-def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens):
+def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens, att):
     
     import networkx as nx
 #    from chemicalWorm import infoC, chemicalWorm
 #    from electricalWorm import infoE, electricalWorm
-#    from mainWorm import infoM, mainWorm
+ #   from mainWorm import infoM, mainWorm
     from mainWormGraded import infoG, mainWormGraded
     
     
@@ -105,7 +105,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Ps
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, hpV, c)
 #        electricalInfo=electricalWorm(G, sim, timesteps, initActivity, activityDic, activity, electricalInfo, hpV, c)
 #        mainInfo, hpTest, envActivation = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest, Psens, envActivation)
-        mainInfoGraded, hpTest, envActivation = mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainInfoGraded, c, hpV, hpTest, Psens, envActivation)
+        mainInfoGraded, hpTest, envActivation = mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainInfoGraded, c, hpTest, Psens, envActivation, att)
     
     masterInfo={}
 #    masterInfo['chemicalInfo']=chemicalInfo
@@ -147,12 +147,12 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV):
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
                 plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
-         #       plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
-            else:
-                timeplt=datasets['deactivated'][sim]
-                plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
-        #        plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+#            else:
+#                timeplt=datasets['deactivated'][sim]
+          #      plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+         #       plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
     
     ## Ad-hoc 3Dhtml representation to deepen

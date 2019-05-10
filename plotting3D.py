@@ -60,8 +60,8 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
         trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
                              marker=dict(size=5,
                                          color=color,
-                                         cmax=40,
-                                         cmin=hpV,
+                                         cmax=-30,
+                                         cmin=-75,
                                          colorscale='Viridis',
                                          line=dict(width=0.2),
                                          opacity=0.8))
@@ -186,8 +186,8 @@ def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos):
     trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
                          marker=dict(size=4,
                                      color=color,
-                                     cmax=40,
-                                     cmin=-80,
+                                     cmax=-30,
+                                     cmin=-70,
                                      colorscale='Viridis',
                                      line=dict(width=0.5),
                                      opacity=0.8))

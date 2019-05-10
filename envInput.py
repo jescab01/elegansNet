@@ -63,7 +63,7 @@ def randomSensInput(G, Psens, sim, envActivation, timestep):
                         envActivation[sim]['activeSG'].append(str(timestep)+group+subgroup)
                         for node in nodes:
                             if random.random() < 1-Psens:
-                                G.node[node]['mV']=-20
+                                G.node[node]['mV']=-30
                                 envActivation[sim]['activeNode'].append(str(timestep)+group+subgroup+node)
                                 
     return envActivation
