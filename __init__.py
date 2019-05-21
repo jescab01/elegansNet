@@ -15,7 +15,7 @@ def standardInit():
     
     att=0.7     ## attenuatipon coefficient
     
-    hpV=-90     ## functions as a sort of threshold in graded network
+    hpV=-90     ## hyperpolarization Value for old simulations (deprecating#)
     ratioRandomInit=0.2  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
     c=0.20 # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
@@ -38,7 +38,7 @@ def paramTest():
     timesteps = 50
     sim_no = 100
     
-    hpV=-69 ## Its just a marquer for attenuation period
+    hpV=-69 ## hyperpolarization Value for old simulations (deprecating#)
     
     Psenss=[0,0.1,0.2]   # Probability of sensory neurons being excited by environment
     

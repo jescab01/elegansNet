@@ -39,19 +39,21 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
     arrayy=np.asarray(posy)
     arrayz=np.asarray(posz)
     
-
+    auxiliar_types=['Motor', 'Motor, Sensory', 'Interneuron, Motor',
+                    'Interneuron, Sensory, Motor', 'Motor, Sensory']    
+    
     for a in range(timesteps):
         color=[]
-        for b in range(302):
-            color.append(activitydata[a]['n'+str(b)])
+#        for b in range(302):
+#            color.append(activitydata[a]['n'+str(b)])
         
         
 ###  Give different color to motor nodes  (NOT TESTED)
 
-#        for b in range(302):
-#            if G.node['n'+str(b)]['cell_type']=='Motor' and activitydata[a]['n'+str(b)]==40:
-#                color.append(30)
-#            else: color.append(activitydata[a]['n'+str(b)])
+        for b in range(302):
+            if G.node['n'+str(b)]['cell_type'] in auxiliar_types and activitydata[a]['n'+str(b)]==-30:
+                color.append(-40)
+            else: color.append(activitydata[a]['n'+str(b)])
 
 
 
