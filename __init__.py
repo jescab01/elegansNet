@@ -17,7 +17,7 @@ def standardInit():
     
     hpV=-90     ## hyperpolarization Value for old simulations (deprecating#)
     ratioRandomInit=0.2  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=0.20 # free parameter influence of weights [exin*(100*c)*weight]
+    c=0.2 # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
@@ -28,6 +28,29 @@ def standardInit():
     representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV)
     return masterInfo, simInitActivity, pathLength, envActivation
 
+
+def activityInit():
+    
+    from _simulation_ import simulation, representation
+    ### Define simulation variables
+    timesteps = 60
+    sim_no = 1
+    Psens=0.15   # Parameter for sensory neurons being excited by environment
+    
+    att=0.85     ## attenuatipon coefficient
+    
+    hpV=-90     ## hyperpolarization Value for old simulations (deprecating#)
+    ratioRandomInit=0.15  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
+    c=0.40 # free parameter influence of weights [exin*(100*c)*weight]
+    ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
+    area=[] ## Area: 'head', 'body', 'tail'. 
+    LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
+    sensor=[] ## Sensor: 'oxygen', 'mechanosensor', 'propioSomatic', 'propioTail', 'propioPharynx',
+             ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
+    
+    G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens, att)
+    representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV)
+    return masterInfo, envActivation
 
 
 def paramTest():
@@ -131,8 +154,35 @@ Launcher
 
 '''## standard simulation Launcher'''
 
-masterInfo, simInitActivity, pathLength, envActivation = standardInit()
+#masterInfo, simInitActivity, pathLength, envActivation = standardInit()
 
+
+'''## Activity simulation Launcher'''
+
+import pandas
+import time
+from rasterPlot import rasterPlot
+
+Activity=pandas.DataFrame()
+
+#for i in range(200):
+masterInfo, envActivation = activityInit()
+
+## Export activity to a binary dataframe
+actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
+actdf=actdf.replace([-70,-69,-65], 0)
+actdf=actdf.replace(-30, 1)   
+Activity=actdf.transpose()
+#Activity=Activity.append(actdf)
+
+#localtime = time.asctime(time.localtime(time.time()))
+#Activity.to_csv('data/parameterTesting/Activity_'+localtime+'.csv', index=False)
+
+
+## from Activity dataframe generate Raster plot
+rasterPlot(Activity, envActivation)
+
+del actdf
 
 ''' ## parameter Testing Launcher'''
 #import pandas

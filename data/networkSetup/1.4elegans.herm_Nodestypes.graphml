@@ -324,7 +324,7 @@
   <data key="d11">Sensory</data>
 </node>
 <node id="n28">
-  <data key="d4">AS1</data>
+  <data key="d4">AS01</data>
   <data key="d5">AS</data>
   <data key="d6">-0.275</data>
   <data key="d7">-229.038</data>
@@ -334,7 +334,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n29">
-  <data key="d4">AS2</data>
+  <data key="d4">AS02</data>
   <data key="d5">AS</data>
   <data key="d6">-1.875</data>
   <data key="d7">-203.875</data>
@@ -344,7 +344,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n30">
-  <data key="d4">AS3</data>
+  <data key="d4">AS03</data>
   <data key="d5">AS</data>
   <data key="d6">-1.9</data>
   <data key="d7">-151.4</data>
@@ -354,7 +354,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n31">
-  <data key="d4">AS4</data>
+  <data key="d4">AS04</data>
   <data key="d5">AS</data>
   <data key="d6">-1.875</data>
   <data key="d7">-90.2</data>
@@ -364,7 +364,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n32">
-  <data key="d4">AS5</data>
+  <data key="d4">AS05</data>
   <data key="d5">AS</data>
   <data key="d6">-1.875</data>
   <data key="d7">-3.75</data>
@@ -374,7 +374,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n33">
-  <data key="d4">AS6</data>
+  <data key="d4">AS06</data>
   <data key="d5">AS</data>
   <data key="d6">-1.9</data>
   <data key="d7">28.25</data>
@@ -384,7 +384,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n34">
-  <data key="d4">AS7</data>
+  <data key="d4">AS07</data>
   <data key="d5">AS</data>
   <data key="d6">-1.9</data>
   <data key="d7">119.9</data>
@@ -394,7 +394,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n35">
-  <data key="d4">AS8</data>
+  <data key="d4">AS08</data>
   <data key="d5">AS</data>
   <data key="d6">-1.9</data>
   <data key="d7">181.85</data>
@@ -404,7 +404,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n36">
-  <data key="d4">AS9</data>
+  <data key="d4">AS09</data>
   <data key="d5">AS</data>
   <data key="d6">-1.875</data>
   <data key="d7">228.92499</data>
@@ -956,199 +956,167 @@
   <data key="d11">Sensory</data>
 </node>
 <node id="n86">
-  <data key="d4">DA1</data>
+  <data key="d4">DA01</data>
   <data key="d5">DA</data>
   <data key="d6">-0.75</data>
   <data key="d7">-227.075</data>
   <data key="d8">3.425</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n87">
-  <data key="d4">DA2</data>
+  <data key="d4">DA02</data>
   <data key="d5">DA</data>
   <data key="d6">-1.9</data>
   <data key="d7">-190.7</data>
   <data key="d8">-21.675</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n88">
-  <data key="d4">DA3</data>
+  <data key="d4">DA03</data>
   <data key="d5">DA</data>
   <data key="d6">-1.65</data>
   <data key="d7">-123.65</data>
   <data key="d8">-58.35</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n89">
-  <data key="d4">DA4</data>
+  <data key="d4">DA04</data>
   <data key="d5">DA</data>
   <data key="d6">-1.7</data>
   <data key="d7">-32.4</data>
   <data key="d8">-61.75</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n90">
-  <data key="d4">DA5</data>
+  <data key="d4">DA05</data>
   <data key="d5">DA</data>
   <data key="d6">-1.65</data>
   <data key="d7">84.2</data>
   <data key="d8">-3.15</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n91">
-  <data key="d4">DA6</data>
+  <data key="d4">DA06</data>
   <data key="d5">DA</data>
   <data key="d6">-1.65</data>
   <data key="d7">198.675</data>
   <data key="d8">-6.35</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n92">
-  <data key="d4">DA7</data>
+  <data key="d4">DA07</data>
   <data key="d5">DA</data>
   <data key="d6">-1.65</data>
   <data key="d7">281.6</data>
   <data key="d8">-24.95</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n93">
-  <data key="d4">DA8</data>
+  <data key="d4">DA08</data>
   <data key="d5">DA</data>
   <data key="d6">1.275</data>
   <data key="d7">376.8</data>
   <data key="d8">-10.925</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n94">
-  <data key="d4">DA9</data>
+  <data key="d4">DA09</data>
   <data key="d5">DA</data>
   <data key="d6">-4.6</data>
   <data key="d7">376.8</data>
   <data key="d8">-10.925</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n95">
-  <data key="d4">DB1</data>
+  <data key="d4">DB01</data>
   <data key="d5">DB</data>
   <data key="d6">-1.9</data>
   <data key="d7">-230.349</data>
   <data key="d8">6.85</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n96">
-  <data key="d4">DB2</data>
+  <data key="d4">DB02</data>
   <data key="d5">DB</data>
   <data key="d6">-0.2</data>
   <data key="d7">-244.5</data>
   <data key="d8">15.787</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n97">
-  <data key="d4">DB3</data>
+  <data key="d4">DB03</data>
   <data key="d5">DB</data>
   <data key="d6">-1.85</data>
   <data key="d7">-195.275</data>
   <data key="d8">-18.525</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n98">
-  <data key="d4">DB4</data>
+  <data key="d4">DB04</data>
   <data key="d5">DB</data>
   <data key="d6">-1.875</data>
   <data key="d7">-96.275</data>
   <data key="d8">-64.65</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n99">
-  <data key="d4">DB5</data>
+  <data key="d4">DB05</data>
   <data key="d5">DB</data>
   <data key="d6">-4.05</data>
   <data key="d7">35.25</data>
   <data key="d8">-30.45</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n100">
-  <data key="d4">DB6</data>
+  <data key="d4">DB06</data>
   <data key="d5">DB</data>
   <data key="d6">-1.8249</data>
   <data key="d7">178.1</data>
   <data key="d8">-0.2</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n101">
-  <data key="d4">DB7</data>
+  <data key="d4">DB07</data>
   <data key="d5">DB</data>
   <data key="d6">-1.85</data>
   <data key="d7">267.75</data>
   <data key="d8">-22.625</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n102">
-  <data key="d4">DD1</data>
+  <data key="d4">DD01</data>
   <data key="d5">DD</data>
   <data key="d6">-0.9</data>
   <data key="d7">-231.95</data>
@@ -1158,7 +1126,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n103">
-  <data key="d4">DD2</data>
+  <data key="d4">DD02</data>
   <data key="d5">DD</data>
   <data key="d6">-1.85</data>
   <data key="d7">-156.47</data>
@@ -1168,7 +1136,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n104">
-  <data key="d4">DD3</data>
+  <data key="d4">DD03</data>
   <data key="d5">DD</data>
   <data key="d6">-1.9</data>
   <data key="d7">-28.6</data>
@@ -1178,7 +1146,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n105">
-  <data key="d4">DD4</data>
+  <data key="d4">DD04</data>
   <data key="d5">DD</data>
   <data key="d6">-1.875</data>
   <data key="d7">122.89</data>
@@ -1188,7 +1156,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n106">
-  <data key="d4">DD5</data>
+  <data key="d4">DD05</data>
   <data key="d5">DD</data>
   <data key="d6">-1.875</data>
   <data key="d7">234.05</data>
@@ -1198,7 +1166,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n107">
-  <data key="d4">DD6</data>
+  <data key="d4">DD06</data>
   <data key="d5">DD</data>
   <data key="d6">-1.9</data>
   <data key="d7">368.775</data>
@@ -2602,111 +2570,93 @@
   <data key="d11">Sensory</data>
 </node>
 <node id="n238">
-  <data key="d4">VA1</data>
+  <data key="d4">VA01</data>
   <data key="d5">VA</data>
   <data key="d6">-1.35</data>
   <data key="d7">-235.55</data>
   <data key="d8">11.75</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n239">
-  <data key="d4">VA2</data>
+  <data key="d4">VA02</data>
   <data key="d5">VA</data>
   <data key="d6">-1.85</data>
   <data key="d7">-217.1</data>
   <data key="d8">-3.95</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n240">
-  <data key="d4">VA3</data>
+  <data key="d4">VA03</data>
   <data key="d5">VA</data>
   <data key="d6">-1.475</data>
   <data key="d7">-184.09</data>
   <data key="d8">-26.37</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n241">
-  <data key="d4">VA4</data>
+  <data key="d4">VA04</data>
   <data key="d5">VA</data>
   <data key="d6">-1.85</data>
   <data key="d7">-119.5</data>
   <data key="d8">-58.7</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n242">
-  <data key="d4">VA5</data>
+  <data key="d4">VA05</data>
   <data key="d5">VA</data>
   <data key="d6">-1.85</data>
   <data key="d7">-54.3</data>
   <data key="d8">-66.049</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n243">
-  <data key="d4">VA6</data>
+  <data key="d4">VA06</data>
   <data key="d5">VA</data>
   <data key="d6">-1.85</data>
   <data key="d7">21.55</data>
   <data key="d8">-41.15</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n244">
-  <data key="d4">VA7</data>
+  <data key="d4">VA07</data>
   <data key="d5">VA</data>
   <data key="d6">-1.85</data>
   <data key="d7">98.049</data>
   <data key="d8">1.175</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n245">
-  <data key="d4">VA8</data>
+  <data key="d4">VA08</data>
   <data key="d5">VA</data>
   <data key="d6">-1.8</data>
   <data key="d7">150.3</data>
   <data key="d8">3.4</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n246">
-  <data key="d4">VA9</data>
+  <data key="d4">VA09</data>
   <data key="d5">VA</data>
   <data key="d6">-1.8</data>
   <data key="d7">208.825</data>
   <data key="d8">-9.049</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor</data>
 </node>
 <node id="n247">
@@ -2746,111 +2696,93 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n250">
-  <data key="d4">VB1</data>
+  <data key="d4">VB01</data>
   <data key="d5">VB</data>
   <data key="d6">-1.55</data>
   <data key="d7">-246.54</data>
   <data key="d8">16.4</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n251">
-  <data key="d4">VB2</data>
+  <data key="d4">VB02</data>
   <data key="d5">VB</data>
   <data key="d6">-2.0</data>
   <data key="d7">-253.3</data>
   <data key="d8">19.85</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n252">
-  <data key="d4">VB3</data>
+  <data key="d4">VB03</data>
   <data key="d5">VB</data>
   <data key="d6">-1.85</data>
   <data key="d7">-210.225</data>
   <data key="d8">-8.725</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n253">
-  <data key="d4">VB4</data>
+  <data key="d4">VB04</data>
   <data key="d5">VB</data>
   <data key="d6">-2.0</data>
   <data key="d7">-173.25</data>
   <data key="d8">-33.5</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n254">
-  <data key="d4">VB5</data>
+  <data key="d4">VB05</data>
   <data key="d5">VB</data>
   <data key="d6">-1.85</data>
   <data key="d7">-109.55</data>
   <data key="d8">-62.15</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n255">
-  <data key="d4">VB6</data>
+  <data key="d4">VB06</data>
   <data key="d5">VB</data>
   <data key="d6">-1.85</data>
   <data key="d7">-36.575</data>
   <data key="d8">-62.697</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n256">
-  <data key="d4">VB7</data>
+  <data key="d4">VB07</data>
   <data key="d5">VB</data>
   <data key="d6">-9.675</data>
   <data key="d7">41.45</data>
   <data key="d8">-24.362</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n257">
-  <data key="d4">VB8</data>
+  <data key="d4">VB08</data>
   <data key="d5">VB</data>
   <data key="d6">-1.8249</data>
   <data key="d7">108.8</data>
   <data key="d8">2.875</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n258">
-  <data key="d4">VB9</data>
+  <data key="d4">VB09</data>
   <data key="d5">VB</data>
   <data key="d6">-1.85</data>
   <data key="d7">159.55</data>
   <data key="d8">3.2</data>
   <data key="d9">Ach</data>
-  <data key="d10">propioSomatic</data>
-  <data key="d12">body</data>
-  <data key="d13">b</data>
+  <data key="d10">None</data>
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n259">
@@ -2878,7 +2810,7 @@
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n261">
-  <data key="d4">VC1</data>
+  <data key="d4">VC01</data>
   <data key="d5">VC</data>
   <data key="d6">-0.724</data>
   <data key="d7">-170.025</data>
@@ -2888,7 +2820,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n262">
-  <data key="d4">VC2</data>
+  <data key="d4">VC02</data>
   <data key="d5">VC</data>
   <data key="d6">-0.625</data>
   <data key="d7">-105.325</data>
@@ -2898,7 +2830,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n263">
-  <data key="d4">VC3</data>
+  <data key="d4">VC03</data>
   <data key="d5">VC</data>
   <data key="d6">-1.449</data>
   <data key="d7">-6.45</data>
@@ -2908,7 +2840,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n264">
-  <data key="d4">VC4</data>
+  <data key="d4">VC04</data>
   <data key="d5">VC</data>
   <data key="d6">-1.15</data>
   <data key="d7">43.85</data>
@@ -2918,7 +2850,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n265">
-  <data key="d4">VC5</data>
+  <data key="d4">VC05</data>
   <data key="d5">VC</data>
   <data key="d6">-1.15</data>
   <data key="d7">66.549</data>
@@ -2928,7 +2860,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n266">
-  <data key="d4">VD1</data>
+  <data key="d4">VD01</data>
   <data key="d5">VD</data>
   <data key="d6">-0.7</data>
   <data key="d7">-228.6</data>
@@ -2938,7 +2870,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n267">
-  <data key="d4">VD2</data>
+  <data key="d4">VD02</data>
   <data key="d5">VD</data>
   <data key="d6">-0.65</data>
   <data key="d7">-226.049</data>
@@ -2948,7 +2880,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n268">
-  <data key="d4">VD3</data>
+  <data key="d4">VD03</data>
   <data key="d5">VD</data>
   <data key="d6">-0.8</data>
   <data key="d7">-188.1</data>
@@ -2958,7 +2890,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n269">
-  <data key="d4">VD4</data>
+  <data key="d4">VD04</data>
   <data key="d5">VD</data>
   <data key="d6">-0.8</data>
   <data key="d7">-137.2</data>
@@ -2968,7 +2900,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n270">
-  <data key="d4">VD5</data>
+  <data key="d4">VD05</data>
   <data key="d5">VD</data>
   <data key="d6">-0.75</data>
   <data key="d7">-68.3</data>
@@ -2978,7 +2910,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n271">
-  <data key="d4">VD6</data>
+  <data key="d4">VD06</data>
   <data key="d5">VD</data>
   <data key="d6">-0.7</data>
   <data key="d7">-1.4</data>
@@ -2988,7 +2920,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n272">
-  <data key="d4">VD7</data>
+  <data key="d4">VD07</data>
   <data key="d5">VD</data>
   <data key="d6">-12.349</data>
   <data key="d7">57.95</data>
@@ -2998,7 +2930,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n273">
-  <data key="d4">VD8</data>
+  <data key="d4">VD08</data>
   <data key="d5">VD</data>
   <data key="d6">-0.75</data>
   <data key="d7">135.09</data>
@@ -3008,7 +2940,7 @@
   <data key="d11">Motor</data>
 </node>
 <node id="n274">
-  <data key="d4">VD9</data>
+  <data key="d4">VD09</data>
   <data key="d5">VD</data>
   <data key="d6">-0.8</data>
   <data key="d7">191.5</data>
@@ -3282,7 +3214,7 @@
   <data key="d11">Motor, Sensory</data>
 </node>
 <node id="n301">
-  <data key="d4">VC6</data>
+  <data key="d4">VC06</data>
   <data key="d5">VC</data>
   <data key="d6">-1.8249</data>
   <data key="d7">174.175</data>

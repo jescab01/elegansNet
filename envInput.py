@@ -53,16 +53,16 @@ def randomSensInput(G, Psens, sim, envActivation, timestep):
  
     
     
-    if random.random() < Psens:
+    if random.random() < 0.4:
         envActivation[sim]['active'].append(timestep)
-        for group, subG in sensHead.items():            ### Define dictionary to use   
-            if random.random() < Psens:
+        for group, subG in sensWhole.items():            ### Define dictionary to use   
+            if random.random() < 0.3:
                 envActivation[sim]['activeG'].append(str(timestep)+group)
                 for subgroup, nodes in subG.items():
-                    if random.random() < Psens:
+                    if random.random() < 0.6:
                         envActivation[sim]['activeSG'].append(str(timestep)+group+subgroup)
                         for node in nodes:
-                            if random.random() < 1-Psens:
+                            if random.random() < 0.8:
                                 G.node[node]['mV']=-30
                                 envActivation[sim]['activeNode'].append(str(timestep)+group+subgroup+node)
                                 

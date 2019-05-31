@@ -27,17 +27,17 @@ ALMR,Sensory
 ALNL,Sensory
 ALNR,Sensory
 AQR,Sensory
-AS1,Motor
+AS01,Motor
 AS10,Motor
 AS11,Motor
-AS2,Motor
-AS3,Motor
-AS4,Motor
-AS5,Motor
-AS6,Motor
-AS7,Motor
-AS8,Motor
-AS9,Motor
+AS02,Motor
+AS03,Motor
+AS04,Motor
+AS05,Motor
+AS06,Motor
+AS07,Motor
+AS08,Motor
+AS09,Motor
 ASEL,Sensory
 ASER,Sensory
 ASGL,Sensory
@@ -87,28 +87,28 @@ CEPDL,Sensory
 CEPDR,Sensory
 CEPVL,Sensory
 CEPVR,Sensory
-DA1,Motor
-DA2,Motor
-DA3,Motor
-DA4,Motor
-DA5,Motor
-DA6,Motor
-DA7,Motor
-DA8,Motor
-DA9,Motor
-DB1,"Motor, Sensory"
-DB2,"Motor, Sensory"
-DB3,"Motor, Sensory"
-DB4,"Motor, Sensory"
-DB5,"Motor, Sensory"
-DB6,"Motor, Sensory"
-DB7,"Motor, Sensory"
-DD1,Motor
-DD2,Motor
-DD3,Motor
-DD4,Motor
-DD5,Motor
-DD6,Motor
+DA01,Motor
+DA02,Motor
+DA03,Motor
+DA04,Motor
+DA05,Motor
+DA06,Motor
+DA07,Motor
+DA08,Motor
+DA09,Motor
+DB01,"Motor, Sensory"
+DB02,"Motor, Sensory"
+DB03,"Motor, Sensory"
+DB04,"Motor, Sensory"
+DB05,"Motor, Sensory"
+DB06,"Motor, Sensory"
+DB07,"Motor, Sensory"
+DD01,Motor
+DD02,Motor
+DD03,Motor
+DD04,Motor
+DD05,Motor
+DD06,Motor
 DVA,"Interneuron, Sensory"
 DVB,"Interneuron, Motor"
 DVC,Interneuron
@@ -259,45 +259,45 @@ URYDL,Sensory
 URYDR,Sensory
 URYVL,Sensory
 URYVR,Sensory
-VA1,Motor
+VA01,Motor
 VA10,Motor
 VA11,Motor
 VA12,Motor
-VA2,Motor
-VA3,Motor
-VA4,Motor
-VA5,Motor
-VA6,Motor
-VA7,Motor
-VA8,Motor
-VA9,Motor
-VB1,"Motor, Sensory"
+VA02,Motor
+VA03,Motor
+VA04,Motor
+VA05,Motor
+VA06,Motor
+VA07,Motor
+VA08,Motor
+VA09,Motor
+VB01,"Motor, Sensory"
 VB10,"Motor, Sensory"
 VB11,"Motor, Sensory"
-VB2,"Motor, Sensory"
-VB3,"Motor, Sensory"
-VB4,"Motor, Sensory"
-VB5,"Motor, Sensory"
-VB6,"Motor, Sensory"
-VB7,"Motor, Sensory"
-VB8,"Motor, Sensory"
-VB9,"Motor, Sensory"
-VC1,Motor
-VC2,Motor
-VC3,Motor
-VC4,Motor
-VC5,Motor
-VC6,Motor
-VD1,Motor
+VB02,"Motor, Sensory"
+VB03,"Motor, Sensory"
+VB04,"Motor, Sensory"
+VB05,"Motor, Sensory"
+VB06,"Motor, Sensory"
+VB07,"Motor, Sensory"
+VB08,"Motor, Sensory"
+VB09,"Motor, Sensory"
+VC01,Motor
+VC02,Motor
+VC03,Motor
+VC04,Motor
+VC05,Motor
+VC06,Motor
+VD01,Motor
 VD10,Motor
 VD11,Motor
 VD12,Motor
 VD13,Motor
-VD2,Motor
-VD3,Motor
-VD4,Motor
-VD5,Motor
-VD6,Motor
-VD7,Motor
-VD8,Motor
-VD9,Motor
+VD02,Motor
+VD03,Motor
+VD04,Motor
+VD05,Motor
+VD06,Motor
+VD07,Motor
+VD08,Motor
+VD09,Motor

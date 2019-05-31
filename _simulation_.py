@@ -146,7 +146,7 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity, hpV):
     for infos, datasets in masterInfo.items():
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
-       #         plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
+                plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
                 plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos, hpV)
     
 #            else:
