@@ -26,15 +26,15 @@ ALM,ALML,Glu
 ALN,ALNL,Ach
  ,ALNR,Ach
 AQR,AQR,Glu
-AS,AS1,Ach
- ,AS2,Ach
- ,AS3,Ach
- ,AS4,Ach
- ,AS5,Ach
- ,AS6,Ach
- ,AS7,Ach
- ,AS8,Ach
- ,AS9,Ach
+AS,AS01,Ach
+ ,AS02,Ach
+ ,AS03,Ach
+ ,AS04,Ach
+ ,AS05,Ach
+ ,AS06,Ach
+ ,AS07,Ach
+ ,AS08,Ach
+ ,AS09,Ach
  ,AS10,Ach
  ,AS11,Ach
 ASE,ASEL,Glu
@@ -86,28 +86,28 @@ CEP,CEPDL,DA
  ,CEPDR,DA
  ,CEPVL,DA
  ,CEPVR,DA
-DA,DA1,Ach
- ,DA2,Ach
- ,DA3,Ach
- ,DA4,Ach
- ,DA5,Ach
- ,DA6,Ach
- ,DA7,Ach
- ,DA8,Ach
- ,DA9,Ach
-DB,DB1,Ach
- ,DB2,Ach
- ,DB3,Ach
- ,DB4,Ach
- ,DB5,Ach
- ,DB6,Ach
- ,DB7,Ach
-DD,DD1,GABA
- ,DD2,GABA
- ,DD3,GABA
- ,DD4,GABA
- ,DD5,GABA
- ,DD6,GABA
+DA,DA01,Ach
+ ,DA02,Ach
+ ,DA03,Ach
+ ,DA04,Ach
+ ,DA05,Ach
+ ,DA06,Ach
+ ,DA07,Ach
+ ,DA08,Ach
+ ,DA09,Ach
+DB,DB01,Ach
+ ,DB02,Ach
+ ,DB03,Ach
+ ,DB04,Ach
+ ,DB05,Ach
+ ,DB06,Ach
+ ,DB07,Ach
+DD,DD01,GABA
+ ,DD02,GABA
+ ,DD03,GABA
+ ,DD04,GABA
+ ,DD05,GABA
+ ,DD06,GABA
 DVA,DVA,Ach
 DVB,DVB,GABA
 DVC,DVC,Glu
@@ -238,44 +238,44 @@ URY,URYDL,Glu
  ,URYDR,Glu
  ,URYVL,Glu
  ,URYVR,Glu
-VA,VA1,Ach
- ,VA2,Ach
- ,VA3,Ach
- ,VA4,Ach
- ,VA5,Ach
- ,VA6,Ach
- ,VA7,Ach
- ,VA8,Ach
- ,VA9,Ach
+VA,VA01,Ach
+ ,VA02,Ach
+ ,VA03,Ach
+ ,VA04,Ach
+ ,VA05,Ach
+ ,VA06,Ach
+ ,VA07,Ach
+ ,VA08,Ach
+ ,VA09,Ach
  ,VA10,Ach
  ,VA11,Ach
  ,VA12,Ach
-VB,VB1,Ach
- ,VB2,Ach
- ,VB3,Ach
- ,VB4,Ach
- ,VB5,Ach
- ,VB6,Ach
- ,VB7,Ach
- ,VB8,Ach
- ,VB9,Ach
+VB,VB01,Ach
+ ,VB02,Ach
+ ,VB03,Ach
+ ,VB04,Ach
+ ,VB05,Ach
+ ,VB06,Ach
+ ,VB07,Ach
+ ,VB08,Ach
+ ,VB09,Ach
  ,VB10,Ach
  ,VB11,Ach
-VC,VC1,Ach
- ,VC2,Ach
- ,VC3,Ach
- ,VC4,Ach-5HT
- ,VC5,Ach-5HT
- ,VC6,Ach
-VD,VD1,GABA
- ,VD2,GABA
- ,VD3,GABA
- ,VD4,GABA
- ,VD5,GABA
- ,VD6,GABA
- ,VD7,GABA
- ,VD8,GABA
- ,VD9,GABA
+VC,VC01,Ach
+ ,VC02,Ach
+ ,VC03,Ach
+ ,VC04,Ach-5HT
+ ,VC05,Ach-5HT
+ ,VC06,Ach
+VD,VD01,GABA
+ ,VD02,GABA
+ ,VD03,GABA
+ ,VD04,GABA
+ ,VD05,GABA
+ ,VD06,GABA
+ ,VD07,GABA
+ ,VD08,GABA
+ ,VD09,GABA
  ,VD10,GABA
  ,VD11,GABA
  ,VD12,GABA

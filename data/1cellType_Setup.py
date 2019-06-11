@@ -25,10 +25,9 @@ for i in range(302):
 
 ## Charge connectome connections for testing later
 edges={}
-colnames=['source','target','weight','syn']
-data=pandas.read_csv('networkSetup/2.0herm_full_edgelist_MODIFIED.csv', names=colnames)
-source=data.source.tolist()
-target=data.target.tolist()
+data=pandas.read_csv('networkSetup/2.0herm_full_edgelist.csv')
+source=data.Source.tolist()
+target=data.Target.tolist()
 
 for i in range(len(source)):
     source[i]=source[i].strip()
@@ -80,7 +79,7 @@ sensorycellsdic={'chemo':chemo,'odor':odor,'oxygen':oxygen,'noci':noci,
               'propioSomatic':propioSomatic,'propioTail':propioTail,'propioPharynx':propioPharynx}
 
 
-del lis, lista, i, data, colnames
+del lis, lista, i, data
 del chemo,odor,oxygen,noci, osmo, thermo, mechano
 del propioSomatic, propioHead, propioTail, propioPharynx
 
@@ -98,15 +97,17 @@ for i in range(len(sensorycells)):
     if sensorycells[i] not in cleansensorycells:
         cleansensorycells.append(sensorycells[i])
 
+del sensorycells
 
-# From sensorycells, separate in two lists: ready, notready
+# From cleansensorycells, separate in two lists: ready, notready
 ready=[]
 notready=[]
 for i in range(len(cleansensorycells)):
     if cleansensorycells[i] in nsNAME:
         ready.append(cleansensorycells[i])
     else: notready.append(cleansensorycells[i])
-    
+
+del cleansensorycells
 
 ### Each notready cell lacks info: L/R
     
@@ -115,7 +116,7 @@ for i in range(len(notready)):
     notreadyLR.append(notready[i]+'R')
     notreadyLR.append(notready[i]+'L')
     
-## control every neuron is recognized as having edges
+## control every sensory neuron is recognized as having edges
 notrecognized=[]
 recognized=[]
 
@@ -133,11 +134,12 @@ for i in range(len(notreadyLR)):
     sensorycells.append(notreadyLR[i])
     
 sensorycells=pandas.DataFrame(sensorycells)
-#sensorycells.to_csv('sensorycells.csv')
+## We exported this data to get a list of sensory neurons updated and ready to use. 
+## This excel sheet was manually updated with attributes sensor, area and LRb.
 
 ## Clean variables
-del i, notrecognized, recognized, edges, 
-del sensorycellsdic, cleansensorycells
+del i, notrecognized, recognized, edges
+del sensorycellsdic, notready, notreadyLR, ready
 
 
 #%% Once manually updated '1.2sensorycells.csv' with attributes 'sensor', 'area' and 'LRb'
@@ -162,7 +164,7 @@ for a in range(len(nsNAME)):
 
 
 #Clear variables
-del a,b,area,sensory_cell_name,notready,notreadyLR,ready,sensor, LRb
+del a,b,area,sensory_cell_name,sensor, LRb
 
 
 #%% Cell types

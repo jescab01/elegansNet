@@ -4,25 +4,24 @@ Specifying functions for whole connectome
 
 '''
 
-def infoM(G, sim_no):
-    mainInfo={'activitydata':{}, 'fireCount': {}, 'deactivated': {}}
+def infoG(G, sim_no):
+    mainInfoGraded={'activitydata':{}, 'fireCount': {}, 'deactivated': {}}
     for sim in range(sim_no):
-        mainInfo['activitydata'][sim]={}
-        mainInfo['fireCount'][sim]={}
-        mainInfo['deactivated'][sim]='None'
-        for n,nbrs in G.adj.items():
-            mainInfo['fireCount'][sim][n] = 0            
-    return mainInfo
+        mainInfoGraded['activitydata'][sim]={}
+        mainInfoGraded['fireCount'][sim]={}
+        mainInfoGraded['deactivated'][sim]='None'       
+    return mainInfoGraded
         
 
 
-def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest, Psens, envActivation):
+def mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainInfoGraded, c, hpTest, Psens, envActivation, att):
     
     from envInput import randomSensInput
     
          ### assign initial activity to nodes as attribute   
     for i in range(302):
         G.node['n'+str(i)]['mV']=initActivity[sim]['n'+str(i)]
+            
         
         ### run specific simulation for timesteps
     for i in range(timesteps):
@@ -30,34 +29,38 @@ def mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c
         if chemtime>=0:    
             chemdata = []
             for a in range(302):
-                chemdata.append(mainInfo['activitydata'][sim][chemtime]['n'+str(a)])
+                chemdata.append(mainInfoGraded['activitydata'][sim][chemtime]['n'+str(a)])
             if sum(activity)/302 == -70:
                 if sum(chemdata)/302 == -70:
-                    mainInfo['deactivated'][sim]= i
+                    mainInfoGraded['deactivated'][sim]= i
                     print('Main network deactivation at: simulation ' + str(sim) + ', time ' + str(i) +'.')
                     break
-        mainInfo['activitydata'][sim][i] = activityDic
+                
+        mainInfoGraded['activitydata'][sim][i] = activityDic   
         hpTest[sim][i]=[]
-        hpTest[sim][i]=single_time_step(G, sim, i, mainInfo, chemtime, c, hpV, hpTest[sim][i])
-        envActivation=randomSensInput(G, Psens, sim, envActivation, i)
+        hpTest[sim][i]=single_time_step(G, sim, i, mainInfoGraded, chemtime, c, hpTest[sim][i], att)
+        
+        if (i+1)%4==0:  ##If remainder of timesteps/4 is 0, run environmental input. Oscillatory input.
+            envActivation=randomSensInput(G, Psens, sim, envActivation, i)
+            
         activity, activityDic = getActivity(G)
     
     ##removing last row of hpTest=='inRRP' 
     for a in range(302):
-        if mainInfo['deactivated'][sim]=='None':
+        if mainInfoGraded['deactivated'][sim]=='None':
             for i in range(len(hpTest[sim][timesteps-1])):
                 if hpTest[sim][timesteps-1][i]=='inRRP':
                     hpTest[sim][timesteps-1].remove('inRRP')
                     break
     
         else: 
-            timeplt=mainInfo['deactivated'][sim]-1
+            timeplt=mainInfoGraded['deactivated'][sim]-1
             for i in range(len(hpTest[sim][timeplt])):
                 if hpTest[sim][timeplt][i]=='inRRP':
                     hpTest[sim][timeplt].remove('inRRP')
                     break
 
-    return mainInfo, hpTest, envActivation
+    return mainInfoGraded, hpTest, envActivation
 
 
 
@@ -72,55 +75,94 @@ def getActivity(G):
 
 
 
-def single_time_step(G, sim, timestep, mainInfo, chemtime, c, hpV, hpTest):  
+def single_time_step(G, sim, timestep, mainInfoGraded, chemtime, c, hpTest, att):  
     
     integral= [0] * G.number_of_nodes()
     m = 0
     
     for n,nbrs in G.adj.items():
-        if G.node[n]['mV'] == 40: 		
-            G.node[n]['mV'] = -60
+        if G.node[n]['mV'] == -30: 		
+            G.node[n]['mV'] = -65
             
-        elif G.node[n]['mV'] == -60: 		
-            G.node[n]['mV'] = hpV
-            hpTest.append('inRRP')        
+        elif G.node[n]['mV'] == -65: 		
+            G.node[n]['mV'] = -69
+            hpTest.append('inATT')        
 		
 		#determine input from neighbours and decide if the integral is sufficient for firing	
-        elif G.node[n]['mV']!=40 and G.node[n]['mV'] != -60:
+    
+        ## first for nodes that were active last oscillation
+        elif timestep-1>=0:
+            if mainInfoGraded['activitydata'][sim][timestep-1][n]==-69:
+                for nbr,eattr in nbrs.items():
+                    if chemtime >= 0: 
+                        if eattr['Esyn']=='True' and eattr['Csyn']=='True':
+                            if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30 and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                                
+                            if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                                
+                            if mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                                
+        
+                        elif eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                        
+                        elif eattr['Csyn'] == 'True' and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                            
+                            
+                    else: 
+                        if eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                  
+                        
+                if integral[m]+G.node[n]['mV'] > -60:
+                    G.node[n]['mV'] = -30
+                    G.node[n]['consecutiveAct']+=1
+    
+                
+                else:
+                    G.node[n]['mV']=-70         ## from attenuation period to rest
+                    hpTest.append('rrp2rest')
+                    G.node[n]['consecutiveAct']=0
+                
+                ## now for nodes that were not active last ocillation
+        elif G.node[n]['mV']==-70:
             for nbr,eattr in nbrs.items():
                 if chemtime >= 0: 
                     if eattr['Esyn']=='True' and eattr['Csyn']=='True':
-                        if mainInfo['activitydata'][sim][timestep][nbr]==40 and mainInfo['activitydata'][sim][chemtime][nbr] == 40:
-                            integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][timestep][nbr]*c * eattr['EnormWeight']
-                            integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][chemtime][nbr]*c * eattr['CnormWeight']
+                        if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30 and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight']
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight']
                             
-                        if mainInfo['activitydata'][sim][timestep][nbr]==40:
-                            integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][timestep][nbr]*c * eattr['EnormWeight']
+                        if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight']
                             
-                        if mainInfo['activitydata'][sim][chemtime][nbr] == 40:
-                            integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][chemtime][nbr]*c * eattr['CnormWeight']
+                        if mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight']
                             
     
-                    elif eattr['Esyn'] == 'True' and mainInfo['activitydata'][sim][timestep][nbr]==40:
-                        integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][timestep][nbr]*c * eattr['EnormWeight']
+                    elif eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                        integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight']
                     
-                    elif eattr['Csyn'] == 'True' and mainInfo['activitydata'][sim][chemtime][nbr] == 40:
-                        integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][chemtime][nbr]*c * eattr['CnormWeight']
+                    elif eattr['Csyn'] == 'True' and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                        integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight']
                         
                         
                 else: 
-                    if eattr['Esyn'] == 'True' and mainInfo['activitydata'][sim][timestep][nbr]==40:
-                        integral[m] +=  G.node[nbr]['exin'] * mainInfo['activitydata'][sim][timestep][nbr]*c * eattr['EnormWeight']
+                    if eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                        integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight']
               
                     
-            if integral[m]+G.node[n]['mV'] > -55:
-                G.node[n]['mV'] = 40
-                mainInfo['fireCount'][sim][n] += 1 
+            if integral[m]+G.node[n]['mV'] > -60:
+                G.node[n]['mV'] = -30
+            
+            
+
                 
-                
-            elif G.node[n]['mV'] == hpV: 		#relative refractory period in one timestep
-                G.node[n]['mV'] = -70
-                hpTest.append('rrp2rest')
                 
 		#for tracking the integral list		
         m += 1

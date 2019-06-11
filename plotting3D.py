@@ -39,19 +39,21 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
     arrayy=np.asarray(posy)
     arrayz=np.asarray(posz)
     
-
+    auxiliar_types=['Motor', 'Motor, Sensory', 'Interneuron, Motor',
+                    'Interneuron, Sensory, Motor', 'Motor, Sensory']    
+    
     for a in range(timesteps):
         color=[]
-        for b in range(302):
-            color.append(activitydata[a]['n'+str(b)])
+#        for b in range(302):
+#            color.append(activitydata[a]['n'+str(b)])
         
         
 ###  Give different color to motor nodes  (NOT TESTED)
 
-#        for b in range(302):
-#            if G.node['n'+str(b)]['cell_type']=='Motor' and activitydata[a]['n'+str(b)]==40:
-#                color.append(30)
-#            else: color.append(activitydata[a]['n'+str(b)])
+        for b in range(302):
+            if G.node['n'+str(b)]['cell_type'] in auxiliar_types and activitydata[a]['n'+str(b)]==-30:
+                color.append(-40)
+            else: color.append(activitydata[a]['n'+str(b)])
 
 
 
@@ -60,8 +62,8 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
         trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
                              marker=dict(size=5,
                                          color=color,
-                                         cmax=40,
-                                         cmin=hpV,
+                                         cmax=-30,
+                                         cmin=-75,
                                          colorscale='Viridis',
                                          line=dict(width=0.2),
                                          opacity=0.8))
@@ -186,8 +188,8 @@ def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos):
     trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
                          marker=dict(size=4,
                                      color=color,
-                                     cmax=40,
-                                     cmin=-80,
+                                     cmax=-30,
+                                     cmin=-70,
                                      colorscale='Viridis',
                                      line=dict(width=0.5),
                                      opacity=0.8))

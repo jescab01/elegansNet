@@ -19,7 +19,7 @@ def initCommonActivity(G, sim, nodesNumber, ratioRandomInit):
         if random.random() > ratioRandomInit:
             initActivity[sim]['n'+str(a)] = -70
         else:
-            initActivity[sim]['n'+str(a)] = 40
+            initActivity[sim]['n'+str(a)] =-30
             nodesRandomActive= nodesRandomActive + 1
     
     ### assign initial activity to nodes as attribute 
@@ -61,12 +61,13 @@ def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesN
 
 '''
 
-def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens):
+def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Psens, att):
     
     import networkx as nx
 #    from chemicalWorm import infoC, chemicalWorm
 #    from electricalWorm import infoE, electricalWorm
-    from mainWorm import infoM, mainWorm
+ #   from mainWorm import infoM, mainWorm
+    from mainWormGraded import infoG, mainWormGraded
     
     
     ## Load network prepared by prepareNetwork.py, inhibitory ratio=0.08609271523178808.
@@ -80,7 +81,8 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Ps
     '''
 #    chemicalInfo=infoC(G, sim_no)
 #    electricalInfo=infoE(G,sim_no)
-    mainInfo=infoM(G, sim_no)
+#    mainInfo=infoM(G, sim_no)
+    mainInfoGraded=infoG(G, sim_no)
     
     hpTest={}
     envActivation={}
@@ -102,13 +104,14 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, hpV, area, LRb, sensor, Ps
           
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, hpV, c)
 #        electricalInfo=electricalWorm(G, sim, timesteps, initActivity, activityDic, activity, electricalInfo, hpV, c)
-        mainInfo, hpTest, envActivation = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest, Psens, envActivation)
-        
+#        mainInfo, hpTest, envActivation = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpV, hpTest, Psens, envActivation)
+        mainInfoGraded, hpTest, envActivation = mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainInfoGraded, c, hpTest, Psens, envActivation, att)
     
     masterInfo={}
 #    masterInfo['chemicalInfo']=chemicalInfo
 #    masterInfo['electricalInfo']=electricalInfo
-    masterInfo['mainInfo']=mainInfo
+#    masterInfo['mainInfo']=mainInfo
+    masterInfo['mainInfoGraded']=mainInfoGraded
     
     
     return G, masterInfo, simInitActivity, pathLength, hpTest, envActivation

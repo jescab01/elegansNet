@@ -167,7 +167,7 @@ for i in range(len(nsNAME)):
     elif G.node['n'+str(i)]['neurotransmitters']==NT_types[8]:
         G.node['n'+str(i)]['exin'] = -1
     elif G.node['n'+str(i)]['neurotransmitters']==NT_types[9]:
-        G.node['n'+str(i)]['exin'] = 0
+        G.node['n'+str(i)]['exin'] = 1
 
 ### Calculate ratio of inhibitory neurons
 
@@ -190,7 +190,7 @@ for i in range(len(nsNAME)):
 ##### Prepare attribute for refractory online update of refractory period
 
 for n,nbrs in G.adj.items():
-	G.node[n]['refractory'] = 0
+	G.node[n]['consecutiveAct'] = 0
 
 
 ##### Clear variables

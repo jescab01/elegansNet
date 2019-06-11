@@ -13,7 +13,7 @@ paramTest=read.csv('dataN_Tue Apr 16 12:00:30 2019.csv')
 # rm(paramTestA, paramTestB, paramTestC)
 
 
-paramTest1=mutate(paramTest, surviveBinary = surviveTime, ocrrp2spike=rrp2spike/(rrp2spike+rrp2rest))
+paramTest1=mutate(paramTest, surviveBinary = surviveTime, rrp2spike=inATT-rrp2rest, ocrrp2spike=rrp2spike/(rrp2spike+rrp2rest))
 
 paramTest1$surviveBinary[paramTest1$surviveBinary!=50]=0
 paramTest1$surviveBinary[paramTest1$surviveBinary==50]=1
@@ -21,7 +21,7 @@ paramTest1$surviveBinary[paramTest1$surviveBinary==50]=1
 
 ##### working on survival
 
-modelsurv=glm(surviveBinary~RI+c+hpV+Psens, data = paramTest1, family = "binomial")
+modelsurv=glm(surviveBinary~RI+c+att+Psens, data = paramTest1, family = "binomial")
 summary(modelsurv)
 
 ggplot(paramTest1, aes(c, surviveBinary, group=as.factor(RI), colour=as.factor(RI))) +
@@ -33,26 +33,22 @@ ggplot(paramTest1, aes(c, surviveBinary, group=as.factor(RI), colour=as.factor(R
 
 
 
-##### working on RRP usage
+##### working on attenuation coefficient
 
 filtered=filter(paramTest1, surviveBinary==1)
 
-modelrrplinear=lm(ocrrp2spike~hpV+c+RI+Psens, data = filtered)
-summary(modelrrplinear)
-
-modelrrp=glm(ocrrp2spike~hpV+c+RI+Psens, data = filtered, family = "binomial")
+modelrrp=glm(ocrrp2spike~att+c+RI+Psens, data = filtered, family = "binomial")
 summary(modelrrp)
 
 
-filtered2plot=filter(paramTest1, surviveBinary==1, c==0.2 | c==0.25 |c==0.3| c==0.35 |c==0.45)
-#filtered$c=as.factor(filtered$c)
-sampled=sample_n(filtered2plot, 20000)
+filtered2plot=filter(paramTest1, surviveBinary==1, c==0.16|c==0.18|c==0.14|c==0.1|c==0.2|c==0.25)
+sampled=sample_n(filtered2plot, 15000)
 
-ggplot(sampled, aes(hpV, ocrrp2spike, group=c, colour=as.factor(c))) +
-  geom_jitter(size=0.1)+
-  geom_smooth(method = "glm", method.args=list(family="binomial"),  se=T)+
-  xlab("Hyperporlarization Value (hpV)")+
-  ylab("Spikes from hyperpolarization state \n(normalized)")+
+ggplot(sampled, aes(att, ocrrp2spike, group=c, colour=as.factor(c))) +
+  geom_jitter(size=0.5)+
+  geom_smooth(method = 'glm', method.args = list(family=binomial), se=F)+
+  xlab("attenuation coefficient (att)")+
+  ylab("Attenuated spikes \n(normalized)")+
   labs(colour="Synaptic\neffcicacy")
 
 ggplot(sampled, aes(RI, ocrrp2spike))+
@@ -60,15 +56,8 @@ ggplot(sampled, aes(RI, ocrrp2spike))+
   geom_smooth()
   
 
-filtered2plot=filter(paramTest1, surviveBinary==1, c==0.3 & RI==0.05)#| RI==0.1 |RI==0.15| RI==0.2 |RI==0.25)
-#filtered$c=as.factor(filtered$c)
-sampled=sample_n(filtered2plot, 50000)
 
-ggplot(filtered2plot, aes(hpV, ocrrp2spike, group=RI, colour=as.factor(RI))) +
-  geom_jitter(size=0.1)+
-  geom_smooth(method = "glm", method.args=list(family="binomial"),  se=F)
-
-
+  #Distributions of rrp2rest and rrp2spike
 datasurvive=filter(paramTest1, surviveBinary==1)
 ggplot(datasurvive, aes(rrp2rest))+
   geom_histogram(binwidth = 3, colour="red")+
@@ -76,9 +65,9 @@ ggplot(datasurvive, aes(rrp2rest))+
 
 mutation=mutate(paramTest1, normalizedrrp2spike=rrp2spike/max(rrp2spike))
 mutation=filter(mutation, RI==0.05 & c==0.2 | c==0.275 |c==0.3| c==0.35 |c==0.5)
-sampled=sample_n(mutation, 50000)
+sampled2=sample_n(mutation, 3000)
 
-ggplot(sampled, aes(hpV, normalizedrrp2spike, group=c, colour=as.factor(c)))+
+ggplot(sampled2, aes(att, normalizedrrp2spike, group=c, colour=as.factor(c)))+
   geom_jitter(size=0.5)+
   geom_smooth()
 
