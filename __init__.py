@@ -9,7 +9,7 @@ Created on Tue Mar 26 17:33:34 2019
 def standardInit():
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 50
+    timesteps = 10
     sim_no = 1
     Psens=0.15   # Parameter for sensory neurons being excited by environment
     
@@ -154,35 +154,40 @@ Launcher
 
 '''## standard simulation Launcher'''
 
-#masterInfo, simInitActivity, pathLength, envActivation = standardInit()
+masterInfo, simInitActivity, pathLength, envActivation = standardInit()
+
+
 
 
 '''## Activity simulation Launcher'''
 
-import pandas
-import time
-from rasterPlot import rasterPlot
+#import pandas
+#import time
+#from rasterPlot import rasterPlot
+#
+#Activity=pandas.DataFrame()
+#
+##for i in range(200):
+#masterInfo, envActivation = activityInit()
+#
+### Export activity to a binary dataframe
+#actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
+#actdf=actdf.replace([-70,-69,-65], 0)
+#actdf=actdf.replace(-30, 1)   
+#Activity=actdf.transpose()
+##Activity=Activity.append(actdf)
+#
+##localtime = time.asctime(time.localtime(time.time()))
+##Activity.to_csv('data/parameterTesting/Activity_'+localtime+'.csv', index=False)
+#
+#
+### from Activity dataframe generate Raster plot
+#rasterPlot(Activity, envActivation)
+#
+#del actdf
 
-Activity=pandas.DataFrame()
-
-#for i in range(200):
-masterInfo, envActivation = activityInit()
-
-## Export activity to a binary dataframe
-actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
-actdf=actdf.replace([-70,-69,-65], 0)
-actdf=actdf.replace(-30, 1)   
-Activity=actdf.transpose()
-#Activity=Activity.append(actdf)
-
-#localtime = time.asctime(time.localtime(time.time()))
-#Activity.to_csv('data/parameterTesting/Activity_'+localtime+'.csv', index=False)
 
 
-## from Activity dataframe generate Raster plot
-rasterPlot(Activity, envActivation)
-
-del actdf
 
 ''' ## parameter Testing Launcher'''
 #import pandas
