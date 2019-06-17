@@ -41,7 +41,7 @@ def mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainI
         hpTest[sim][i]=[]
         hpTest[sim][i]=single_time_step(G, sim, i, mainInfoGraded, chemtime, c, hpTest[sim][i], att)
         
-        if (i+1)%4==0:  ##If remainder of timesteps/4 is 0, run environmental input. Oscillatory input.
+        if (i+1)%5==0:  ##If remainder of timesteps/4 is 0, run environmental input. Oscillatory input.
             envActivation=randomSensInput(G, Psens, sim, envActivation, i)
             
         activity, activityDic = getActivity(G)

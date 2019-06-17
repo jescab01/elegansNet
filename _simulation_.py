@@ -14,13 +14,15 @@ def initCommonActivity(G, sim, nodesNumber, ratioRandomInit):
     initActivity={}
     initActivity[sim]={}
     
+    auxiliar_types=['Sensory', 'Motor, Sensory', 'Interneuron, Sensory',
+                    'Interneuron, Sensory, Motor']    
     
     for a in range(nodesNumber):
-        if random.random() > ratioRandomInit:
-            initActivity[sim]['n'+str(a)] = -70
-        else:
-            initActivity[sim]['n'+str(a)] =-30
+        if G.node['n'+str(a)]['cell_type'] in auxiliar_types and random.random() < ratioRandomInit:
+            initActivity[sim]['n'+str(a)] = -30
             nodesRandomActive= nodesRandomActive + 1
+        else:
+            initActivity[sim]['n'+str(a)] =-70
     
     ### assign initial activity to nodes as attribute 
     for b in range(nodesNumber):

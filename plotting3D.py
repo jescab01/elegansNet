@@ -40,7 +40,7 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos):
     arrayz=np.asarray(posz)
     
     auxiliar_types=['Motor', 'Motor, Sensory', 'Interneuron, Motor',
-                    'Interneuron, Sensory, Motor', 'Motor, Sensory']    
+                    'Interneuron, Sensory, Motor']    
     
     for a in range(timesteps):
         color=[]
