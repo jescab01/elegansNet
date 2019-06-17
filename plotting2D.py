@@ -6,7 +6,7 @@ Created on Wed Feb 13 12:19:56 2019
 @author: jescab01
 """
 
-def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
+def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
     
     import networkx as nx
     import matplotlib.pyplot as plt
@@ -29,7 +29,7 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
         for b in range(302):
             color.append(activitydata[a]['n'+str(b)])
             
-        plt.figure(figsize=(11,11))
+        plt.figure(figsize=(9,11))
         nx.draw(G, pos, node_color = color, node_size=node_sizes, width=1,
                 style='dotted', arrows=False, cmap=plt.cm.Blues, vmax=-30, vmin=-70)
 

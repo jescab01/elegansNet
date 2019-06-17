@@ -5,10 +5,10 @@ Specifying functions for whole connectome
 '''
 
 def infoG(G, sim_no):
-    mainInfoGraded={'activitydata':{}, 'fireCount': {}, 'deactivated': {}}
+    mainInfoGraded={'activitydata':{}, 'consecutiveAct': {}, 'deactivated': {}}
     for sim in range(sim_no):
         mainInfoGraded['activitydata'][sim]={}
-        mainInfoGraded['fireCount'][sim]={}
+        mainInfoGraded['consecutiveAct'][sim]={}
         mainInfoGraded['deactivated'][sim]='None'       
     return mainInfoGraded
         
@@ -21,11 +21,12 @@ def mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainI
          ### assign initial activity to nodes as attribute   
     for i in range(302):
         G.node['n'+str(i)]['mV']=initActivity[sim]['n'+str(i)]
+        mainInfoGraded['consecutiveAct'][sim]['n'+str(i)]=[]
             
         
         ### run specific simulation for timesteps
     for i in range(timesteps):
-        chemtime = i-3          ## Define temporal difference between electrical and chemical synapses
+        chemtime = i-4          ## Define temporal difference between electrical and chemical synapses
         if chemtime>=0:    
             chemdata = []
             for a in range(302):
@@ -36,7 +37,7 @@ def mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainI
                     print('Main network deactivation at: simulation ' + str(sim) + ', time ' + str(i) +'.')
                     break
                 
-        mainInfoGraded['activitydata'][sim][i] = activityDic   
+        mainInfoGraded['activitydata'][sim][i] = activityDic
         hpTest[sim][i]=[]
         hpTest[sim][i]=single_time_step(G, sim, i, mainInfoGraded, chemtime, c, hpTest[sim][i], att)
         
@@ -89,48 +90,48 @@ def single_time_step(G, sim, timestep, mainInfoGraded, chemtime, c, hpTest, att)
             hpTest.append('inATT')        
 		
 		#determine input from neighbours and decide if the integral is sufficient for firing	
-    
-        ## first for nodes that were active last oscillation
-        elif timestep-1>=0:
-            if mainInfoGraded['activitydata'][sim][timestep-1][n]==-69:
-                for nbr,eattr in nbrs.items():
-                    if chemtime >= 0: 
-                        if eattr['Esyn']=='True' and eattr['Csyn']=='True':
-                            if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30 and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
-                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
-                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
-                                
-                            if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
-                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
-                                
-                            if mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
-                                integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
-                                
-        
-                        elif eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+            ## first for nodes that were active last oscillation and are sensory, compute adaptation process
+        elif G.node[n]['mV']==-69 :
+            for nbr,eattr in nbrs.items():
+                if chemtime >= 0: 
+                    if eattr['Esyn']=='True' and eattr['Csyn']=='True':
+                        if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30 and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
                             integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
-                        
-                        elif eattr['Csyn'] == 'True' and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
                             integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
                             
-                            
-                    else: 
-                        if eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                        if mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
                             integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
-                  
-                        
-                if integral[m]+G.node[n]['mV'] > -60:
-                    G.node[n]['mV'] = -30
-                    G.node[n]['consecutiveAct']+=1
+                            
+                        if mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                            integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                            
     
+                    elif eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                        integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                    
+                    elif eattr['Csyn'] == 'True' and mainInfoGraded['activitydata'][sim][chemtime][nbr] == -30:
+                        integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][nbr])*c * eattr['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                        
+                        
+                else: 
+                    if eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
+                        integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+              
+                    
+            if integral[m]+G.node[n]['mV'] > -60:
+                G.node[n]['mV'] = -30
+                G.node[n]['consecutiveAct']+=1
+              #  print(G.node[n]['consecutiveAct'])
+                mainInfoGraded['consecutiveAct'][sim][n].append(timestep)
                 
-                else:
-                    G.node[n]['mV']=-70         ## from attenuation period to rest
-                    hpTest.append('rrp2rest')
-                    G.node[n]['consecutiveAct']=0
+            
+            elif timestep <= 3 or (mainInfoGraded['activitydata'][sim][timestep-3][n]==-69 and mainInfoGraded['activitydata'][sim][timestep-2][n]==-69 and mainInfoGraded['activitydata'][sim][timestep-1][n]==-69):       ## mantain adaptation period during 4 timesteps
+                G.node[n]['mV']=-70         ## from attenuation period to rest
+                hpTest.append('rrp2rest')
+                G.node[n]['consecutiveAct']=0
                 
-                ## now for nodes that were not active last ocillation
-        elif G.node[n]['mV']==-70:
+             ## now for nodes that were not active last ocillation and active but not sensory ones.
+        elif G.node[n]['mV']==-70 :
             for nbr,eattr in nbrs.items():
                 if chemtime >= 0: 
                     if eattr['Esyn']=='True' and eattr['Csyn']=='True':
@@ -156,12 +157,12 @@ def single_time_step(G, sim, timestep, mainInfoGraded, chemtime, c, hpTest, att)
                     if eattr['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][nbr]==-30:
                         integral[m] +=  G.node[nbr]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][nbr])*c * eattr['EnormWeight']
               
-                    
+            
             if integral[m]+G.node[n]['mV'] > -60:
                 G.node[n]['mV'] = -30
             
-            
-
+            elif G.node[n]['mV']==-69:
+                G.node[n]['mV']=-70
                 
                 
 		#for tracking the integral list		

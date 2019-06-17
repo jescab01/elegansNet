@@ -6,7 +6,7 @@ Created on Wed Feb 13 12:19:56 2019
 @author: jescab01
 """
 
-def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
+def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos):
         
     '''
     listing positions 3D
@@ -63,7 +63,7 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
                              marker=dict(size=5,
                                          color=color,
                                          cmax=-30,
-                                         cmin=-75,
+                                         cmin=-70,
                                          colorscale='Viridis',
                                          line=dict(width=0.2),
                                          opacity=0.8))
@@ -90,8 +90,8 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos, hpV):
 #                             marker=dict(size=6,
 #                                         color=color,
 #                                         colorscale='Viridis',
-#                                         cmax=40,
-#                                         cmin=hpV,
+#                                         cmax=-30,
+#                                         cmin=-70,
 #                                         line=dict(width=0.5),
 #                                         opacity=0.7))
 #        
@@ -154,8 +154,8 @@ def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos):
     color=[]
     
     for a in range(302):
-        if G.node['n'+str(a)]['cell_type']=='Motor' and activitydata[a]['n'+str(a)]==40:
-            color.append(30)
+        if G.node['n'+str(a)]['cell_type']=='Motor' and activitydata[a]['n'+str(a)]==-30:
+            color.append(-40)
         else: color.append(activitydata[a]['n'+str(a)])
     
     '''##realistic layout'''
@@ -163,8 +163,8 @@ def plotting3Dhtml(G, sim, time, activitydata, simInitActivity, infos):
     #trace1= go.Scatter3d(x=arrayx,y=arrayy,z=arrayz,mode='markers',
     #                     marker=dict(size=4,
     #                                 color=color,
-#                                     cmax=40,
-#                                     cmin=-80,
+#                                     cmax=-30,
+#                                     cmin=-70,
     #                                 colorscale='Viridis',
     #                                 line=dict(width=0.2),
     #                                 opacity=0.8))
