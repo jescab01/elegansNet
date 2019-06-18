@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+         http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<!-- Created by igraph -->
+  <key id="g_sensor" for="graph" attr.name="sensor" attr.type="string"/>
+  <key id="g_source" for="graph" attr.name="source" attr.type="string"/>
+  <key id="g_info" for="graph" attr.name="info" attr.type="string"/>
+  <key id="g_region" for="graph" attr.name="region" attr.type="string"/>
+  <key id="v_cell_name" for="node" attr.name="cell_name" attr.type="string"/>
+  <key id="v_cell_class" for="node" attr.name="cell_class" attr.type="string"/>
+  <key id="v_soma_posx" for="node" attr.name="soma_posx" attr.type="double"/>
+  <key id="v_soma_posy" for="node" attr.name="soma_posy" attr.type="double"/>
+  <key id="v_soma_posz" for="node" attr.name="soma_posz" attr.type="double"/>
+  <key id="v_neurotransmitters" for="node" attr.name="neurotransmitters" attr.type="string"/>
+  <key id="e_synapse_type" for="edge" attr.name="synapse_type" attr.type="string"/>
+  <key id="e_weight" for="edge" attr.name="weight" attr.type="double"/>
+  <graph id="G" edgedefault="directed">
+    <data key="g_sensor">Electron Microscopy</data>
+    <data key="g_source">https://github.com/ericmjonas/circuitdata/tree/master/celegans_herm</data>
+    <data key="g_info">weight = count of synapses</data>
+    <data key="g_region">pharynx</data>
+    <node id="n0">
+      <data key="v_cell_name">I1L</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">2.89</data>
+      <data key="v_soma_posy">-300.35</data>
+      <data key="v_soma_posz">53.149</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n1">
+      <data key="v_cell_name">I1R</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">-7.15</data>
+      <data key="v_soma_posy">-300.35</data>
+      <data key="v_soma_posz">53.149</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n2">
+      <data key="v_cell_name">I2L</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">1.55</data>
+      <data key="v_soma_posy">-311.65</data>
+      <data key="v_soma_posz">54.45</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n3">
+      <data key="v_cell_name">I2R</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">-5.79</data>
+      <data key="v_soma_posy">-311.65</data>
+      <data key="v_soma_posz">54.45</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n4">
+      <data key="v_cell_name">I3</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">-2.05</data>
+      <data key="v_soma_posy">-296.55</data>
+      <data key="v_soma_posz">58.25</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n5">
+      <data key="v_cell_name">I4</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">-2.05</data>
+      <data key="v_soma_posy">-253.9</data>
+      <data key="v_soma_posz">43.1</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n6">
+      <data key="v_cell_name">I5</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">-2.1</data>
+      <data key="v_soma_posy">-247.849</data>
+      <data key="v_soma_posz">30.675</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n7">
+      <data key="v_cell_name">I6</data>
+      <data key="v_cell_class">I</data>
+      <data key="v_soma_posx">1.7</data>
+      <data key="v_soma_posy">-251.65</data>
+      <data key="v_soma_posz">43.05</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n8">
+      <data key="v_cell_name">M1</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-0.867</data>
+      <data key="v_soma_posy">-252.135</data>
+      <data key="v_soma_posz">44.42</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n9">
+      <data key="v_cell_name">M2L</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">3.7</data>
+      <data key="v_soma_posy">-254.349</data>
+      <data key="v_soma_posz">38.65</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n10">
+      <data key="v_cell_name">M2R</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-8</data>
+      <data key="v_soma_posy">-254.349</data>
+      <data key="v_soma_posz">38.65</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n11">
+      <data key="v_cell_name">M3L</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">3.75</data>
+      <data key="v_soma_posy">-295.4</data>
+      <data key="v_soma_posz">48.15</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n12">
+      <data key="v_cell_name">M3R</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-8.05</data>
+      <data key="v_soma_posy">-295.4</data>
+      <data key="v_soma_posz">48.15</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n13">
+      <data key="v_cell_name">M4</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-2.033</data>
+      <data key="v_soma_posy">-288.93298</data>
+      <data key="v_soma_posz">57.583</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n14">
+      <data key="v_cell_name">M5</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-2.2</data>
+      <data key="v_soma_posy">-241.45</data>
+      <data key="v_soma_posz">41.8</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n15">
+      <data key="v_cell_name">MCL</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">3.2</data>
+      <data key="v_soma_posy">-296.15</data>
+      <data key="v_soma_posz">52.3</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n16">
+      <data key="v_cell_name">MCR</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-7.25</data>
+      <data key="v_soma_posy">-296.15</data>
+      <data key="v_soma_posz">52.3</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n17">
+      <data key="v_cell_name">MI</data>
+      <data key="v_cell_class">M</data>
+      <data key="v_soma_posx">-2.1539</data>
+      <data key="v_soma_posy">-293.512</data>
+      <data key="v_soma_posz">56.707</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n18">
+      <data key="v_cell_name">NSML</data>
+      <data key="v_cell_class">NSM</data>
+      <data key="v_soma_posx">2.6</data>
+      <data key="v_soma_posy">-292.25</data>
+      <data key="v_soma_posz">51.8</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+    <node id="n19">
+      <data key="v_cell_name">NSMR</data>
+      <data key="v_cell_class">NSM</data>
+      <data key="v_soma_posx">-6.35</data>
+      <data key="v_soma_posy">-292.25</data>
+      <data key="v_soma_posz">51.8</data>
+      <data key="v_neurotransmitters"></data>
+    </node>
+  </graph>
+</graphml>

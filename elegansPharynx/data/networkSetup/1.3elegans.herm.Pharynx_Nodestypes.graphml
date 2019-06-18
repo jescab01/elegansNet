@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="cell_type" attr.type="string" for="node" id="d12"/>
+<key attr.name="LRb" attr.type="string" for="node" id="d11"/>
+<key attr.name="area" attr.type="string" for="node" id="d10"/>
+<key attr.name="sensor" attr.type="string" for="node" id="d9"/>
+<key attr.name="soma_posz" attr.type="double" for="node" id="d8"/>
+<key attr.name="soma_posy" attr.type="double" for="node" id="d7"/>
+<key attr.name="soma_posx" attr.type="double" for="node" id="d6"/>
+<key attr.name="cell_class" attr.type="string" for="node" id="d5"/>
+<key attr.name="cell_name" attr.type="string" for="node" id="d4"/>
+<key attr.name="region" attr.type="string" for="graph" id="d3"/>
+<key attr.name="info" attr.type="string" for="graph" id="d2"/>
+<key attr.name="source" attr.type="string" for="graph" id="d1"/>
+<key attr.name="sensor" attr.type="string" for="graph" id="d0"/>
+<graph edgedefault="directed"><data key="d0">Electron Microscopy</data>
+<data key="d1">https://github.com/ericmjonas/circuitdata/tree/master/celegans_herm</data>
+<data key="d2">weight = count of synapses</data>
+<data key="d3">pharynx</data>
+<node id="n0">
+  <data key="d4">I1L</data>
+  <data key="d5">I</data>
+  <data key="d6">2.89</data>
+  <data key="d7">-300.35</data>
+  <data key="d8">53.149</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">L</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n1">
+  <data key="d4">I1R</data>
+  <data key="d5">I</data>
+  <data key="d6">-7.15</data>
+  <data key="d7">-300.35</data>
+  <data key="d8">53.149</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">R</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n2">
+  <data key="d4">I2L</data>
+  <data key="d5">I</data>
+  <data key="d6">1.55</data>
+  <data key="d7">-311.65</data>
+  <data key="d8">54.45</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">L</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n3">
+  <data key="d4">I2R</data>
+  <data key="d5">I</data>
+  <data key="d6">-5.79</data>
+  <data key="d7">-311.65</data>
+  <data key="d8">54.45</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">R</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n4">
+  <data key="d4">I3</data>
+  <data key="d5">I</data>
+  <data key="d6">-2.05</data>
+  <data key="d7">-296.55</data>
+  <data key="d8">58.25</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">b</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n5">
+  <data key="d4">I4</data>
+  <data key="d5">I</data>
+  <data key="d6">-2.05</data>
+  <data key="d7">-253.9</data>
+  <data key="d8">43.1</data>
+  <data key="d9">None</data>
+  <data key="d12">Interneuron</data>
+</node>
+<node id="n6">
+  <data key="d4">I5</data>
+  <data key="d5">I</data>
+  <data key="d6">-2.1</data>
+  <data key="d7">-247.849</data>
+  <data key="d8">30.675</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">b</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n7">
+  <data key="d4">I6</data>
+  <data key="d5">I</data>
+  <data key="d6">1.7</data>
+  <data key="d7">-251.65</data>
+  <data key="d8">43.05</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">b</data>
+  <data key="d12">Interneuron, Sensory</data>
+</node>
+<node id="n8">
+  <data key="d4">M1</data>
+  <data key="d5">M</data>
+  <data key="d6">-0.867</data>
+  <data key="d7">-252.135</data>
+  <data key="d8">44.42</data>
+  <data key="d9">None</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n9">
+  <data key="d4">M2L</data>
+  <data key="d5">M</data>
+  <data key="d6">3.7</data>
+  <data key="d7">-254.349</data>
+  <data key="d8">38.65</data>
+  <data key="d9">None</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n10">
+  <data key="d4">M2R</data>
+  <data key="d5">M</data>
+  <data key="d6">-8.0</data>
+  <data key="d7">-254.349</data>
+  <data key="d8">38.65</data>
+  <data key="d9">None</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n11">
+  <data key="d4">M3L</data>
+  <data key="d5">M</data>
+  <data key="d6">3.75</data>
+  <data key="d7">-295.4</data>
+  <data key="d8">48.15</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">L</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n12">
+  <data key="d4">M3R</data>
+  <data key="d5">M</data>
+  <data key="d6">-8.05</data>
+  <data key="d7">-295.4</data>
+  <data key="d8">48.15</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">R</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n13">
+  <data key="d4">M4</data>
+  <data key="d5">M</data>
+  <data key="d6">-2.033</data>
+  <data key="d7">-288.93298</data>
+  <data key="d8">57.583</data>
+  <data key="d9">None</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n14">
+  <data key="d4">M5</data>
+  <data key="d5">M</data>
+  <data key="d6">-2.2</data>
+  <data key="d7">-241.45</data>
+  <data key="d8">41.8</data>
+  <data key="d9">None</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n15">
+  <data key="d4">MCL</data>
+  <data key="d5">M</data>
+  <data key="d6">3.2</data>
+  <data key="d7">-296.15</data>
+  <data key="d8">52.3</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">L</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n16">
+  <data key="d4">MCR</data>
+  <data key="d5">M</data>
+  <data key="d6">-7.25</data>
+  <data key="d7">-296.15</data>
+  <data key="d8">52.3</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">R</data>
+  <data key="d12">Motor</data>
+</node>
+<node id="n17">
+  <data key="d4">MI</data>
+  <data key="d5">M</data>
+  <data key="d6">-2.1539</data>
+  <data key="d7">-293.512</data>
+  <data key="d8">56.707</data>
+  <data key="d9">None</data>
+  <data key="d12">Interneuron, Motor</data>
+</node>
+<node id="n18">
+  <data key="d4">NSML</data>
+  <data key="d5">NSM</data>
+  <data key="d6">2.6</data>
+  <data key="d7">-292.25</data>
+  <data key="d8">51.8</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">L</data>
+  <data key="d12">Motor, Sensory</data>
+</node>
+<node id="n19">
+  <data key="d4">NSMR</data>
+  <data key="d5">NSM</data>
+  <data key="d6">-6.35</data>
+  <data key="d7">-292.25</data>
+  <data key="d8">51.8</data>
+  <data key="d9">propioPharynx</data>
+  <data key="d10">head</data>
+  <data key="d11">R</data>
+  <data key="d12">Motor, Sensory</data>
+</node>
+</graph></graphml>

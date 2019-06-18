@@ -1,0 +1,14 @@
+cell_name,area,sensor,LR,node
+I3,head,propioPharynx,b,n285
+I5,head,propioPharynx,b,n287
+I6,head,propioPharynx,b,n288
+I1L,head,propioPharynx,L,n281
+I2L,head,propioPharynx,L,n283
+M3L,head,propioPharynx,L,n292
+MCL,head,propioPharynx,L,n296
+NSML,head,propioPharynx,L,n299
+I1R,head,propioPharynx,R,n282
+I2R,head,propioPharynx,R,n284
+M3R,head,propioPharynx,R,n293
+MCR,head,propioPharynx,R,n297
+NSMR,head,propioPharynx,R,n300

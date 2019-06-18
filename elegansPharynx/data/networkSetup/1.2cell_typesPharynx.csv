@@ -1,0 +1,21 @@
+cell_name,cell_type
+I1L,"Interneuron, Sensory"
+I1R,"Interneuron, Sensory"
+I2L,"Interneuron, Sensory"
+I2R,"Interneuron, Sensory"
+I3,"Interneuron, Sensory"
+I4,Interneuron
+I5,"Interneuron, Sensory"
+I6,"Interneuron, Sensory"
+M1,Motor
+M2L,Motor
+M2R,Motor
+M3L,Motor
+M3R,Motor
+M4,Motor
+M5,Motor
+MCL,Motor
+MCR,Motor
+MI,"Interneuron, Motor"
+NSML,"Motor, Sensory"
+NSMR,"Motor, Sensory"
