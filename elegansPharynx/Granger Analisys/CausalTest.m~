@@ -10,7 +10,7 @@
 % Selected spiking history orders by AIC
 % ht = 2*[3 2 3 3 3 2 2 3 3];      % for 9-neuron network
 % ht = 2*[5 2 2];  % for 5-neuron network with hidded feedback
- ht = 2*[2 2 3 3 3 2 1 3 3 2 2 2 2 2 2 2 2 2 2 2];
+ ht = 2*[2 2 3 3 3 2 1 3 3 2 ];
 
 
 

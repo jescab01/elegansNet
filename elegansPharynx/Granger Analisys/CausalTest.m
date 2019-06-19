@@ -4,13 +4,13 @@
 % load data_sim_9neuron.mat;     % 9-neuron network
 % load data_sim_hidden.mat;      % 5-neuron network with hidden feedback
 % load result_sim.mat;
-load Models.mat
-load data_elegans_compose.mat
+ load PharynxModels.mat
+
 
 % Selected spiking history orders by AIC
 % ht = 2*[3 2 3 3 3 2 2 3 3];      % for 9-neuron network
 % ht = 2*[5 2 2];  % for 5-neuron network with hidded feedback
- ht = 2*[2*ones(1,302)];
+ ht = 2*[2 2 3 3 3 2 1 3 3 2 2 2 2 2 2 2 2 2 2 2];
 
 
 
@@ -35,6 +35,11 @@ for target = 1:N
         % Sign (excitation and inhibition) of interaction from trigger to target
         % Averaged influence of the spiking history of trigger on target
         SGN(target,trigger) = sign(sum(bhat{ht(target),target}(ht(target)/2*(trigger-1)+2:ht(target)/2*trigger+1)));
+        disp ('Calculating causal models')
+        disp ('Target neuron: ')
+        disp (target)
+        disp ('Trigger neuron: ')
+        disp (trigger)
     end
 end
 
@@ -47,6 +52,9 @@ D = -2*LLKR;                                     % Deviance difference
 alpha = 0.05;
 for ichannel = 1:N
     temp1(ichannel,:) = D(ichannel,:) > chi2inv(1-alpha,ht(ichannel)/2);
+    disp ('Calculating causal connectivity matrix')
+    disp ('Neuron: ')
+    disp (ichannel)
 end
 Psi1 = SGN.*temp1;
 
@@ -62,5 +70,5 @@ Psi2 = SGN.*temp2;
 
 % Save results
 % save('CausalMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2');
-save ('ResGranger','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')
+save ('PharynxGC','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')
 % save ('elegansMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')
