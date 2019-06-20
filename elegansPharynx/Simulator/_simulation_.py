@@ -99,9 +99,6 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
         hpTest[sim]={}
         envActivation[sim]={'active':[], 'activeG':[], 'activeSG':[], 'activeNode':[]}
         
-        if sum(activity)/nodesNumber == -70:
-            print('Initially deactivated for: simulation ' + str(sim))
-            break
         
           
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, c)

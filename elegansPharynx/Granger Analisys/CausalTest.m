@@ -64,9 +64,9 @@ temp2 = FDR(D,fdrv,ht);
 Psi2 = SGN.*temp2;
 
 % Plot the results
-% figure(1);imagesc(Phi);xlabel('Triggers');ylabel('Targets');
-% figure(2);imagesc(Psi1);xlabel('Triggers');ylabel('Targets');
-% figure(3);imagesc(Psi2);xlabel('Triggers');ylabel('Targets');
+ figure(1);imagesc(Phi);xlabel('Triggers');ylabel('Targets');
+ figure(2);imagesc(Psi1);xlabel('Triggers');ylabel('Targets');
+ figure(3);imagesc(Psi2);xlabel('Triggers');ylabel('Targets');
 
 % Save results
 % save('CausalMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2');

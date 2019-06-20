@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="CnormWeight" attr.type="double" for="edge" id="d21"/>
 <key attr.name="EnormWeight" attr.type="double" for="edge" id="d20"/>
-<key attr.name="Eweight" attr.type="double" for="edge" id="d19"/>
+<key attr.name="Eweight" attr.type="long" for="edge" id="d19"/>
 <key attr.name="Esyn" attr.type="string" for="edge" id="d18"/>
-<key attr.name="Cweight" attr.type="double" for="edge" id="d17"/>
+<key attr.name="Cweight" attr.type="long" for="edge" id="d17"/>
 <key attr.name="Csyn" attr.type="string" for="edge" id="d16"/>
 <key attr.name="consecutiveAct" attr.type="long" for="node" id="d15"/>
 <key attr.name="exin" attr.type="long" for="node" id="d14"/>
@@ -293,1026 +293,1026 @@
 </node>
 <edge source="n0" target="n2">
   <data key="d16">True</data>
-  <data key="d17">3.302585092994046</data>
+  <data key="d17">10</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.7296336814165079</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.29411764705882354</data>
 </edge>
 <edge source="n0" target="n4">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n0" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n0" target="n7">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n0" target="n9">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n0" target="n11">
   <data key="d16">True</data>
-  <data key="d17">3.0794415416798357</data>
+  <data key="d17">8</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.6803350119665897</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.23529411764705882</data>
 </edge>
 <edge source="n0" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n0" target="n15">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n0" target="n16">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n0" target="n17">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n0" target="n18">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">True</data>
-  <data key="d19">2.09861228866811</data>
-  <data key="d20">0.6176212390853874</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d19">3</data>
+  <data key="d20">0.2727272727272727</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n1" target="n3">
   <data key="d16">True</data>
-  <data key="d17">2.791759469228055</data>
+  <data key="d17">6</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.6167779729531814</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.17647058823529413</data>
 </edge>
 <edge source="n1" target="n4">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n1" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n1" target="n8">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n1" target="n9">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n1" target="n10">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n1" target="n11">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n1" target="n12">
   <data key="d16">True</data>
-  <data key="d17">2.791759469228055</data>
+  <data key="d17">6</data>
   <data key="d18">False</data>
-  <data key="d21">0.6167779729531814</data>
+  <data key="d21">0.17647058823529413</data>
 </edge>
 <edge source="n1" target="n15">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n1" target="n16">
   <data key="d16">True</data>
-  <data key="d17">2.386294361119891</data>
+  <data key="d17">4</data>
   <data key="d18">True</data>
-  <data key="d19">2.386294361119891</data>
-  <data key="d20">0.7022860240052761</data>
-  <data key="d21">0.5271993576610317</data>
+  <data key="d19">4</data>
+  <data key="d20">0.36363636363636365</data>
+  <data key="d21">0.11764705882352941</data>
 </edge>
 <edge source="n1" target="n17">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n1" target="n18">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n1" target="n19">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n2" target="n0">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n2" target="n3">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n2" target="n5">
   <data key="d16">True</data>
-  <data key="d17">3.5649493574615367</data>
+  <data key="d17">13</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.7875973065057267</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.38235294117647056</data>
 </edge>
 <edge source="n2" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n2" target="n8">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n2" target="n18">
   <data key="d16">True</data>
-  <data key="d17">3.6390573296152584</data>
+  <data key="d17">14</data>
   <data key="d18">False</data>
-  <data key="d21">0.8039698362126938</data>
+  <data key="d21">0.4117647058823529</data>
 </edge>
 <edge source="n2" target="n19">
   <data key="d16">True</data>
-  <data key="d17">4.178053830347945</data>
+  <data key="d17">24</data>
   <data key="d18">False</data>
-  <data key="d21">0.9230492815642977</data>
+  <data key="d21">0.7058823529411765</data>
 </edge>
 <edge source="n2" target="n9">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n3" target="n1">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n3" target="n2">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n3" target="n5">
   <data key="d16">True</data>
-  <data key="d17">3.995732273553991</data>
+  <data key="d17">20</data>
   <data key="d18">False</data>
-  <data key="d21">0.882769335722066</data>
+  <data key="d21">0.5882352941176471</data>
 </edge>
 <edge source="n3" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n3" target="n8">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n3" target="n10">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n3" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n3" target="n13">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n3" target="n15">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n3" target="n18">
   <data key="d16">True</data>
-  <data key="d17">4.526360524616162</data>
+  <data key="d17">34</data>
   <data key="d18">False</data>
   <data key="d21">1.0</data>
 </edge>
 <edge source="n3" target="n19">
   <data key="d16">True</data>
-  <data key="d17">2.9459101490553135</data>
+  <data key="d17">7</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.6508341819071358</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.20588235294117646</data>
 </edge>
 <edge source="n3" target="n16">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n4" target="n0">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n4" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n7">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n4" target="n8">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n9">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n11">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n13">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n15">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n4" target="n16">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n17">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n4" target="n19">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n4" target="n1">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n5" target="n3">
   <data key="d16">True</data>
-  <data key="d17">2.9459101490553135</data>
+  <data key="d17">7</data>
   <data key="d18">False</data>
-  <data key="d21">0.6508341819071358</data>
+  <data key="d21">0.20588235294117646</data>
 </edge>
 <edge source="n5" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n5" target="n9">
   <data key="d16">True</data>
-  <data key="d17">2.6094379124341005</data>
+  <data key="d17">5</data>
   <data key="d18">False</data>
-  <data key="d21">0.5764980271109498</data>
+  <data key="d21">0.14705882352941177</data>
 </edge>
 <edge source="n5" target="n11">
   <data key="d16">True</data>
-  <data key="d17">2.791759469228055</data>
+  <data key="d17">6</data>
   <data key="d18">False</data>
-  <data key="d21">0.6167779729531814</data>
+  <data key="d21">0.17647058823529413</data>
 </edge>
 <edge source="n5" target="n12">
   <data key="d16">True</data>
-  <data key="d17">4.091042453358316</data>
+  <data key="d17">22</data>
   <data key="d18">False</data>
-  <data key="d21">0.9038260278008322</data>
+  <data key="d21">0.6470588235294118</data>
 </edge>
 <edge source="n5" target="n17">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n5" target="n18">
   <data key="d16">True</data>
-  <data key="d17">3.0794415416798357</data>
+  <data key="d17">8</data>
   <data key="d18">False</data>
-  <data key="d21">0.6803350119665897</data>
+  <data key="d21">0.23529411764705882</data>
 </edge>
 <edge source="n5" target="n19">
   <data key="d16">True</data>
-  <data key="d17">3.70805020110221</data>
+  <data key="d17">15</data>
   <data key="d18">False</data>
-  <data key="d21">0.8192122967086576</data>
+  <data key="d21">0.4411764705882353</data>
 </edge>
 <edge source="n5" target="n2">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n5" target="n10">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 <edge source="n5" target="n13">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n6" target="n0">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n6" target="n2">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n6" target="n3">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n6" target="n4">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n6" target="n5">
   <data key="d16">True</data>
-  <data key="d17">2.9459101490553135</data>
+  <data key="d17">7</data>
   <data key="d18">False</data>
-  <data key="d21">0.6508341819071358</data>
+  <data key="d21">0.20588235294117646</data>
 </edge>
 <edge source="n6" target="n8">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n6" target="n9">
   <data key="d16">True</data>
-  <data key="d17">2.386294361119891</data>
+  <data key="d17">4</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.5271993576610317</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.11764705882352941</data>
 </edge>
 <edge source="n6" target="n11">
   <data key="d16">True</data>
-  <data key="d17">2.386294361119891</data>
+  <data key="d17">4</data>
   <data key="d18">False</data>
-  <data key="d21">0.5271993576610317</data>
+  <data key="d21">0.11764705882352941</data>
 </edge>
 <edge source="n6" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n6" target="n13">
   <data key="d16">True</data>
-  <data key="d17">3.9444389791664403</data>
+  <data key="d17">19</data>
   <data key="d18">False</data>
-  <data key="d21">0.8714372082636814</data>
+  <data key="d21">0.5588235294117647</data>
 </edge>
 <edge source="n6" target="n17">
   <data key="d16">True</data>
-  <data key="d17">2.386294361119891</data>
+  <data key="d17">4</data>
   <data key="d18">False</data>
-  <data key="d21">0.5271993576610317</data>
+  <data key="d21">0.11764705882352941</data>
 </edge>
 <edge source="n6" target="n18">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n6" target="n19">
   <data key="d16">True</data>
-  <data key="d17">2.6094379124341005</data>
+  <data key="d17">5</data>
   <data key="d18">False</data>
-  <data key="d21">0.5764980271109498</data>
+  <data key="d21">0.14705882352941177</data>
 </edge>
 <edge source="n6" target="n10">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n6" target="n14">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n7" target="n1">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n7" target="n2">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n7" target="n3">
   <data key="d16">True</data>
-  <data key="d17">2.386294361119891</data>
+  <data key="d17">4</data>
   <data key="d18">False</data>
-  <data key="d21">0.5271993576610317</data>
+  <data key="d21">0.11764705882352941</data>
 </edge>
 <edge source="n7" target="n4">
   <data key="d16">True</data>
-  <data key="d17">3.4849066497880004</data>
+  <data key="d17">12</data>
   <data key="d18">False</data>
-  <data key="d21">0.7699136272587396</data>
+  <data key="d21">0.35294117647058826</data>
 </edge>
 <edge source="n7" target="n11">
   <data key="d16">True</data>
-  <data key="d17">3.302585092994046</data>
+  <data key="d17">10</data>
   <data key="d18">False</data>
-  <data key="d21">0.7296336814165079</data>
+  <data key="d21">0.29411764705882354</data>
 </edge>
 <edge source="n7" target="n13">
   <data key="d16">True</data>
-  <data key="d17">3.70805020110221</data>
+  <data key="d17">15</data>
   <data key="d18">True</data>
-  <data key="d19">2.6094379124341005</data>
-  <data key="d20">0.767957133147624</data>
-  <data key="d21">0.8192122967086576</data>
+  <data key="d19">5</data>
+  <data key="d20">0.45454545454545453</data>
+  <data key="d21">0.4411764705882353</data>
 </edge>
 <edge source="n7" target="n18">
   <data key="d16">True</data>
-  <data key="d17">4.178053830347945</data>
+  <data key="d17">24</data>
   <data key="d18">False</data>
-  <data key="d21">0.9230492815642977</data>
+  <data key="d21">0.7058823529411765</data>
 </edge>
 <edge source="n7" target="n19">
   <data key="d16">True</data>
-  <data key="d17">4.13549421592915</data>
+  <data key="d17">23</data>
   <data key="d18">False</data>
-  <data key="d21">0.9136466689824365</data>
+  <data key="d21">0.6764705882352942</data>
 </edge>
 <edge source="n8" target="n2">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n8" target="n3">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n8" target="n4">
   <data key="d16">True</data>
-  <data key="d17">3.0794415416798357</data>
+  <data key="d17">8</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.6803350119665897</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.23529411764705882</data>
 </edge>
 <edge source="n8" target="n5">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n8" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n8" target="n17">
   <data key="d16">True</data>
-  <data key="d17">2.791759469228055</data>
+  <data key="d17">6</data>
   <data key="d18">False</data>
-  <data key="d21">0.6167779729531814</data>
+  <data key="d21">0.17647058823529413</data>
 </edge>
 <edge source="n8" target="n18">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n9" target="n4">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n9" target="n5">
   <data key="d16">True</data>
-  <data key="d17">3.0794415416798357</data>
+  <data key="d17">8</data>
   <data key="d18">False</data>
-  <data key="d21">0.6803350119665897</data>
+  <data key="d21">0.23529411764705882</data>
 </edge>
 <edge source="n9" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n9" target="n11">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n9" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n9" target="n2">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n9" target="n13">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n9" target="n15">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n10" target="n5">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n10" target="n6">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n10" target="n11">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n10" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n10" target="n19">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n10" target="n3">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n10" target="n16">
   <data key="d18">True</data>
-  <data key="d19">3.3978952727983707</data>
+  <data key="d19">11</data>
   <data key="d16">False</data>
   <data key="d20">1.0</data>
 </edge>
 <edge source="n10" target="n17">
   <data key="d18">True</data>
-  <data key="d19">2.6094379124341005</data>
+  <data key="d19">5</data>
   <data key="d16">False</data>
-  <data key="d20">0.767957133147624</data>
+  <data key="d20">0.45454545454545453</data>
 </edge>
 <edge source="n11" target="n18">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n11" target="n0">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 <edge source="n11" target="n19">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n12" target="n13">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n12" target="n10">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n12" target="n19">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 <edge source="n13" target="n5">
   <data key="d16">True</data>
-  <data key="d17">2.6094379124341005</data>
+  <data key="d17">5</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.5764980271109498</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.14705882352941177</data>
 </edge>
 <edge source="n13" target="n6">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n13" target="n9">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n13" target="n11">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n13" target="n13">
   <data key="d16">True</data>
-  <data key="d17">3.70805020110221</data>
+  <data key="d17">15</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.8192122967086576</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.4411764705882353</data>
 </edge>
 <edge source="n13" target="n15">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n13" target="n7">
   <data key="d18">True</data>
-  <data key="d19">2.6094379124341005</data>
+  <data key="d19">5</data>
   <data key="d16">False</data>
-  <data key="d20">0.767957133147624</data>
+  <data key="d20">0.45454545454545453</data>
 </edge>
 <edge source="n13" target="n14">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 <edge source="n14" target="n6">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n14" target="n13">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 <edge source="n14" target="n14">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n15" target="n9">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n16" target="n0">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n16" target="n1">
   <data key="d18">True</data>
-  <data key="d19">2.386294361119891</data>
+  <data key="d19">4</data>
   <data key="d16">False</data>
-  <data key="d20">0.7022860240052761</data>
+  <data key="d20">0.36363636363636365</data>
 </edge>
 <edge source="n16" target="n3">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n16" target="n10">
   <data key="d18">True</data>
-  <data key="d19">3.3978952727983707</data>
+  <data key="d19">11</data>
   <data key="d16">False</data>
   <data key="d20">1.0</data>
 </edge>
 <edge source="n17" target="n0">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n17" target="n4">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
-  <data key="d20">0.2942998296638024</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">1</data>
+  <data key="d20">0.09090909090909091</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n17" target="n5">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n17" target="n8">
   <data key="d16">True</data>
-  <data key="d17">2.9459101490553135</data>
+  <data key="d17">7</data>
   <data key="d18">False</data>
-  <data key="d21">0.6508341819071358</data>
+  <data key="d21">0.20588235294117646</data>
 </edge>
 <edge source="n17" target="n9">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n17" target="n10">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">True</data>
-  <data key="d19">2.6094379124341005</data>
-  <data key="d20">0.767957133147624</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d19">5</data>
+  <data key="d20">0.45454545454545453</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n17" target="n11">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n17" target="n15">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n17" target="n18">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n17" target="n19">
   <data key="d16">True</data>
-  <data key="d17">1.6931471805599454</data>
+  <data key="d17">2</data>
   <data key="d18">False</data>
-  <data key="d21">0.3740637033554735</data>
+  <data key="d21">0.058823529411764705</data>
 </edge>
 <edge source="n18" target="n5">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n18" target="n11">
   <data key="d16">True</data>
-  <data key="d17">4.044522437723423</data>
+  <data key="d17">21</data>
   <data key="d18">False</data>
-  <data key="d21">0.8935484515048435</data>
+  <data key="d21">0.6176470588235294</data>
 </edge>
 <edge source="n18" target="n12">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n18" target="n13">
   <data key="d16">True</data>
-  <data key="d17">3.5649493574615367</data>
+  <data key="d17">13</data>
   <data key="d18">False</data>
-  <data key="d21">0.7875973065057267</data>
+  <data key="d21">0.38235294117647056</data>
 </edge>
 <edge source="n18" target="n19">
   <data key="d16">True</data>
-  <data key="d17">2.9459101490553135</data>
+  <data key="d17">7</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.6508341819071358</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.20588235294117646</data>
 </edge>
 <edge source="n18" target="n0">
   <data key="d18">True</data>
-  <data key="d19">2.09861228866811</data>
+  <data key="d19">3</data>
   <data key="d16">False</data>
-  <data key="d20">0.6176212390853874</data>
+  <data key="d20">0.2727272727272727</data>
 </edge>
 <edge source="n19" target="n2">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">False</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n19" target="n3">
   <data key="d16">True</data>
-  <data key="d17">1.0</data>
+  <data key="d17">1</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.22092804904991536</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.029411764705882353</data>
 </edge>
 <edge source="n19" target="n5">
   <data key="d16">True</data>
-  <data key="d17">2.09861228866811</data>
+  <data key="d17">3</data>
   <data key="d18">False</data>
-  <data key="d21">0.46364231864762334</data>
+  <data key="d21">0.08823529411764706</data>
 </edge>
 <edge source="n19" target="n7">
   <data key="d16">True</data>
-  <data key="d17">2.386294361119891</data>
+  <data key="d17">4</data>
   <data key="d18">False</data>
-  <data key="d21">0.5271993576610317</data>
+  <data key="d21">0.11764705882352941</data>
 </edge>
 <edge source="n19" target="n12">
   <data key="d16">True</data>
-  <data key="d17">4.178053830347945</data>
+  <data key="d17">24</data>
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
-  <data key="d20">0.4982929268345393</data>
-  <data key="d21">0.9230492815642977</data>
+  <data key="d19">2</data>
+  <data key="d20">0.18181818181818182</data>
+  <data key="d21">0.7058823529411765</data>
 </edge>
 <edge source="n19" target="n1">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 <edge source="n19" target="n11">
   <data key="d18">True</data>
-  <data key="d19">1.0</data>
+  <data key="d19">1</data>
   <data key="d16">False</data>
-  <data key="d20">0.2942998296638024</data>
+  <data key="d20">0.09090909090909091</data>
 </edge>
 <edge source="n19" target="n18">
   <data key="d18">True</data>
-  <data key="d19">1.6931471805599454</data>
+  <data key="d19">2</data>
   <data key="d16">False</data>
-  <data key="d20">0.4982929268345393</data>
+  <data key="d20">0.18181818181818182</data>
 </edge>
 </graph></graphml>

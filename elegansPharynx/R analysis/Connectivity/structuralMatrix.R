@@ -1,0 +1,377 @@
+library(igraph)
+library(dplyr)
+library(ggplot2)
+setwd("~/elegansProject/elegansPharynx/R analysis/Connectivity")
+
+######### Structural connectivity matrices ---------------
+# First, prepare network attributes with the entire connectome
+original_edgelist <- read.csv("hermPharynx_connections.csv", stringsAsFactors = FALSE)
+original_nodelist <- read.csv("1.2cell_typesPharynx.csv", stringsAsFactors = FALSE)
+
+
+# Create iGraph object and calculate network properties
+graph <- graph.data.frame(original_edgelist, directed = TRUE, vertices = original_nodelist)
+
+V(graph)$degree <- degree(graph)
+V(graph)$closeness <- centralization.closeness(graph)$res
+V(graph)$betweenness <- centralization.betweenness(graph)$res
+V(graph)$eigen <- centralization.evcent(graph)$vector
+
+rm (original_edgelist, original_nodelist)
+
+
+# Generate an undirected graph to calculate communities (add the most appropriate calculation 
+# to node as attribute (i.e. V(graph)$community=cfg$membership))
+netSimply=as.undirected(graph, mode='collapse',edge.attr.comb=list(weight='sum','ignore'))
+
+   # Based on Edge betweeness (Newman-Girvan)
+ceb=cluster_edge_betweenness(netSimply)
+dendPlot(ceb, mode = 'hclust')
+plot(ceb,netSimply)
+    # Based on propagating labels
+clp=cluster_label_prop(netSimply)
+plot(clp, netSimply)
+    # Based on greedy optimization of modularity
+cfg=cluster_fast_greedy(netSimply)
+plot(cfg, netSimply)
+V(netSimply)$community=cfg$membership
+colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen"), alpha=.6)
+plot(netSimply, vertex.color=colrs[V(netSimply)$community])
+    # K-core decomposition
+kc=coreness(netSimply,mode='all')
+plot(netSimply,vertex.size=kc*6, vertex.label=kc)
+
+# Choose and add the most appropriate community calculation as attribute. i.e.:
+V(graph)$community=cfg$membership
+
+rm(ceb,clp,cfg,colrs,kc, netSimply)
+
+# Generate dataframe for nodes with updated network attributes, and ordered by community
+nodes=get.data.frame(graph, what='vertices')
+nodes_ordered = nodes[order(nodes$community),] 
+all_nodes = nodes_ordered$name
+
+rm (nodes_ordered)
+
+# Prepare plotting with separate graphs for electrical and chemical connections
+chemConn = read.csv("hermPharynx_connectionsCHEM.csv", stringsAsFactors = FALSE)
+elecConn = read.csv("hermPharynx_connectionsELEC.csv", stringsAsFactors = FALSE)
+
+
+# Create one iGraph per network
+chemGraph = graph.data.frame(chemConn, directed = TRUE, vertices = nodes)
+elecGraph = graph.data.frame(elecConn, directed = T, vertices = nodes)
+
+rm(chemConn,elecConn)
+
+# Determine a community for each edge. If two nodes belong to the same community, label the edge with that community. 
+# If not, the edge community value is 'NA'
+edgesChem = get.data.frame(chemGraph, what = "edges") %>% 
+  inner_join(nodes %>% select(name, community), by = c("from" = "name")) %>%
+  inner_join(nodes %>% select(name, community), by = c("to" = "name")) %>%
+   mutate(group = ifelse(community.x == community.y, community.x, NA) %>% factor())
+
+edgesElec = get.data.frame(elecGraph, what = "edges") %>% 
+  inner_join(nodes %>% select(name, community), by = c("from" = "name")) %>%
+  inner_join(nodes %>% select(name, community), by = c("to" = "name")) %>%
+  mutate(group = ifelse(community.x == community.y, community.x, NA) %>% factor())
+
+
+# Adjust the 'to' and 'from' factor levels so they are equal
+# to this complete list of node names
+plot_data = edgesChem %>% mutate(
+  to = factor(to, levels = all_nodes),
+  from = factor(from, levels = all_nodes))
+
+
+## Create structural adjacency matrix showing communities -----------------
+ggplot(plot_data, aes(x = from, y = to, color=group)) +
+  geom_point(shape=18, size=4) +
+  geom_point(data = edgesElec, aes(x=from, y=to), size=1, color='grey19')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1,
+    # Hide the legend (optional)
+    legend.position = "none")
+
+
+## Create structural adjacency matrix showing weights*inh/exc -----------------
+ggplot(plot_data, aes(x = from, y = to, color=logWeight)) +
+  geom_point(shape=18, size=4) +
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='grey17')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_gradient(low = 'lightgoldenrod2', high = 'orangered')+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+
+
+
+
+######### Functional connectivity matrices -----
+
+fConn <- read.csv("fConn.csv", stringsAsFactors = FALSE)
+
+# Create iGraph for functional connectivity data
+fGraph = graph.data.frame(fConn, directed = TRUE, vertices = nodes)
+
+rm (fConn)
+
+# Determine a community for each edge. If two nodes belong to the same community, label the edge with that community. 
+# If not, the edge community value is 'NA'
+edgesF = get.data.frame(fGraph, what = "edges") %>% 
+  inner_join(nodes %>% select(name, community), by = c("from" = "name")) %>%
+  inner_join(nodes %>% select(name, community), by = c("to" = "name")) %>%
+  mutate(group = ifelse(community.x == community.y, community.x, NA) %>% factor())
+
+
+# Adjust the 'to' and 'from' factor levels so they are equal
+# to this complete list of node names
+plot_data = edgesF %>% mutate(
+  to = factor(to, levels = all_nodes),
+  from = factor(from, levels = all_nodes))
+
+
+## Create functional adjacency matrix showing Phi connectivity ----
+ggplot(plot_data, aes(x = from, y = to, color=connPhi)) +
+  geom_point(shape=15, size=6) +
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_gradient2(low = 'aquamarine3', high = 'orangered')+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+
+## Create functional adjacency matrix showing Psi1 connectivity ------
+ggplot(plot_data, aes(x = from, y = to, color=as.factor(connPsi1))) +
+  geom_point(shape=15, size=6) +
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_manual(values = c('lightskyblue1','white', 'lightsalmon'))+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1,
+    # Hide the legend (optional)
+    legend.position = "none")
+
+
+## Create functional adjacency matrix showing Psi2 connectivity --------
+ggplot(plot_data, aes(x = from, y = to, color=as.factor(connPsi2))) +
+  geom_point(shape=15, size=6) +
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_manual(values = c('lightskyblue1','white', 'lightsalmon'))+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1,
+    # Hide the legend (optional)
+    legend.position = "none")
+
+
+
+#####  Plot structural and functional together-----
+## Structure and Phi ------
+ggplot() +
+  geom_point(data = edgesF, aes(x=from, y=to, color=connPhi), shape=15, size=7) +
+  geom_point(data = edgesChem, aes(x=from, y=to), shape=18,size=4, color='goldenrod1')+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='red')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_color_gradient2(low = "lightskyblue", mid = "white", high = "chocolate1")+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+## Structure and Psi1 -----
+ggplot() +
+  geom_point(data = edgesF, aes(x=from,y=to, color=connPsi1), shape=15, size=7) +
+  geom_point(data = edgesChem, aes(x=from, y=to), shape=18,size=4, color='goldenrod1')+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='red')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_color_gradient2(low = "lightcyan2", mid = "white", high = "moccasin")+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0), 
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+## Structure and Psi2 -------
+ggplot() +
+  geom_point(data = edgesF, aes(x=from,y=to,color=connPsi2), shape=15, size=7) +
+  geom_point(data = edgesChem, aes(x=from, y=to), shape=18, size=4, color='goldenrod1')+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='red')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_color_gradient2(low = "lightcyan2", mid = "white", high = "moccasin")+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+######### Functional connectivity matrices (just excitatory connections) --------
+
+edgesF$connPhiP=pmax(0,edgesF$connPhi)
+edgesF$connPsi1P=pmax(0,edgesF$connPsi1)
+edgesF$connPsi2P=pmax(0,edgesF$connPsi2)
+
+
+## Create functional adjacency matrix showing PhiP connectivity -------
+ggplot(edgesF, aes(x = from, y = to, color=connPhiP)) +
+  geom_point(shape=15, size=4) +
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_gradient2(low = 'aquamarine3', high = 'orangered')+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+
+## Create functional adjacency matrix showing Psi1P connectivity -----------
+ggplot(edgesF, aes(x = from, y = to, color=as.factor(connPsi1P))) +
+  geom_point(shape=15, size=4) +
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_manual(values = c('white', 'lightsalmon'))+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1,
+    # Hide the legend (optional)
+    legend.position = "none")
+
+
+## Create functional adjacency matrix showing Psi2P connectivity ---------
+ggplot(edgesF, aes(x = from, y = to, color=as.factor(connPsi2P))) +
+  geom_point(shape=15, size=4) +
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_colour_manual(values = c('white', 'lightsalmon'))+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1,
+    # Hide the legend (optional)
+    legend.position = "none")
+
+
+#####  Plot structural and functional (just excitatory) together ---------
+## Structure and PhiP ------
+ggplot() +
+  geom_point(data = edgesF, aes(x=from,y=to,color=connPhiP),shape=15,size=7) +
+  geom_point(data = edgesChem, aes(x=from, y=to), shape=18, size=4, color='goldenrod1')+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='red')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_color_gradient(low = 'white', high ='chocolate1')+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+## Structure and Psi1P -----
+ggplot() +
+  geom_point(data = edgesF, aes(x=from,y=to,color=as.factor(connPsi1P)), shape=15, size=7) +
+  geom_point(data = edgesChem, aes(x=from, y=to),shape=18, size=4, color='goldenrod1')+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='red')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_color_manual(values=c('white','moccasin'))+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)
+
+## Structure and Psi2P -------
+ggplot() +
+  geom_point(data = edgesF, aes(x=from,y=to,color=as.factor(connPsi2P)), shape=15, size=7) +
+  geom_point(data = edgesChem, aes(x=from, y=to), shape=18, size=4, color='goldenrod1')+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=0.7, color='red')+
+  theme_light() +
+  # Because we need the x and y axis to display every node,
+  # not just the nodes that have connections to each other,
+  # make sure that ggplot does not drop unused factor levels
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_color_manual(values=c('white', 'moccasin'))+
+  theme(
+    # Rotate the x-axis lables so they are legible
+    axis.text.x = element_text(angle = 270, hjust = 0),
+    # Force the plot into a square aspect ratio
+    aspect.ratio = 1)

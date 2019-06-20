@@ -181,7 +181,7 @@ del actdf
 
 #import pandas
 #import time
-#from rasterPlot import rasterPlot
+#import networkx as nx
 #
 #Activity=pandas.DataFrame()
 #T=0
@@ -199,15 +199,22 @@ del actdf
 #    actdf=actdf.transpose()
 #    Activity=Activity.append(actdf)
 #    
-#    ## from Activity dataframe generate Raster plot
-#    rasterPlot(Activity, envActivation)
+#Activity.index=range(len(Activity))     # reset indexes 
+#
+### Append cell names for analysis
+#G = nx.read_graphml("data/elegans.herm_connectome.graphml")
+#names=[]
+#for n in list(Activity):
+#    names.append(G.node[n]['cell_name'])
+#
+#Activity.loc[-1]=names
+#Activity.index = Activity.index + 1     # shifting the index
+#Activity=Activity.sort_index()
 #
 #localtime = time.asctime(time.localtime(time.time()))
 #Activity.to_csv('data/parameterTesting/Activity_'+localtime+'.csv', index=False)
 #
-#del actdf
-
-
+#del actdf, n, localtime, N, T
 
 
 

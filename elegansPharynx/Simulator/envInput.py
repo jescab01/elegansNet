@@ -15,10 +15,10 @@ def randomSensInput(G, Psens, sim, envActivation, timestep):
                            'b':['n4','n6','n7']}}
           
     
-    if random.random() < 0.5:
+    if random.random() < 0.3:
         envActivation[sim]['active'].append(timestep)
         for group, subG in sens.items():            ### Define dictionary to use   
-            if random.random() < 0.4:
+            if random.random() < 0.3:
                 envActivation[sim]['activeG'].append(str(timestep)+group)
                 for subgroup, nodes in subG.items():
                     if random.random() < 0.6:
