@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="cell_type" attr.type="string" for="node" id="d12"/>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="cellType_group" attr.type="long" for="node" id="d13"/>
+<key attr.name="cell_type" attr.type="string" for="node" id="d12"/>
 <key attr.name="LRb" attr.type="string" for="node" id="d11"/>
 <key attr.name="area" attr.type="string" for="node" id="d10"/>
 <key attr.name="sensor" attr.type="string" for="node" id="d9"/>
@@ -26,6 +27,7 @@
   <data key="d10">head</data>
   <data key="d11">L</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n1">
   <data key="d4">I1R</data>
@@ -37,6 +39,7 @@
   <data key="d10">head</data>
   <data key="d11">R</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n2">
   <data key="d4">I2L</data>
@@ -48,6 +51,7 @@
   <data key="d10">head</data>
   <data key="d11">L</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n3">
   <data key="d4">I2R</data>
@@ -59,6 +63,7 @@
   <data key="d10">head</data>
   <data key="d11">R</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n4">
   <data key="d4">I3</data>
@@ -70,6 +75,7 @@
   <data key="d10">head</data>
   <data key="d11">b</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n5">
   <data key="d4">I4</data>
@@ -79,6 +85,7 @@
   <data key="d8">43.1</data>
   <data key="d9">None</data>
   <data key="d12">Interneuron</data>
+  <data key="d13">3</data>
 </node>
 <node id="n6">
   <data key="d4">I5</data>
@@ -90,6 +97,7 @@
   <data key="d10">head</data>
   <data key="d11">b</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n7">
   <data key="d4">I6</data>
@@ -101,6 +109,7 @@
   <data key="d10">head</data>
   <data key="d11">b</data>
   <data key="d12">Interneuron, Sensory</data>
+  <data key="d13">2</data>
 </node>
 <node id="n8">
   <data key="d4">M1</data>
@@ -110,6 +119,7 @@
   <data key="d8">44.42</data>
   <data key="d9">None</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n9">
   <data key="d4">M2L</data>
@@ -119,6 +129,7 @@
   <data key="d8">38.65</data>
   <data key="d9">None</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n10">
   <data key="d4">M2R</data>
@@ -128,6 +139,7 @@
   <data key="d8">38.65</data>
   <data key="d9">None</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n11">
   <data key="d4">M3L</data>
@@ -139,6 +151,7 @@
   <data key="d10">head</data>
   <data key="d11">L</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n12">
   <data key="d4">M3R</data>
@@ -150,6 +163,7 @@
   <data key="d10">head</data>
   <data key="d11">R</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n13">
   <data key="d4">M4</data>
@@ -159,6 +173,7 @@
   <data key="d8">57.583</data>
   <data key="d9">None</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n14">
   <data key="d4">M5</data>
@@ -168,6 +183,7 @@
   <data key="d8">41.8</data>
   <data key="d9">None</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n15">
   <data key="d4">MCL</data>
@@ -179,6 +195,7 @@
   <data key="d10">head</data>
   <data key="d11">L</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n16">
   <data key="d4">MCR</data>
@@ -190,6 +207,7 @@
   <data key="d10">head</data>
   <data key="d11">R</data>
   <data key="d12">Motor</data>
+  <data key="d13">7</data>
 </node>
 <node id="n17">
   <data key="d4">MI</data>
@@ -199,6 +217,7 @@
   <data key="d8">56.707</data>
   <data key="d9">None</data>
   <data key="d12">Interneuron, Motor</data>
+  <data key="d13">6</data>
 </node>
 <node id="n18">
   <data key="d4">NSML</data>
@@ -210,6 +229,7 @@
   <data key="d10">head</data>
   <data key="d11">L</data>
   <data key="d12">Motor, Sensory</data>
+  <data key="d13">4</data>
 </node>
 <node id="n19">
   <data key="d4">NSMR</data>
@@ -221,5 +241,6 @@
   <data key="d10">head</data>
   <data key="d11">R</data>
   <data key="d12">Motor, Sensory</data>
+  <data key="d13">4</data>
 </node>
 </graph></graphml>

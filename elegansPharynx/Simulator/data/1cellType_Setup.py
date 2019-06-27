@@ -57,11 +57,13 @@ Cell type setup
 types=pandas.read_csv('networkSetup/1.2cell_typesPharynx.csv')
 cell_name=types.cell_name.tolist()
 cell_type=types.cell_type.tolist()
+group=types.group.tolist()
 
 for a in range(len(nsNAME)):
     for b in range(len(cell_name)):
         if G.node['n'+str(a)]['cell_name']==cell_name[b]:
             G.node['n'+str(a)]['cell_type']=cell_type[b]
+            G.node['n'+str(a)]['cellType_group']=group[b]
 
 
 ## Clear variables

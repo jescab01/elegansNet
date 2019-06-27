@@ -1,4 +1,8 @@
 
+This branch contains the data necesary to mount the pharyngenal nervous system of C elegans (20 neurons). 
+
+----------------------------------------
+
 1celltype_Setup.py. This script will add atributes of 'sensor' (mechano, chemo, propio, etc.), 'area' (head, body, tail) and 'LRb' (left, right, body) to sensory neurons, and the attribute 'cell_type' (motor, sensory or interneuron) to each node. 
 
 
@@ -19,7 +23,7 @@ Data provenance.
 
 An original '.graphml' was extracted from: [check Cao's reference]. Updated with all neurons and their 3D positions from OpenWorm project: c302/NeuroML2. Also removed all the edges:'elegans.herm_onlynodes.graphml'.
 
-Edges were extracted from OpenWorm/c302/c302/data: 'herm_full_edgelist_MODIFIED.csv'. It was updated by removing edges from neurons to sensory cells and muscles: 'herm_connectome.csv'. 
+Edges were extracted from OpenWorm/c302/c302/data: 'herm_full_edgelist_MODIFIED.csv'. It was updated by removing edges from neurons to muscles: 'herm_connectome.csv'. 
 
 Finally, .graphml is updated to 'elegans_herm.graphml' with every node and connection between neurons.
 
@@ -29,10 +33,10 @@ The type of chemical neurotransmitter used by the neuron: neurotransmitterMap.cs
 
 Finally, new graphml is built: elegans.herm_connectome.graphml 
 
-The code for the update is in 'updateEdges.py'.
+The code for the update is in 'connectomeSetup.py'.
 
 
-'hermConnectomeSensory.graphml' is the final output of the process. The process can be checked in 'sensorySetup.py'.
+'elegans.herm_connectome.graphml' is the final output of the process. The process can be checked in 'cellType_setup.py'.
 
 
 

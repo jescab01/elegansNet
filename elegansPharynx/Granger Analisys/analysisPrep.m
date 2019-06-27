@@ -1,16 +1,22 @@
 % Preparing connectivity analysis data to export to R
 % and analize there.
 
-load dataPharynx.mat
+% load data_Pharynx.mat
+% load data_Pharynx1Sim.mat
+% load PharynxGC50ht1sim.mat
+% load PharynxModels50ht1sim.mat
+
+
 
 % Dimension of input data (L: length, N: number of neurons)
 [L,N] = size(X);
 
-% Create a cell array to add Phi connections
-fConn={'from', 'to', 'connPhi', 'connPsi1', 'connPsi2'};
+% Create a cell array to add Phi and Psi connections
+fConn={'from', 'to', 'connPhi', 'connPsi1', 'connPsi2', 'connWeight', 'connWxGC'};
 
-%%% Import names manually as a cell array called names with two 
-%%% rows, first for 'n1', 'n2', etc.; second for cell names.
+%%% Import names manually as a cell array called 'names'. 
+%%% Choose 'text' as variable type for each column. 
+%%% Two rows, first for 'n1', 'n2', etc.; second for cell names.
 
 for trigger = 1:N
     for target=1:N
@@ -22,9 +28,21 @@ for trigger = 1:N
     end
 end
     
-colnames = {'from', 'to', 'connPhi', 'connPsi1', 'connPsi2'};
+
+% Add Model Weights to the cell array
+
+for trigger = 1:N
+    for target=1:N
+        fConn{(trigger-1)*N+target,6}=sum(bhat{ht(target),target}(ht(target)/2*(trigger-1)+2:ht(target)/2*trigger+1));
+        fConn{(trigger-1)*N+target,7}=abs(Psi2(target,trigger))*sum(bhat{ht(target),target}(ht(target)/2*(trigger-1)+2:ht(target)/2*trigger+1));
+    end
+end
+
+
+
+colnames = {'from', 'to', 'connPhi', 'connPsi1', 'connPsi2', 'connWeight', 'connWxGC'};
 fConn=cell2table(fConn,'VariableNames',colnames);
 
-writetable(fConn,'fConn.csv')
+writetable(fConn,'Results/fConn1sim.csv')
 
 

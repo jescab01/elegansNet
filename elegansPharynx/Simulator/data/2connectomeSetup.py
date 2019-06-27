@@ -104,8 +104,8 @@ for a in range(len(cleansource)):
 
 for i in range(len(n_cleansource)):
     if cleansyn[i]=='chemical':
-        G.add_edge(n_cleansource[i],n_cleantarget[i], Csyn='True', Cweight=cleanweight[i])       ## logWeight or cleanweight
-    else: G.add_edge(n_cleansource[i],n_cleantarget[i],Esyn='True', Eweight=cleanweight[i])
+        G.add_edge(n_cleansource[i],n_cleantarget[i], Csyn='True', Cweight=logWeight[i])       ## logWeight or cleanweight
+    else: G.add_edge(n_cleansource[i],n_cleantarget[i],Esyn='True', Eweight=logWeight[i])
     
     
 ##### Complete edge attributes with Csyn/Esyn=False where necessary.

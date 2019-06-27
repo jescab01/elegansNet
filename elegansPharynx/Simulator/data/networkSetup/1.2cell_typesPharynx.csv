@@ -1,21 +1,21 @@
-cell_name,cell_type
-I1L,"Interneuron, Sensory"
-I1R,"Interneuron, Sensory"
-I2L,"Interneuron, Sensory"
-I2R,"Interneuron, Sensory"
-I3,"Interneuron, Sensory"
-I4,Interneuron
-I5,"Interneuron, Sensory"
-I6,"Interneuron, Sensory"
-M1,Motor
-M2L,Motor
-M2R,Motor
-M3L,Motor
-M3R,Motor
-M4,Motor
-M5,Motor
-MCL,Motor
-MCR,Motor
-MI,"Interneuron, Motor"
-NSML,"Motor, Sensory"
-NSMR,"Motor, Sensory"
+cell_name,cell_type,group
+I1L,"Interneuron, Sensory",2
+I1R,"Interneuron, Sensory",2
+I2L,"Interneuron, Sensory",2
+I2R,"Interneuron, Sensory",2
+I3,"Interneuron, Sensory",2
+I4,Interneuron,3
+I5,"Interneuron, Sensory",2
+I6,"Interneuron, Sensory",2
+M1,Motor,7
+M2L,Motor,7
+M2R,Motor,7
+M3L,Motor,7
+M3R,Motor,7
+M4,Motor,7
+M5,Motor,7
+MCL,Motor,7
+MCR,Motor,7
+MI,"Interneuron, Motor",6
+NSML,"Motor, Sensory",4
+NSMR,"Motor, Sensory",4

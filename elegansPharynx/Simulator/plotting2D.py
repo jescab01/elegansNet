@@ -27,7 +27,27 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
     for a in range(timesteps):
         color=[]
         for b in range(G.number_of_nodes()):
-            color.append(activitydata[a]['n'+str(b)])
+            if activitydata[a]['n'+str(b)]==-70:
+                color.append('w')
+            if activitydata[a]['n'+str(b)]==-69:
+                color.append('whitesmoke')
+            if activitydata[a]['n'+str(b)]==-65:
+                color.append('gainsboro')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-29:
+                color.append('indianred')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-28:
+                color.append('salmon')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-27:
+                color.append('darkorange')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-26:
+                color.append('olive')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-25:
+                color.append('yellowgreen')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-24:
+                color.append('royalblue')
+            if activitydata[a]['n'+str(b)]+G.node['n'+str(b)]['cellType_group']==-23:
+                color.append('cadetblue')
+                           
             
         plt.figure(figsize=(9,11))
         nx.draw(G, pos, node_color = color, node_size=node_sizes, width=1,
