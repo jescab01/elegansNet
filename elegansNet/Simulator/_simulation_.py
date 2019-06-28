@@ -45,7 +45,7 @@ def stimulateSensors(G, sensor, area, LRb, nodesNumber):
 def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesNumber):
     activity = []
     activityDic={}
-    for n,nbrs in G.adj.items():
+    for n in G.nodes():
         activity.append(G.node[n]['mV'])
     for i in range(nodesNumber):
         activityDic['n'+str(i)]=G.node['n'+str(i)]['mV']
@@ -73,8 +73,8 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
     
     
     ## Load network prepared by prepareNetwork.py, inhibitory ratio=0.08609271523178808.
-    G = nx.read_graphml("data/elegans.herm_connectome.graphml")
-    nodesNumber = nx.number_of_nodes(G)
+    G = nx.read_graphml("data/elegans.hermSomatic_connectome.graphml")
+    nodesNumber = G.number_of_nodes()
     pathLength=dict(nx.all_pairs_shortest_path_length(G))  #define path lengths
     
     
@@ -99,9 +99,6 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
         hpTest[sim]={}
         envActivation[sim]={'active':[], 'activeG':[], 'activeSG':[], 'activeNode':[]}
         
-        if sum(activity)/302 == -70:
-            print('Initially deactivated for: simulation ' + str(sim))
-            break
         
           
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, c)
@@ -149,12 +146,12 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
                 plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
-                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+           #     plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
             else:
                 timeplt=datasets['deactivated'][sim]
                 plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
-                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+     #           plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
     
     ## Ad-hoc 3Dhtml representation to deepen

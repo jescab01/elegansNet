@@ -76,9 +76,9 @@ def plotting3D(G, sim, timesteps, activitydata, simInitActivity, infos):
                          'Simulation number = ' + str(sim) + '<br>' +
                          'Time = ' + str(a),
                          font=dict(family='Arial', size=14)),
-                            width=1400, height=900, margin=dict(l=0,r=0,b=0,t=0),
+                            width=800, height=600, margin=dict(l=0,r=0,b=0,t=0),
                             scene=dict(aspectmode='manual',
-                                       aspectratio=go.layout.scene.Aspectratio(x=0.6,y=2.2,z=0.9)))
+                                       aspectratio=go.layout.scene.Aspectratio(x=0.4,y=1,z=0.6)))
         
         fig=go.Figure(data=data,layout=layout)
         

@@ -32,14 +32,14 @@ def activityInit():
     
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 200
+    timesteps = 50
     sim_no = 1
     Psens=0.5   # Parameter for sensory neurons being excited by environment
     
-    att=0.55     ## attenuatipon coefficient
+    att=0.5     ## attenuatipon coefficient
     
-    ratioRandomInit=0.5  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=0.2 # free parameter influence of weights [exin*(100*c)*weight]
+    ratioRandomInit=0.4  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
+    c=5  # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
@@ -48,7 +48,7 @@ def activityInit():
     
     G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, att)
   #  representation(G, masterInfo, sim_no, timesteps, simInitActivity)
-    return masterInfo, envActivation
+    return masterInfo, envActivation, timesteps
 
 
 def paramTest():
@@ -59,7 +59,7 @@ def paramTest():
     timesteps = 50
     sim_no = 10
     
-    Psenss=[0.5, 0.75]   # Probability of sensory neurons being excited by environment
+    Psenss=[0.5]   # Probability of sensory neurons being excited by environment
     
     
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
@@ -69,42 +69,53 @@ def paramTest():
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
              
     ##Independent Variable 1 (RI)
-    ratioRandomInit=[0.1,0.15,0.2] 
+    ratioRandomInit=[0.1,0.2,0.3,0.4,0.5,0.6] 
     
     
     ## Independent Variable 2 (c): free parameter influence of weights [exin*(100*c)*weight]
-    clist=[0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,
-           0.16,0.17,0.18,0.19,0.20,0.21,0.25]
-
+    #clist=[0.4,0.45,0.5,0.55,0.6,0.7,0.8,0.9,1,1.1]    for logWeight
+    clist=[0.01,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5]
+    
     ## Independent variable 3(att)
 #    lis=list(range(-71,-80,-0.5))
-    atts=[0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95]
+    atts=[0.4,0.5,0.6,0.7,0.8,0.9]
 
     surviveTime={}  
     inATT={}
     rrp2rest={}
     envActiv={}
+    Activity={}
     
     for Psens in Psenss:
         surviveTime[Psens]={}
         inATT[Psens]={}
         rrp2rest[Psens]={} 
         envActiv[Psens]={}
+        Activity[Psens]={}
         for ri in ratioRandomInit:
             surviveTime[Psens][ri]={}
             inATT[Psens][ri]={}
             rrp2rest[Psens][ri]={}
             envActiv[Psens][ri]={}
+            Activity[Psens][ri]={}
             for c in clist:
                 surviveTime[Psens][ri][c]=pandas.DataFrame()
                 inATT[Psens][ri][c]=pandas.DataFrame()
                 rrp2rest[Psens][ri][c]=pandas.DataFrame()
                 envActiv[Psens][ri][c]={}
-    
+                Activity[Psens][ri][c]={}
                 
                 for att in atts:
                     G, masterInfo, simInitActivity, pathLength, hpTest, envActivation = simulation (timesteps, sim_no, ri, c, area, LRb, sensor, Psens, att)
                     
+                    actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
+                    actdf=actdf.replace([-70,-69,-65], 0)
+                    actdf=actdf.replace(-30, 1)   
+                    actdf=actdf.transpose()
+                    
+                    totact=actdf.sum()
+                    
+                    Activity[Psens][ri][c][att]=totact.min()
                     surviveTime[Psens][ri][c][att]=masterInfo['mainInfoGraded']['deactivated'].values()
                     surviveTime[Psens][ri][c][att]=surviveTime[Psens][ri][c][att].replace('None', timesteps)
                     
@@ -136,7 +147,7 @@ def paramTest():
                     rrp2rest[Psens][ri][c][att]=rrp2restList
 
 
-    return masterInfo, surviveTime, inATT, rrp2rest, envActiv
+    return masterInfo, surviveTime, inATT, rrp2rest, envActiv, Activity
 
 
 
@@ -159,7 +170,7 @@ import pandas
 import time
 from rasterPlot import rasterPlot
    
-masterInfo, envActivation = activityInit()
+masterInfo, envActivation, timesteps = activityInit()
 
 ## Export activity to a binary dataframe
 actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
@@ -170,10 +181,8 @@ Activity=actdf.transpose()
 ## from Activity dataframe generate Raster plot
 rasterPlot(Activity, envActivation)
 
-#localtime = time.asctime(time.localtime(time.time()))
-#Activity.to_csv('data/parameterTesting/Activity_'+localtime+'.csv', index=False)
 
-del actdf
+del actdf, timesteps
 
 
 
@@ -186,23 +195,24 @@ del actdf
 #Activity=pandas.DataFrame()
 #T=0
 #
-#while T<500:
+#while T<=100000:
 #    
 #    T,N=Activity.shape
 #    
-#    masterInfo, envActivation = activityInit()
+#    masterInfo, envActivation, timesteps = activityInit()
 #    
-#    ## Export activity to a binary dataframe
-#    actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
-#    actdf=actdf.replace([-70,-69,-65], 0)
-#    actdf=actdf.replace(-30, 1)   
-#    actdf=actdf.transpose()
-#    Activity=Activity.append(actdf)
+#    ## If simulation survived, export activity to a dataframe in binary
+#    if len(masterInfo['mainInfoGraded']['activitydata'][0])==timesteps:
+#        actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
+#        actdf=actdf.replace([-70,-69,-65], 0)
+#        actdf=actdf.replace(-30, 1)   
+#        actdf=actdf.transpose()
+#        Activity=Activity.append(actdf)
 #
 #Activity.index=range(len(Activity))     # reset indexes 
 #
-### Append cell names for analysis
-#G = nx.read_graphml("data/elegans.hermSomatic_connectome.graphml")
+### Collect cell names and append as first dataframe line for analysis
+#G = nx.read_graphml("data/elegans.hermPharynx_connectome.graphml")
 #names=[]
 #for n in list(Activity):
 #    names.append(G.node[n]['cell_name'])
@@ -213,21 +223,18 @@ del actdf
 #localtime = time.asctime(time.localtime(time.time()))
 #Activity.to_csv('data/parameterTesting/Activity_'+localtime+'.csv', index=False)
 #
-#del actdf, n, localtime, N, T
+#del actdf, n, localtime, N, T, timesteps, names
 
 
 
-
-
-
-''' ## parameter Testing Launcher'''
+''' ## parameter Testing '''
 #import pandas
 #import time
 #
 #paramTestData=pandas.DataFrame()
 #
 ### Run simulations
-#masterInfo, surviveTime, inATT, rrp2rest, envActiv= paramTest()
+#masterInfo, surviveTime, inATT, rrp2rest, envActiv, Activity= paramTest()
 #
 ### Gather data from simulations
 #for Psens, ris in surviveTime.items():
@@ -237,18 +244,19 @@ del actdf
 #                for i in list(surviveTime[Psens][ri][c].index):
 #                    dic={'Psens':Psens,'RI':ri,'c':c,'att':att,'surviveTime':surviveTime[Psens][ri][c][att][i],
 #                         'inATT':inATT[Psens][ri][c][att][i], 'rrp2rest':rrp2rest[Psens][ri][c][att][i],
-#                         'active':len(envActiv[Psens][ri][c][att][i]['active']),'activeG':len(envActiv[Psens][ri][c][att][i]['activeG']),
-#                         'activeSG':len(envActiv[Psens][ri][c][att][i]['activeSG']),'activeNode':len(envActiv[Psens][ri][c][att][i]['activeNode'])}
+#                         'sens':len(envActiv[Psens][ri][c][att][i]['active']),'sensG':len(envActiv[Psens][ri][c][att][i]['activeG']),
+#                         'sensSG':len(envActiv[Psens][ri][c][att][i]['activeSG']),'sensNode':len(envActiv[Psens][ri][c][att][i]['activeNode']),
+#                         'minNodeActivity':Activity[Psens][ri][c][att]}
 #                    
 #                    paramTestData=paramTestData.append(dic, ignore_index=True)
 #
 ### Export data to .csv
 #localtime = time.asctime(time.localtime(time.time()))
-#paramTestData.to_csv('data/parameterTesting/dataG_'+localtime+'.csv', index=False)
+#paramTestData.to_csv('data/parameterTesting/dataSomatic_'+localtime+'.csv', index=False)
 #
 ### Clear variables
 #del c, cs, att, atts, ri, dic, i, localtime, surviveTime, Psens
-#del envActiv, inATT, rrp2rest, ris
+#del envActiv, inATT, rrp2rest, ris, Activity
 
 
             

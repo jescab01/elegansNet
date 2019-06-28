@@ -81,7 +81,7 @@ cleandic={'Source':cleansource,'Target':cleantarget,
 ##### Write new .csv
 
 connectome=pandas.DataFrame(cleandic, columns=['Source','Target','Weight','logWeight','Syn'])
-connectome.to_csv('networkSetup/2.1herm_connections.csv', index=False)
+connectome.to_csv('networkSetup/2.1hermSomatic_connections.csv', index=False)
 
 
 ## Translate cleansource and cleantarget to 'nx' names

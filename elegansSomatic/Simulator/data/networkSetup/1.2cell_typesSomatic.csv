@@ -1,283 +1,280 @@
-cell_name,cell_type
-ADAL,Interneuron
-ADAR,Interneuron
-ADEL,Sensory
-ADER,Sensory
-ADFL,Sensory
-ADFR,Sensory
-ADLL,Sensory
-ADLR,Sensory
-AFDL,Sensory
-AFDR,Sensory
-AIAL,Interneuron
-AIAR,Interneuron
-AIBL,Interneuron
-AIBR,Interneuron
-AIML,Interneuron
-AIMR,Interneuron
-AINL,Interneuron
-AINR,Interneuron
-AIYL,Interneuron
-AIYR,Interneuron
-AIZL,Interneuron
-AIZR,Interneuron
-ALA,"Interneuron, Sensory"
-ALML,Sensory
-ALMR,Sensory
-ALNL,Sensory
-ALNR,Sensory
-AQR,Sensory
-AS01,Motor
-AS10,Motor
-AS11,Motor
-AS02,Motor
-AS03,Motor
-AS04,Motor
-AS05,Motor
-AS06,Motor
-AS07,Motor
-AS08,Motor
-AS09,Motor
-ASEL,Sensory
-ASER,Sensory
-ASGL,Sensory
-ASGR,Sensory
-ASHL,Sensory
-ASHR,Sensory
-ASIL,Sensory
-ASIR,Sensory
-ASJL,Sensory
-ASJR,Sensory
-ASKL,Sensory
-ASKR,Sensory
-AUAL,Interneuron
-AUAR,Interneuron
-AVAL,Interneuron
-AVAR,Interneuron
-AVBL,Interneuron
-AVBR,Interneuron
-AVDL,Interneuron
-AVDR,Interneuron
-AVEL,Interneuron
-AVER,Interneuron
-AVFL,Interneuron
-AVFR,Interneuron
-AVG,Interneuron
-AVHL,Interneuron
-AVHR,Interneuron
-AVJL,Interneuron
-AVJR,Interneuron
-AVKL,Interneuron
-AVKR,Interneuron
-AVL,"Interneuron, Motor"
-AVM,Sensory
-AWAL,Sensory
-AWAR,Sensory
-AWBL,Sensory
-AWBR,Sensory
-AWCL,Sensory
-AWCR,Sensory
-BAGL,Sensory
-BAGR,Sensory
-BDUL,Interneuron
-BDUR,Interneuron
-CANL,Unknown
-CANR,Unknown
-CEPDL,Sensory
-CEPDR,Sensory
-CEPVL,Sensory
-CEPVR,Sensory
-DA01,Motor
-DA02,Motor
-DA03,Motor
-DA04,Motor
-DA05,Motor
-DA06,Motor
-DA07,Motor
-DA08,Motor
-DA09,Motor
-DB01,"Motor, Sensory"
-DB02,"Motor, Sensory"
-DB03,"Motor, Sensory"
-DB04,"Motor, Sensory"
-DB05,"Motor, Sensory"
-DB06,"Motor, Sensory"
-DB07,"Motor, Sensory"
-DD01,Motor
-DD02,Motor
-DD03,Motor
-DD04,Motor
-DD05,Motor
-DD06,Motor
-DVA,"Interneuron, Sensory"
-DVB,"Interneuron, Motor"
-DVC,Interneuron
-FLPL,Sensory
-FLPR,Sensory
-HSNL,Motor
-HSNR,Motor
-IL1DL,"Interneuron, Sensory, Motor"
-IL1DR,"Interneuron, Sensory, Motor"
-IL1L,"Interneuron, Sensory, Motor"
-IL1R,"Interneuron, Sensory, Motor"
-IL1VL,"Interneuron, Sensory, Motor"
-IL1VR,"Interneuron, Sensory, Motor"
-IL2DL,Sensory
-IL2DR,Sensory
-IL2L,Sensory
-IL2R,Sensory
-IL2VL,Sensory
-IL2VR,Sensory
-LUAL,Interneuron
-LUAR,Interneuron
-OLLL,Sensory
-OLLR,Sensory
-OLQDL,"Interneuron, Sensory"
-OLQDR,"Interneuron, Sensory"
-OLQVL,"Interneuron, Sensory"
-OLQVR,"Interneuron, Sensory"
-PDA,Motor
-PDB,Motor
-PDEL,Sensory
-PDER,Sensory
-PHAL,Sensory
-PHAR,Sensory
-PHBL,Sensory
-PHBR,Sensory
-PHCL,Sensory
-PHCR,Sensory
-PLML,Sensory
-PLMR,Sensory
-PLNL,Sensory
-PLNR,Sensory
-PQR,Sensory
-PVCL,Interneuron
-PVCR,Interneuron
-PVDL,Sensory
-PVDR,Sensory
-PVM,Sensory
-PVNL,"Interneuron, Motor"
-PVNR,"Interneuron, Motor"
-PVPL,Interneuron
-PVPR,Interneuron
-PVQL,Interneuron
-PVQR,Interneuron
-PVR,Interneuron
-PVT,Interneuron
-PVWL,Interneuron
-PVWR,Interneuron
-RIAL,Interneuron
-RIAR,Interneuron
-RIBL,Interneuron
-RIBR,Interneuron
-RICL,Interneuron
-RICR,Interneuron
-RID,Motor
-RIFL,Interneuron
-RIFR,Interneuron
-RIGL,Interneuron
-RIGR,Interneuron
-RIH,Interneuron
-RIML,"Interneuron, Motor"
-RIMR,"Interneuron, Motor"
-RIPL,Interneuron
-RIPR,Interneuron
-RIR,Interneuron
-RIS,Interneuron
-RIVL,"Interneuron, Motor"
-RIVR,"Interneuron, Motor"
-RMDDL,Motor
-RMDDR,Motor
-RMDL,Motor
-RMDR,Motor
-RMDVL,Motor
-RMDVR,Motor
-RMED,Motor
-RMEL,Motor
-RMER,Motor
-RMEV,Motor
-RMFL,Motor
-RMFR,Motor
-RMGL,Interneuron
-RMGR,Interneuron
-RMHL,Motor
-RMHR,Motor
-SAADL,"Interneuron, Motor"
-SAADR,"Interneuron, Motor"
-SAAVL,"Interneuron, Motor"
-SAAVR,"Interneuron, Motor"
-SABD,"Interneuron, Motor"
-SABVL,"Interneuron, Motor"
-SABVR,"Interneuron, Motor"
-SDQL,"Interneuron, Sensory"
-SDQR,"Interneuron, Sensory"
-SIADL,"Interneuron, Motor"
-SIADR,"Interneuron, Motor"
-SIAVL,"Interneuron, Motor"
-SIAVR,"Interneuron, Motor"
-SIBDL,"Interneuron, Motor"
-SIBDR,"Interneuron, Motor"
-SIBVL,"Interneuron, Motor"
-SIBVR,"Interneuron, Motor"
-SMBDL,Motor
-SMBDR,Motor
-SMBVL,Motor
-SMBVR,Motor
-SMDDL,Motor
-SMDDR,Motor
-SMDVL,Motor
-SMDVR,Motor
-URADL,"Motor, Sensory"
-URADR,"Motor, Sensory"
-URAVL,"Motor, Sensory"
-URAVR,"Motor, Sensory"
-URBL,Interneuron
-URBR,Interneuron
-URXL,"Interneuron, Sensory"
-URXR,"Interneuron, Sensory"
-URYDL,Sensory
-URYDR,Sensory
-URYVL,Sensory
-URYVR,Sensory
-VA01,Motor
-VA10,Motor
-VA11,Motor
-VA12,Motor
-VA02,Motor
-VA03,Motor
-VA04,Motor
-VA05,Motor
-VA06,Motor
-VA07,Motor
-VA08,Motor
-VA09,Motor
-VB01,"Motor, Sensory"
-VB10,"Motor, Sensory"
-VB11,"Motor, Sensory"
-VB02,"Motor, Sensory"
-VB03,"Motor, Sensory"
-VB04,"Motor, Sensory"
-VB05,"Motor, Sensory"
-VB06,"Motor, Sensory"
-VB07,"Motor, Sensory"
-VB08,"Motor, Sensory"
-VB09,"Motor, Sensory"
-VC01,Motor
-VC02,Motor
-VC03,Motor
-VC04,Motor
-VC05,Motor
-VC06,Motor
-VD01,Motor
-VD10,Motor
-VD11,Motor
-VD12,Motor
-VD13,Motor
-VD02,Motor
-VD03,Motor
-VD04,Motor
-VD05,Motor
-VD06,Motor
-VD07,Motor
-VD08,Motor
-VD09,Motor
+cell_name,cell_type,group
+ADAL,Interneuron,3
+ADAR,Interneuron,3
+ADEL,Sensory,1
+ADER,Sensory,1
+ADFL,Sensory,1
+ADFR,Sensory,1
+ADLL,Sensory,1
+ADLR,Sensory,1
+AFDL,Sensory,1
+AFDR,Sensory,1
+AIAL,Interneuron,3
+AIAR,Interneuron,3
+AIBL,Interneuron,3
+AIBR,Interneuron,3
+AIML,Interneuron,3
+AIMR,Interneuron,3
+AINL,Interneuron,3
+AINR,Interneuron,3
+AIYL,Interneuron,3
+AIYR,Interneuron,3
+AIZL,Interneuron,3
+AIZR,Interneuron,3
+ALA,"Interneuron, Sensory",2
+ALML,Sensory,1
+ALMR,Sensory,1
+ALNL,Sensory,1
+ALNR,Sensory,1
+AQR,Sensory,1
+AS01,Motor,7
+AS10,Motor,7
+AS11,Motor,7
+AS02,Motor,7
+AS03,Motor,7
+AS04,Motor,7
+AS05,Motor,7
+AS06,Motor,7
+AS07,Motor,7
+AS08,Motor,7
+AS09,Motor,7
+ASEL,Sensory,1
+ASER,Sensory,1
+ASGL,Sensory,1
+ASGR,Sensory,1
+ASHL,Sensory,1
+ASHR,Sensory,1
+ASIL,Sensory,1
+ASIR,Sensory,1
+ASJL,Sensory,1
+ASJR,Sensory,1
+ASKL,Sensory,1
+ASKR,Sensory,1
+AUAL,Interneuron,3
+AUAR,Interneuron,3
+AVAL,Interneuron,3
+AVAR,Interneuron,3
+AVBL,Interneuron,3
+AVBR,Interneuron,3
+AVDL,Interneuron,3
+AVDR,Interneuron,3
+AVEL,Interneuron,3
+AVER,Interneuron,3
+AVFL,Interneuron,3
+AVFR,Interneuron,3
+AVG,Interneuron,3
+AVHL,Interneuron,3
+AVHR,Interneuron,3
+AVJL,Interneuron,3
+AVJR,Interneuron,3
+AVKL,Interneuron,3
+AVKR,Interneuron,3
+AVL,"Interneuron, Motor",6
+AVM,Sensory,1
+AWAL,Sensory,1
+AWAR,Sensory,1
+AWBL,Sensory,1
+AWBR,Sensory,1
+AWCL,Sensory,1
+AWCR,Sensory,1
+BAGL,Sensory,1
+BAGR,Sensory,1
+BDUL,Interneuron,3
+BDUR,Interneuron,3
+CEPDL,Sensory,1
+CEPDR,Sensory,1
+CEPVL,Sensory,1
+CEPVR,Sensory,1
+DA01,Motor,7
+DA02,Motor,7
+DA03,Motor,7
+DA04,Motor,7
+DA05,Motor,7
+DA06,Motor,7
+DA07,Motor,7
+DA08,Motor,7
+DA09,Motor,7
+DB01,"Motor, Sensory",4
+DB02,"Motor, Sensory",4
+DB03,"Motor, Sensory",4
+DB04,"Motor, Sensory",4
+DB05,"Motor, Sensory",4
+DB06,"Motor, Sensory",4
+DB07,"Motor, Sensory",4
+DD01,Motor,7
+DD02,Motor,7
+DD03,Motor,7
+DD04,Motor,7
+DD05,Motor,7
+DD06,Motor,7
+DVA,"Interneuron, Sensory",2
+DVB,"Interneuron, Motor",6
+DVC,Interneuron,3
+FLPL,Sensory,1
+FLPR,Sensory,1
+HSNL,Motor,7
+HSNR,Motor,7
+IL1DL,"Interneuron, Sensory, Motor",5
+IL1DR,"Interneuron, Sensory, Motor",5
+IL1L,"Interneuron, Sensory, Motor",5
+IL1R,"Interneuron, Sensory, Motor",5
+IL1VL,"Interneuron, Sensory, Motor",5
+IL1VR,"Interneuron, Sensory, Motor",5
+IL2DL,Sensory,1
+IL2DR,Sensory,1
+IL2L,Sensory,1
+IL2R,Sensory,1
+IL2VL,Sensory,1
+IL2VR,Sensory,1
+LUAL,Interneuron,3
+LUAR,Interneuron,3
+OLLL,Sensory,1
+OLLR,Sensory,1
+OLQDL,"Interneuron, Sensory",2
+OLQDR,"Interneuron, Sensory",2
+OLQVL,"Interneuron, Sensory",2
+OLQVR,"Interneuron, Sensory",2
+PDA,Motor,7
+PDB,Motor,7
+PDEL,Sensory,1
+PDER,Sensory,1
+PHAL,Sensory,1
+PHAR,Sensory,1
+PHBL,Sensory,1
+PHBR,Sensory,1
+PHCL,Sensory,1
+PHCR,Sensory,1
+PLML,Sensory,1
+PLMR,Sensory,1
+PLNL,Sensory,1
+PLNR,Sensory,1
+PQR,Sensory,1
+PVCL,Interneuron,3
+PVCR,Interneuron,3
+PVDL,Sensory,1
+PVDR,Sensory,1
+PVM,Sensory,1
+PVNL,"Interneuron, Motor",6
+PVNR,"Interneuron, Motor",6
+PVPL,Interneuron,3
+PVPR,Interneuron,3
+PVQL,Interneuron,3
+PVQR,Interneuron,3
+PVR,Interneuron,3
+PVT,Interneuron,3
+PVWL,Interneuron,3
+PVWR,Interneuron,3
+RIAL,Interneuron,3
+RIAR,Interneuron,3
+RIBL,Interneuron,3
+RIBR,Interneuron,3
+RICL,Interneuron,3
+RICR,Interneuron,3
+RID,Motor,7
+RIFL,Interneuron,3
+RIFR,Interneuron,3
+RIGL,Interneuron,3
+RIGR,Interneuron,3
+RIH,Interneuron,3
+RIML,"Interneuron, Motor",6
+RIMR,"Interneuron, Motor",6
+RIPL,Interneuron,3
+RIPR,Interneuron,3
+RIR,Interneuron,3
+RIS,Interneuron,3
+RIVL,"Interneuron, Motor",6
+RIVR,"Interneuron, Motor",6
+RMDDL,Motor,7
+RMDDR,Motor,7
+RMDL,Motor,7
+RMDR,Motor,7
+RMDVL,Motor,7
+RMDVR,Motor,7
+RMED,Motor,7
+RMEL,Motor,7
+RMER,Motor,7
+RMEV,Motor,7
+RMFL,Motor,7
+RMFR,Motor,7
+RMGL,Interneuron,3
+RMGR,Interneuron,3
+RMHL,Motor,7
+RMHR,Motor,7
+SAADL,"Interneuron, Motor",6
+SAADR,"Interneuron, Motor",6
+SAAVL,"Interneuron, Motor",6
+SAAVR,"Interneuron, Motor",6
+SABD,"Interneuron, Motor",6
+SABVL,"Interneuron, Motor",6
+SABVR,"Interneuron, Motor",6
+SDQL,"Interneuron, Sensory",2
+SDQR,"Interneuron, Sensory",2
+SIADL,"Interneuron, Motor",6
+SIADR,"Interneuron, Motor",6
+SIAVL,"Interneuron, Motor",6
+SIAVR,"Interneuron, Motor",6
+SIBDL,"Interneuron, Motor",6
+SIBDR,"Interneuron, Motor",6
+SIBVL,"Interneuron, Motor",6
+SIBVR,"Interneuron, Motor",6
+SMBDL,Motor,7
+SMBDR,Motor,7
+SMBVL,Motor,7
+SMBVR,Motor,7
+SMDDL,Motor,7
+SMDDR,Motor,7
+SMDVL,Motor,7
+SMDVR,Motor,7
+URADL,"Motor, Sensory",4
+URADR,"Motor, Sensory",4
+URAVL,"Motor, Sensory",4
+URAVR,"Motor, Sensory",4
+URBL,Interneuron,3
+URBR,Interneuron,3
+URXL,"Interneuron, Sensory",2
+URXR,"Interneuron, Sensory",2
+URYDL,Sensory,1
+URYDR,Sensory,1
+URYVL,Sensory,1
+URYVR,Sensory,1
+VA01,Motor,7
+VA10,Motor,7
+VA11,Motor,7
+VA12,Motor,7
+VA02,Motor,7
+VA03,Motor,7
+VA04,Motor,7
+VA05,Motor,7
+VA06,Motor,7
+VA07,Motor,7
+VA08,Motor,7
+VA09,Motor,7
+VB01,"Motor, Sensory",4
+VB10,"Motor, Sensory",4
+VB11,"Motor, Sensory",4
+VB02,"Motor, Sensory",4
+VB03,"Motor, Sensory",4
+VB04,"Motor, Sensory",4
+VB05,"Motor, Sensory",4
+VB06,"Motor, Sensory",4
+VB07,"Motor, Sensory",4
+VB08,"Motor, Sensory",4
+VB09,"Motor, Sensory",4
+VC01,Motor,7
+VC02,Motor,7
+VC03,Motor,7
+VC04,Motor,7
+VC05,Motor,7
+VD01,Motor,7
+VD10,Motor,7
+VD11,Motor,7
+VD12,Motor,7
+VD13,Motor,7
+VD02,Motor,7
+VD03,Motor,7
+VD04,Motor,7
+VD05,Motor,7
+VD06,Motor,7
+VD07,Motor,7
+VD08,Motor,7
+VD09,Motor,7

@@ -45,7 +45,7 @@ def stimulateSensors(G, sensor, area, LRb, nodesNumber):
 def getActivity(G, nodesRandomActive, nodesSensorActive, simInitActivity, nodesNumber):
     activity = []
     activityDic={}
-    for n,nbrs in G.adj.items():
+    for n in G.nodes():
         activity.append(G.node[n]['mV'])
     for i in range(nodesNumber):
         activityDic['n'+str(i)]=G.node['n'+str(i)]['mV']
@@ -73,7 +73,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
     
     
     ## Load network prepared by prepareNetwork.py, inhibitory ratio=0.08609271523178808.
-    G = nx.read_graphml("data/elegans.hermPharynx_connectome.graphml")
+    G = nx.read_graphml("data/elegans.hermSomatic_connectome.graphml")
     nodesNumber = G.number_of_nodes()
     pathLength=dict(nx.all_pairs_shortest_path_length(G))  #define path lengths
     
