@@ -19,7 +19,7 @@ import numpy.random
 import math
 
 ##### Load .graphml
-G = nx.read_graphml("networkSetup/1.3elegans.herm.Pharynx_Nodestypes.graphml")
+G = nx.read_graphml("networkSetup/1.3elegans.hermSomatic_Nodestypes.graphml")
 nbr=G.number_of_nodes()
 
 
@@ -48,7 +48,7 @@ for i in range(len(source)):
     syn[i]=syn[i].strip()
 
 
-##### Write lists with connections only beteween Pharynx neurons
+##### Write lists with connections only beteween neurons
 ####  Thus, removing connections from/to non-neuron cells (muscles)
     
 cleandic={}
@@ -81,7 +81,7 @@ cleandic={'Source':cleansource,'Target':cleantarget,
 ##### Write new .csv
 
 connectome=pandas.DataFrame(cleandic, columns=['Source','Target','Weight','logWeight','Syn'])
-connectome.to_csv('networkSetup/2.1hermPharynx_connections.csv', index=False)
+connectome.to_csv('networkSetup/2.1hermSomatic_connections.csv', index=False)
 
 
 ## Translate cleansource and cleantarget to 'nx' names
@@ -104,7 +104,7 @@ for a in range(len(cleansource)):
 
 for i in range(len(n_cleansource)):
     if cleansyn[i]=='chemical':
-        G.add_edge(n_cleansource[i],n_cleantarget[i], Csyn='True', Cweight=logWeight[i])       ## logWeight or cleanweight
+        G.add_edge(n_cleansource[i],n_cleantarget[i], Csyn='True', Cweight=logWeight[i])
     else: G.add_edge(n_cleansource[i],n_cleantarget[i],Esyn='True', Eweight=logWeight[i])
     
     
@@ -131,19 +131,25 @@ for n,nbrs in G.adj.items():
 				if attrs['Cweight'] > max_c_weight:
 					max_c_weight = attrs['Cweight']
 
+maxWeight=0
+if max_c_weight>max_e_weight:
+    maxWeight=max_c_weight
+else:
+    maxWeight=max_e_weight
+
 
 for n,nbrs in G.adj.items():
 	for nbr,attrs in nbrs.items():
 			if attrs['Esyn'] == 'True':
-				attrs['EnormWeight'] = attrs['Eweight'] / max_e_weight
+				attrs['EnormWeight'] = attrs['Eweight'] / maxWeight
 			if attrs['Csyn'] == 'True':
-				attrs['CnormWeight'] = attrs['Cweight'] / max_c_weight
+				attrs['CnormWeight'] = attrs['Cweight'] / maxWeight
 
 
 ##### Add characteristic neurotransmitter to nodes as attribute
 
 colnames = ['Neuron_class', 'Neuron', 'Neurotransmitter']
-data = pandas.read_csv('networkSetup/2.2NeurotransmitterMapPharynx.csv', names=colnames)
+data = pandas.read_csv('networkSetup/2.2NeurotransmitterMap.csv', names=colnames)
 neuron = data.Neuron.tolist()
 nttr = data.Neurotransmitter.tolist()
 
@@ -167,7 +173,7 @@ for i in range(len(nsNAME)):
     elif G.node['n'+str(i)]['neurotransmitters']==NT_types[8]:
         G.node['n'+str(i)]['exin'] = -1
     elif G.node['n'+str(i)]['neurotransmitters']==NT_types[9]:
-        G.node['n'+str(i)]['exin'] = 0      ## in the next step it will be assign +/-1
+        G.node['n'+str(i)]['exin'] = 1
 
 ### Calculate ratio of inhibitory neurons
 
@@ -203,6 +209,6 @@ del n, nbr
 
 ##### Rewrite Graphml
 
-nx.write_graphml(G, 'elegans.hermPharynx_connectome.graphml')
+nx.write_graphml(G, 'elegans.hermSomatic_connectome.graphml')
 
 

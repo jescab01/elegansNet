@@ -131,13 +131,19 @@ for n,nbrs in G.adj.items():
 				if attrs['Cweight'] > max_c_weight:
 					max_c_weight = attrs['Cweight']
 
+maxWeight=0
+if max_c_weight>max_e_weight:
+    maxWeight=max_c_weight
+else:
+    maxWeight=max_e_weight
+
 
 for n,nbrs in G.adj.items():
 	for nbr,attrs in nbrs.items():
 			if attrs['Esyn'] == 'True':
-				attrs['EnormWeight'] = attrs['Eweight'] / max_e_weight
+				attrs['EnormWeight'] = attrs['Eweight'] / maxWeight
 			if attrs['Csyn'] == 'True':
-				attrs['CnormWeight'] = attrs['Cweight'] / max_c_weight
+				attrs['CnormWeight'] = attrs['Cweight'] / maxWeight
 
 
 ##### Add characteristic neurotransmitter to nodes as attribute

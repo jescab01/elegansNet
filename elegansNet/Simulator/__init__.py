@@ -6,27 +6,6 @@ Created on Tue Mar 26 17:33:34 2019
 @author: jescab01
 """
 
-def standardInit():
-    from _simulation_ import simulation, representation
-    ### Define simulation variables
-    timesteps = 10
-    sim_no = 1
-    Psens=0.15   # Parameter for sensory neurons being excited by environment
-    
-    att=0.7     ## attenuatipon coefficient
-    
-    ratioRandomInit=0.2  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=0.2 # free parameter influence of weights [exin*(100*c)*weight]
-    ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
-    area=[] ## Area: 'head', 'body', 'tail'. 
-    LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
-    sensor=[] ## Sensor: 'oxygen', 'mechanosensor', 'propioSomatic', 'propioTail', 'propioPharynx',
-             ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
-    
-    G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, att)
-    representation(G, masterInfo, sim_no, timesteps, simInitActivity)
-    return masterInfo, simInitActivity, pathLength, envActivation
-
 
 def activityInit():
     
@@ -36,10 +15,10 @@ def activityInit():
     sim_no = 1
     Psens=0.5   # Parameter for sensory neurons being excited by environment
     
-    att=0.5     ## attenuatipon coefficient
+    att=0.8     ## attenuatipon coefficient
     
     ratioRandomInit=0.4  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=5  # free parameter influence of weights [exin*(100*c)*weight]
+    c=0.185  # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
@@ -47,7 +26,7 @@ def activityInit():
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
     
     G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, att)
-  #  representation(G, masterInfo, sim_no, timesteps, simInitActivity)
+    representation(G, masterInfo, sim_no, timesteps, simInitActivity)
     return masterInfo, envActivation, timesteps
 
 
@@ -157,17 +136,10 @@ Launcher
 
 '''
 
-'''## standard simulation Launcher'''
-
-#masterInfo, simInitActivity, pathLength, envActivation = standardInit()
-
-
-
 
 '''## Activity simulation Launcher'''
 
 import pandas
-import time
 from rasterPlot import rasterPlot
    
 masterInfo, envActivation, timesteps = activityInit()

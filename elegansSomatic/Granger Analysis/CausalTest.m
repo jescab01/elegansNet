@@ -4,14 +4,20 @@
 % load data_sim_9neuron.mat;     % 9-neuron network
 % load data_sim_hidden.mat;      % 5-neuron network with hidden feedback
 % load result_sim.mat;
- load PharynxModels.mat
+%load data_Pharynx1Sim.mat
+%load PharynxModels50ht.mat
 
 
 % Selected spiking history orders by AIC
 % ht = 2*[3 2 3 3 3 2 2 3 3];      % for 9-neuron network
 % ht = 2*[5 2 2];  % for 5-neuron network with hidded feedback
- ht = 2*[2 2 3 3 3 2 1 3 3 2 2 2 2 2 2 2 2 2 2 2];
 
+% Choose automatically ht with minimum aic.
+aicM=aic;
+aicM(aic==0)=NaN;
+[V,I]=min(aicM);
+
+ht = I;
 
 
 % Dimension of data (L: length, N: number of neurons)
@@ -52,7 +58,7 @@ D = -2*LLKR;                                     % Deviance difference
 alpha = 0.05;
 for ichannel = 1:N
     temp1(ichannel,:) = D(ichannel,:) > chi2inv(1-alpha,ht(ichannel)/2);
-    disp ('Calculating causal connectivity matrix')
+    disp ('Calculating significance')
     disp ('Neuron: ')
     disp (ichannel)
 end
@@ -64,11 +70,11 @@ temp2 = FDR(D,fdrv,ht);
 Psi2 = SGN.*temp2;
 
 % Plot the results
-% figure(1);imagesc(Phi);xlabel('Triggers');ylabel('Targets');
-% figure(2);imagesc(Psi1);xlabel('Triggers');ylabel('Targets');
-% figure(3);imagesc(Psi2);xlabel('Triggers');ylabel('Targets');
+ figure(1);imagesc(Phi);xlabel('Triggers');ylabel('Targets');
+ figure(2);imagesc(Psi1);xlabel('Triggers');ylabel('Targets');
+ figure(3);imagesc(Psi2);xlabel('Triggers');ylabel('Targets');
 
 % Save results
 % save('CausalMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2');
-save ('PharynxGC','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')
+save ('SomaticGC2Jul','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2','ht')
 % save ('elegansMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')

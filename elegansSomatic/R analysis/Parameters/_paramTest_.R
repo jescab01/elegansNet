@@ -1,12 +1,12 @@
 
 
-setwd("~/elegansProject/elegansPharynx/R analysis/Parameters")
+setwd("~/elegansProject/elegansSomatic/R analysis/Parameters")
 library("dplyr", lib.loc="~/anaconda3/envs/rstudio/lib/R/library")
 library("ggplot2", lib.loc="~/anaconda3/envs/rstudio/lib/R/library")
 
 
 
-paramTest=read.csv('dataG_Thu Jun 20 18:17:08 2019.csv')
+paramTest=read.csv('dataSomatic_Tue Jul  2 13:43:21 2019.csv')
 # paramTestB=read.csv('data_Mon Apr  8 19:41:57 2019.csv')
 # paramTestC=read.csv('data_Tue Apr  9 10:38:00 2019.csv')
 # paramTest=rbind(paramTestA,paramTestB,paramTestC)
@@ -49,10 +49,7 @@ modelrrp=glm(ocrrp2spike~att+c+RI+Psens, data = filtered, family = "binomial")
 summary(modelrrp)
 
 
-filtered2plot=filter(paramTest1, surviveBinary==1, c==0.16|c==0.18|c==0.14|c==0.1|c==0.2|c==0.25)
-sampled=sample_n(filtered2plot, 15000)
-
-ggplot(sampled, aes(att, ocrrp2spike, group=c, colour=as.factor(c))) +
+ggplot(filtered, aes(att, ocrrp2spike, group=c, colour=as.factor(c))) +
   geom_jitter(size=0.5)+
   geom_smooth(method = 'glm', method.args = list(family=binomial), se=F)+
   xlab("attenuation coefficient (att)")+

@@ -24,7 +24,7 @@ for i in range(nbr):
     nsNAME[i]=G.node['n'+str(i)]['cell_name']
 
 
-## Manually updated '1.2sensorycells.csv' with attributes 'sensor', 'area' and 'LRb'
+## Manually updated '1.1Sensorycells.csv' with attributes 'sensor', 'area' and 'LRb'
 ''' Add attributes 'sensor', 'area' and 'LRb' to nodes '''
 
 sensoryUpdate=pandas.read_csv('networkSetup/1.1sensorycellsSomatic.csv')

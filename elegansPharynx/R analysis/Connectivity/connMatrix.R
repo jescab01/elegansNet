@@ -46,7 +46,7 @@ V(graph)$community=cfg$membership
 
 rm(ceb,clp,cfg,colrs,kc, netSimply)
 
-# Generate dataframe for nodes with updated network attributes, and ordered by community
+# Generate dataframe for nodes with updated network attributes, and ordered by community/group
 nodes=get.data.frame(graph, what='vertices')
 #nodes_ordered = nodes[order(nodes$community),] 
 nodes_ordered = nodes[order(nodes$group),] 
@@ -144,8 +144,7 @@ ggplot(edgesChem, aes(x = from, y = to, color=logWeight)) +
 
 
 ######### Functional connectivity matrices -----
-
-fConn <- read.csv("fConn1sim.csv", stringsAsFactors = FALSE)
+fConn <- read.csv("fConn1Jul.csv", stringsAsFactors = FALSE)
 
 # Create iGraph for functional connectivity data
 fGraph = graph.data.frame(fConn, directed = TRUE, vertices = nodes)
@@ -317,11 +316,10 @@ ggplot() +
 
 
 ######### Correlation between Structural and functional weights -----
-
+# First, remove unuseful variables from edgesF and create new SFdf
 SFdf=edgesF
 SFdf$connPhi=NULL
 SFdf$connPsi1=NULL
-SFdf$connPsi2=NULL
 SFdf$community.x=NULL
 SFdf$community.y=NULL
 SFdf$group=NULL
@@ -330,7 +328,7 @@ SFdf$strucLogW=NA
 SFdf$strucWe=NA
 SFdf$strucLogWe=NA
 
-
+# Add structural connections to SFdf organized by connection
 for (connf in 1:length(SFdf$from)){
   for (connc in 1:length(edgesChem$from)){
     if (SFdf[connf,]['from']==edgesChem[connc,]['from'] & SFdf[connf,]['to']==edgesChem[connc,]['to']){
@@ -347,17 +345,95 @@ for (connf in 1:length(SFdf$from)){
 }
 
 
-## sum up the electrical and chemical connections and see what happends
+## sum up the electrical and chemical connections. Functional weight does not differentiate among them.
 SFdf[is.na(SFdf)] = 0
 SFdf$sumEC=SFdf$strucW+SFdf$strucWe
 SFdf$logsumEC=1+log(SFdf$sumEC)
 SFdf$logsumEC[SFdf$logsumEC==-Inf]=0
 
+## generate categorical variables for structural and functional connections
 
-### Plot and lets see..
+for (i in 1:length(SFdf$from)){
+  if (SFdf$connWxGC[i]==0){
+    SFdf$catF=0
+  }
+  if (SFdf$connWxGC[i]<0){
+    SFdf$catF=-1
+  }
+  if (SFdf$connWxGC[i]>0){
+    SFdf$catF=1
+  }
+}
+
+for (i in 1:length(SFdf$from)){
+  if (SFdf$sumEC[i]==0){
+    SFdf$catE=0
+  }
+  if (SFdf$sumEC[i]<0){
+    SFdf$catE=-1
+  }
+  if (SFdf$sumEC[i]>0){
+    SFdf$catE=1
+  }
+}
+
+
+### Ojo! sum weight here should be aware of inhibition and excitation of neurons.
+SFdf$catE[SFdf$logsumEC>0]=1
+SFdf$catE[SFdf$logsumEC==0]=0
+SFdf$catE[SFdf$logsumEC<0]=-1
+
+SFdf$catF[SFdf$connWxGC>0]=1
+SFdf$catF[SFdf$connWxGC==0]=-1
+SFdf$catF[SFdf$connWxGC<0]=-1
+
+SFdf$catB[SFdf$connWxGC<0 & SFdf$logsumEC<=0]=-1
+SFdf$catB[SFdf$connWxGC>0 & SFdf$logsumEC>0]=1
+
+## Examining categorical existance of connection in Structural connectome or functional one. 
+table(SFdf$catF,SFdf$catE)
+colSums(table(SFdf$catF,SFdf$catE))
+rowSums(table(SFdf$catF,SFdf$catE))
+prop.table(table(SFdf$catF,SFdf$catE))
+colSums(prop.table(table(SFdf$catF,SFdf$catE)))
+rowSums(prop.table(table(SFdf$catF,SFdf$catE)))
+
+chisq.test(SFdf$catF,SFdf$catE)
+fisher.test(SFdf$catF,SFdf$catE)
+
+ggplot(SFdf, aes(catE, fill=as.factor(catF)))+
+  geom_bar()
+
+ggplot(SFdf, aes(catE, ..count..)) +
+  geom_bar(aes(fill = as.factor(catF)), position = "dodge")
+
+#Sensibility to predict structural connections
+
+## i.e.  functional&structural==1/structural connections==1
+
+#Especificity to predict structural conneciton
+
+## i.e. functional&structural==0/structural==0
+
+
+
+### Plot correlation between structural and functional weights
 ggplot(SFdf, aes(logsumEC, connWeight))+
-  geom_point()
+  geom_point(size=0.5)+
+  geom_smooth(method='lm',formula=y~x)
 
+
+ggplot(SFdf, aes(logsumEC,connWeight, colour=as.factor(catB)))+
+  geom_point(size=0.5)
+
+ggplot(SFdf, aes(logsumEC,connWeight))+
+  geom_point(size=0.5, colour=as.factor(SFdf$catB+3))+
+  geom_smooth(method='lm',formula=y~x, size=0.5)
+
+### plotting weight correlation
+ggplot(SFdf[SFdf$catB==1,], aes(logsumEC,connWeight))+
+  geom_point(size=0.5)+
+  geom_smooth(method='lm', formula=y~x)
 
 ### how are they correlating
 cor.test(SFdf$connWeight, SFdf$logsumEC, method=c("pearson", "kendall", "spearman"))

@@ -18,7 +18,7 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
     node_sizes = [0] * G.number_of_nodes()
     i = 0
     for n in G.nodes():
-        node_sizes[i] = G.degree(n) * 5
+        node_sizes[i] = G.degree(n) * 8
         i += 1
     
     
@@ -29,7 +29,7 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
         color=[]
         for b in range(G.number_of_nodes()):
             if activitydata[a]['n'+str(b)]==-70:
-                color.append('w')
+                color.append('white')
             if activitydata[a]['n'+str(b)]==-69:
                 color.append('whitesmoke')
             if activitydata[a]['n'+str(b)]==-65:
@@ -39,13 +39,13 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-28:
                 color.append('salmon')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-27:
-                color.append('darkorange')
+                color.append('olive')#'yellowgreen'
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-26:
-                color.append('olive')
+                color.append('orchid')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-25:
-                color.append('yellowgreen')
+                color.append('hotpink')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-24:
-                color.append('cadetblue')
+                color.append('cornflowerblue')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-23:
                 color.append('royalblue')
             

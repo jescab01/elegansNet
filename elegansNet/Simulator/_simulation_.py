@@ -73,7 +73,7 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
     
     
     ## Load network prepared by prepareNetwork.py, inhibitory ratio=0.08609271523178808.
-    G = nx.read_graphml("data/elegans.hermSomatic_connectome.graphml")
+    G = nx.read_graphml("data/elegans.herm_connectome.graphml")
     nodesNumber = G.number_of_nodes()
     pathLength=dict(nx.all_pairs_shortest_path_length(G))  #define path lengths
     
@@ -145,13 +145,13 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
     for infos, datasets in masterInfo.items():
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
-                plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
-           #     plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+            #    plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
             else:
                 timeplt=datasets['deactivated'][sim]
-                plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
-     #           plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+            #    plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
     
     ## Ad-hoc 3Dhtml representation to deepen

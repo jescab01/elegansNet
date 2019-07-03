@@ -125,7 +125,7 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
     
     import os
     from plotting2D import plotting2D
-    from plotting3D import plotting3D, plotting3Dhtml
+    from plotting3D import plotting3D
     from videoWriter import videoWriter
     
     ## Clean plots' folders
@@ -146,25 +146,13 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
                 plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
-           #     plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+              #  plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
             else:
                 timeplt=datasets['deactivated'][sim]
                 plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
-     #           plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+            #    plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
-    
-    ## Ad-hoc 3Dhtml representation to deepen
-                
-#    htmlsim=0
-#    htmltimestep=4
-#    htmlinfos='mainInfo'    ## 'chemicalInfo', 'electricalInfo' or 'mainInfo'.
-#    
-#    plotting3Dhtml(G, htmlsim, htmltimestep, masterInfo[htmlinfos]['activitydata'][htmlsim][htmltimestep], 
-#                   simInitActivity[htmlsim], htmlinfos, nodesNumber)
-#        
-#    del datasets, sim
-        
         
     ## Video generator
                 

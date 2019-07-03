@@ -39,13 +39,13 @@ def plotting2D(G, sim, timesteps, activitydata, simInitActivity, infos):
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-28:
                 color.append('salmon')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-27:
-                color.append('darkorange')
+                color.append('yellowgreen')#'olive'
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-26:
-                color.append('olive')
+                color.append('orchid')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-25:
-                color.append('yellowgreen')
+                color.append('hotpink')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-24:
-                color.append('cadetblue')
+                color.append('cornflowerblue')
             if activitydata[a]['n'+str(b)]+int(G.node['n'+str(b)]['cellType_group'])==-23:
                 color.append('royalblue')
             

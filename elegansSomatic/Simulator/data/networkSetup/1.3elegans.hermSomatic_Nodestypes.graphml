@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="LRb" attr.type="string" for="node" id="d14"/>
 <key attr.name="area" attr.type="string" for="node" id="d13"/>
-<key attr.name="cellType_group" attr.type="string" for="node" id="d12"/>
+<key attr.name="cellType_group" attr.type="long" for="node" id="d12"/>
 <key attr.name="cell_type" attr.type="string" for="node" id="d11"/>
 <key attr.name="sensor" attr.type="string" for="node" id="d10"/>
 <key attr.name="neurotransmitters" attr.type="string" for="node" id="d9"/>
@@ -283,7 +283,9 @@
   <data key="d7">-271.0</data>
   <data key="d8">50.85</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">b</data>
   <data key="d11">Interneuron, Sensory</data>
   <data key="d12">2</data>
 </node>
@@ -771,8 +773,8 @@
   <data key="d10">propioTail</data>
   <data key="d13">head</data>
   <data key="d14">b</data>
-  <data key="d11">Interneuron</data>
-  <data key="d12">3</data>
+  <data key="d11">Interneuron, Sensory</data>
+  <data key="d12">2</data>
 </node>
 <node id="n64">
   <data key="d4">AVHL</data>
@@ -1049,9 +1051,11 @@
   <data key="d7">-227.075</data>
   <data key="d8">3.425</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n87">
   <data key="d4">DA02</data>
@@ -1060,9 +1064,11 @@
   <data key="d7">-190.7</data>
   <data key="d8">-21.675</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n88">
   <data key="d4">DA03</data>
@@ -1071,9 +1077,11 @@
   <data key="d7">-123.65</data>
   <data key="d8">-58.35</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n89">
   <data key="d4">DA04</data>
@@ -1082,9 +1090,11 @@
   <data key="d7">-32.4</data>
   <data key="d8">-61.75</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n90">
   <data key="d4">DA05</data>
@@ -1093,9 +1103,11 @@
   <data key="d7">84.2</data>
   <data key="d8">-3.15</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n91">
   <data key="d4">DA06</data>
@@ -1104,9 +1116,11 @@
   <data key="d7">198.675</data>
   <data key="d8">-6.35</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n92">
   <data key="d4">DA07</data>
@@ -1115,9 +1129,11 @@
   <data key="d7">281.6</data>
   <data key="d8">-24.95</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n93">
   <data key="d4">DA08</data>
@@ -1126,9 +1142,11 @@
   <data key="d7">376.8</data>
   <data key="d8">-10.925</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n94">
   <data key="d4">DA09</data>
@@ -1137,9 +1155,11 @@
   <data key="d7">376.8</data>
   <data key="d8">-10.925</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n95">
   <data key="d4">DB01</data>
@@ -1148,7 +1168,9 @@
   <data key="d7">-230.349</data>
   <data key="d8">6.85</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1159,7 +1181,9 @@
   <data key="d7">-244.5</data>
   <data key="d8">15.787</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1170,7 +1194,9 @@
   <data key="d7">-195.275</data>
   <data key="d8">-18.525</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1181,7 +1207,9 @@
   <data key="d7">-96.275</data>
   <data key="d8">-64.65</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1192,7 +1220,9 @@
   <data key="d7">35.25</data>
   <data key="d8">-30.45</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1203,7 +1233,9 @@
   <data key="d7">178.1</data>
   <data key="d8">-0.2</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1214,7 +1246,9 @@
   <data key="d7">267.75</data>
   <data key="d8">-22.625</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -1374,7 +1408,9 @@
   <data key="d7">-282.763</data>
   <data key="d8">52.762</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Interneuron, Sensory, Motor</data>
   <data key="d12">5</data>
 </node>
@@ -1385,7 +1421,9 @@
   <data key="d7">-282.76</data>
   <data key="d8">52.7629</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Interneuron, Sensory, Motor</data>
   <data key="d12">5</data>
 </node>
@@ -1422,7 +1460,9 @@
   <data key="d7">-279.5</data>
   <data key="d8">41.0</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Interneuron, Sensory, Motor</data>
   <data key="d12">5</data>
 </node>
@@ -1433,7 +1473,9 @@
   <data key="d7">-279.5</data>
   <data key="d8">41.0</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Interneuron, Sensory, Motor</data>
   <data key="d12">5</data>
 </node>
@@ -1444,7 +1486,9 @@
   <data key="d7">-287.4749</data>
   <data key="d8">57.125</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">chemosensor, mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -1455,7 +1499,9 @@
   <data key="d7">-287.4749</data>
   <data key="d8">57.125</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">chemosensor, mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -1466,7 +1512,7 @@
   <data key="d7">-285.0</data>
   <data key="d8">49.35</data>
   <data key="d9">NA</data>
-  <data key="d10">chemosensor</data>
+  <data key="d10">chemosensor, mechanosensor</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
   <data key="d11">Sensory</data>
@@ -1479,7 +1525,7 @@
   <data key="d7">-285.0</data>
   <data key="d8">49.35</data>
   <data key="d9">NA</data>
-  <data key="d10">chemosensor</data>
+  <data key="d10">chemosensor, mechanosensor</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
   <data key="d11">Sensory</data>
@@ -1492,7 +1538,9 @@
   <data key="d7">-288.875</data>
   <data key="d8">42.95</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">chemosensor, mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -1503,7 +1551,9 @@
   <data key="d7">-288.875</data>
   <data key="d8">42.95</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">chemosensor, mechanosensor</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -1628,8 +1678,8 @@
   <data key="d10">propioTail</data>
   <data key="d13">tail</data>
   <data key="d14">b</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n137">
   <data key="d4">PDEL</data>
@@ -1810,8 +1860,8 @@
   <data key="d10">propioSomatic</data>
   <data key="d13">tail</data>
   <data key="d14">L</data>
-  <data key="d11">Interneuron</data>
-  <data key="d12">3</data>
+  <data key="d11">Interneuron, Sensory</data>
+  <data key="d12">2</data>
 </node>
 <node id="n151">
   <data key="d4">PVCR</data>
@@ -1823,8 +1873,8 @@
   <data key="d10">propioSomatic</data>
   <data key="d13">tail</data>
   <data key="d14">R</data>
-  <data key="d11">Interneuron</data>
-  <data key="d12">3</data>
+  <data key="d11">Interneuron, Sensory</data>
+  <data key="d12">2</data>
 </node>
 <node id="n152">
   <data key="d4">PVDL</data>
@@ -1941,8 +1991,8 @@
   <data key="d10">propioTail</data>
   <data key="d13">tail</data>
   <data key="d14">b</data>
-  <data key="d11">Interneuron</data>
-  <data key="d12">3</data>
+  <data key="d11">Interneuron, Sensory</data>
+  <data key="d12">2</data>
 </node>
 <node id="n162">
   <data key="d4">PVT</data>
@@ -2383,8 +2433,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
-  <data key="d11">Interneuron, Motor</data>
-  <data key="d12">6</data>
+  <data key="d11">Interneuron, Sensory, Motor</data>
+  <data key="d12">5</data>
 </node>
 <node id="n202">
   <data key="d4">SAADR</data>
@@ -2396,8 +2446,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
-  <data key="d11">Interneuron, Motor</data>
-  <data key="d12">6</data>
+  <data key="d11">Interneuron, Sensory, Motor</data>
+  <data key="d12">5</data>
 </node>
 <node id="n203">
   <data key="d4">SAAVL</data>
@@ -2409,8 +2459,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
-  <data key="d11">Interneuron, Motor</data>
-  <data key="d12">6</data>
+  <data key="d11">Interneuron, Sensory, Motor</data>
+  <data key="d12">5</data>
 </node>
 <node id="n204">
   <data key="d4">SAAVR</data>
@@ -2422,8 +2472,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
-  <data key="d11">Interneuron, Motor</data>
-  <data key="d12">6</data>
+  <data key="d11">Interneuron, Sensory, Motor</data>
+  <data key="d12">5</data>
 </node>
 <node id="n205">
   <data key="d4">SABD</data>
@@ -2465,7 +2515,9 @@
   <data key="d7">222.79</data>
   <data key="d8">19.2</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">oxygen</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Interneuron, Sensory</data>
   <data key="d12">2</data>
 </node>
@@ -2476,7 +2528,9 @@
   <data key="d7">-131.75</data>
   <data key="d8">-10.55</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">oxygen</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Interneuron, Sensory</data>
   <data key="d12">2</data>
 </node>
@@ -2578,8 +2632,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n219">
   <data key="d4">SMBDR</data>
@@ -2591,8 +2645,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n220">
   <data key="d4">SMBVL</data>
@@ -2604,8 +2658,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n221">
   <data key="d4">SMBVR</data>
@@ -2617,8 +2671,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n222">
   <data key="d4">SMDDL</data>
@@ -2630,8 +2684,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n223">
   <data key="d4">SMDDR</data>
@@ -2643,8 +2697,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n224">
   <data key="d4">SMDVL</data>
@@ -2656,8 +2710,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">L</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n225">
   <data key="d4">SMDVR</data>
@@ -2669,8 +2723,8 @@
   <data key="d10">propioHead</data>
   <data key="d13">head</data>
   <data key="d14">R</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n226">
   <data key="d4">URADL</data>
@@ -2679,7 +2733,9 @@
   <data key="d7">-284.65</data>
   <data key="d8">52.2</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">putative</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2690,7 +2746,9 @@
   <data key="d7">-284.65</data>
   <data key="d8">52.2</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">putative</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2701,7 +2759,9 @@
   <data key="d7">-279.6</data>
   <data key="d8">41.4</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">putative</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2712,7 +2772,9 @@
   <data key="d7">-279.6</data>
   <data key="d8">41.4</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">putative</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2771,7 +2833,9 @@
   <data key="d7">-281.425</data>
   <data key="d8">51.89</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">Unknown</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -2782,7 +2846,9 @@
   <data key="d7">-281.425</data>
   <data key="d8">51.89</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">Unknown</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -2793,7 +2859,9 @@
   <data key="d7">-280.925</data>
   <data key="d8">45.35</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">Unknown</data>
+  <data key="d13">head</data>
+  <data key="d14">L</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -2804,7 +2872,9 @@
   <data key="d7">-280.92</data>
   <data key="d8">45.35</data>
   <data key="d9">NA</data>
-  <data key="d10">None</data>
+  <data key="d10">Unknown</data>
+  <data key="d13">head</data>
+  <data key="d14">R</data>
   <data key="d11">Sensory</data>
   <data key="d12">1</data>
 </node>
@@ -2815,9 +2885,11 @@
   <data key="d7">-235.55</data>
   <data key="d8">11.75</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n239">
   <data key="d4">VA02</data>
@@ -2826,9 +2898,11 @@
   <data key="d7">-217.1</data>
   <data key="d8">-3.95</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n240">
   <data key="d4">VA03</data>
@@ -2837,9 +2911,11 @@
   <data key="d7">-184.09</data>
   <data key="d8">-26.37</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n241">
   <data key="d4">VA04</data>
@@ -2848,9 +2924,11 @@
   <data key="d7">-119.5</data>
   <data key="d8">-58.7</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n242">
   <data key="d4">VA05</data>
@@ -2859,9 +2937,11 @@
   <data key="d7">-54.3</data>
   <data key="d8">-66.049</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n243">
   <data key="d4">VA06</data>
@@ -2870,9 +2950,11 @@
   <data key="d7">21.55</data>
   <data key="d8">-41.15</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n244">
   <data key="d4">VA07</data>
@@ -2881,9 +2963,11 @@
   <data key="d7">98.049</data>
   <data key="d8">1.175</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n245">
   <data key="d4">VA08</data>
@@ -2892,9 +2976,11 @@
   <data key="d7">150.3</data>
   <data key="d8">3.4</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n246">
   <data key="d4">VA09</data>
@@ -2903,9 +2989,11 @@
   <data key="d7">208.825</data>
   <data key="d8">-9.049</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n247">
   <data key="d4">VA10</data>
@@ -2917,8 +3005,8 @@
   <data key="d10">propioSomatic</data>
   <data key="d13">body</data>
   <data key="d14">b</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n248">
   <data key="d4">VA11</data>
@@ -2930,8 +3018,8 @@
   <data key="d10">propioSomatic</data>
   <data key="d13">body</data>
   <data key="d14">b</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n249">
   <data key="d4">VA12</data>
@@ -2943,8 +3031,8 @@
   <data key="d10">propioSomatic</data>
   <data key="d13">body</data>
   <data key="d14">b</data>
-  <data key="d11">Motor</data>
-  <data key="d12">7</data>
+  <data key="d11">Motor, Sensory</data>
+  <data key="d12">4</data>
 </node>
 <node id="n250">
   <data key="d4">VB01</data>
@@ -2953,7 +3041,9 @@
   <data key="d7">-246.54</data>
   <data key="d8">16.4</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2964,7 +3054,9 @@
   <data key="d7">-253.3</data>
   <data key="d8">19.85</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2975,7 +3067,9 @@
   <data key="d7">-210.225</data>
   <data key="d8">-8.725</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2986,7 +3080,9 @@
   <data key="d7">-173.25</data>
   <data key="d8">-33.5</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -2997,7 +3093,9 @@
   <data key="d7">-109.55</data>
   <data key="d8">-62.15</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -3008,7 +3106,9 @@
   <data key="d7">-36.575</data>
   <data key="d8">-62.697</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -3019,7 +3119,9 @@
   <data key="d7">41.45</data>
   <data key="d8">-24.362</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -3030,7 +3132,9 @@
   <data key="d7">108.8</data>
   <data key="d8">2.875</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>
@@ -3041,7 +3145,9 @@
   <data key="d7">159.55</data>
   <data key="d8">3.2</data>
   <data key="d9">Ach</data>
-  <data key="d10">None</data>
+  <data key="d10">propioSomatic</data>
+  <data key="d13">body</data>
+  <data key="d14">b</data>
   <data key="d11">Motor, Sensory</data>
   <data key="d12">4</data>
 </node>

@@ -96,18 +96,18 @@ def single_time_step(G, sim, timestep, mainInfoGraded, chemtime, c, hpTest, att)
                 if chemtime >= 0: 
                     if G[p][n]['Esyn']=='True' and G[p][n]['Csyn']=='True':
                         if mainInfoGraded['activitydata'][sim][timestep][p]==-30 and mainInfoGraded['activitydata'][sim][chemtime][p] == -30:
-                            integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                            integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att)
                             integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][p])*c * G[p][n]['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
                             
                         if mainInfoGraded['activitydata'][sim][timestep][p]==-30:
-                            integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                            integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att)
                             
                         if mainInfoGraded['activitydata'][sim][chemtime][p] == -30:
                             integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][p])*c * G[p][n]['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
                             
     
                     elif G[p][n]['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][p]==-30:
-                        integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                        integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att)
                     
                     elif G[p][n]['Csyn'] == 'True' and mainInfoGraded['activitydata'][sim][chemtime][p] == -30:
                         integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][chemtime][p])*c * G[p][n]['CnormWeight'] * (att**G.node[n]['consecutiveAct'])
@@ -115,7 +115,7 @@ def single_time_step(G, sim, timestep, mainInfoGraded, chemtime, c, hpTest, att)
                         
                 else: 
                     if G[p][n]['Esyn'] == 'True' and mainInfoGraded['activitydata'][sim][timestep][p]==-30:
-                        integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att**G.node[n]['consecutiveAct'])
+                        integral[m] +=  G.node[p]['exin'] * abs(mainInfoGraded['activitydata'][sim][timestep][p])*c * G[p][n]['EnormWeight'] * (att)
               
                     
             if integral[m]+G.node[n]['mV'] > -60:

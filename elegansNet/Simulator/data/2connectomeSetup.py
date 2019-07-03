@@ -19,7 +19,7 @@ import numpy.random
 import math
 
 ##### Load .graphml
-G = nx.read_graphml("networkSetup/1.4elegans.herm_Nodestypes.graphml")
+G = nx.read_graphml("networkSetup/1.3elegans.hermSomatic_Nodestypes.graphml")
 nbr=G.number_of_nodes()
 
 
@@ -81,7 +81,7 @@ cleandic={'Source':cleansource,'Target':cleantarget,
 ##### Write new .csv
 
 connectome=pandas.DataFrame(cleandic, columns=['Source','Target','Weight','logWeight','Syn'])
-connectome.to_csv('networkSetup/2.1herm_connections.csv', index=False)
+connectome.to_csv('networkSetup/2.1hermSomatic_connections.csv', index=False)
 
 
 ## Translate cleansource and cleantarget to 'nx' names
@@ -131,13 +131,19 @@ for n,nbrs in G.adj.items():
 				if attrs['Cweight'] > max_c_weight:
 					max_c_weight = attrs['Cweight']
 
+maxWeight=0
+if max_c_weight>max_e_weight:
+    maxWeight=max_c_weight
+else:
+    maxWeight=max_e_weight
+
 
 for n,nbrs in G.adj.items():
 	for nbr,attrs in nbrs.items():
 			if attrs['Esyn'] == 'True':
-				attrs['EnormWeight'] = attrs['Eweight'] / max_e_weight
+				attrs['EnormWeight'] = attrs['Eweight'] / maxWeight
 			if attrs['Csyn'] == 'True':
-				attrs['CnormWeight'] = attrs['Cweight'] / max_c_weight
+				attrs['CnormWeight'] = attrs['Cweight'] / maxWeight
 
 
 ##### Add characteristic neurotransmitter to nodes as attribute
@@ -203,6 +209,6 @@ del n, nbr
 
 ##### Rewrite Graphml
 
-nx.write_graphml(G, 'elegans.herm_connectome.graphml')
+nx.write_graphml(G, 'elegans.hermSomatic_connectome.graphml')
 
 

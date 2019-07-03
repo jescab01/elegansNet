@@ -6,40 +6,18 @@ Created on Tue Mar 26 17:33:34 2019
 @author: jescab01
 """
 
-def standardInit():
-    from _simulation_ import simulation, representation
-    ### Define simulation variables
-    timesteps = 10
-    sim_no = 1
-    Psens=0.15   # Parameter for sensory neurons being excited by environment
-    
-    att=0.7     ## attenuatipon coefficient
-    
-    ratioRandomInit=0.2  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=0.2 # free parameter influence of weights [exin*(100*c)*weight]
-    ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
-    area=[] ## Area: 'head', 'body', 'tail'. 
-    LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
-    sensor=[] ## Sensor: 'oxygen', 'mechanosensor', 'propioSomatic', 'propioTail', 'propioPharynx',
-             ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
-    
-    G, masterInfo, simInitActivity,  pathLength, hpTest, envActivation = simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, att)
-    representation(G, masterInfo, sim_no, timesteps, simInitActivity)
-    return masterInfo, simInitActivity, pathLength, envActivation
-
-
 def activityInit():
     
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 50
+    timesteps = 100000
     sim_no = 1
     Psens=0.5   # Parameter for sensory neurons being excited by environment
     
     att=0.5     ## attenuatipon coefficient
     
     ratioRandomInit=0.4  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
-    c=5  # free parameter influence of weights [exin*(100*c)*weight]
+    c=0.5  # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 
     LRb=[] ## LRb: 'L' (left), 'R' (right), 'b' (body).
@@ -51,15 +29,17 @@ def activityInit():
     return masterInfo, envActivation, timesteps
 
 
+
+
 def paramTest():
     from _simulation_ import simulation
     import pandas
     
     ### Define simulation variables
     timesteps = 50
-    sim_no = 10
+    sim_no = 50
     
-    Psenss=[0.5]   # Probability of sensory neurons being excited by environment
+    Psenss=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]   # Psens*0.144 ~ Probability of sensory neurons being excited by environment 
     
     
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
@@ -69,16 +49,16 @@ def paramTest():
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
              
     ##Independent Variable 1 (RI)
-    ratioRandomInit=[0.1,0.2,0.3,0.4,0.5,0.6] 
+    ratioRandomInit=[0.2,0.25,0.3,0.35,0.4] 
     
     
     ## Independent Variable 2 (c): free parameter influence of weights [exin*(100*c)*weight]
     #clist=[0.4,0.45,0.5,0.55,0.6,0.7,0.8,0.9,1,1.1]    for logWeight
-    clist=[0.01,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5]
+    clist=[0.01,0.05,0.1,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.8,0.9,1]
     
     ## Independent variable 3(att)
 #    lis=list(range(-71,-80,-0.5))
-    atts=[0.4,0.5,0.6,0.7,0.8,0.9]
+    atts=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
 
     surviveTime={}  
     inATT={}
@@ -157,37 +137,27 @@ Launcher
 
 '''
 
-'''## standard simulation Launcher'''
-
-#masterInfo, simInitActivity, pathLength, envActivation = standardInit()
-
-
-
-
-'''## Activity simulation Launcher'''
-
-import pandas
-import time
-from rasterPlot import rasterPlot
-   
-masterInfo, envActivation, timesteps = activityInit()
-
-## Export activity to a binary dataframe
-actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
-actdf=actdf.replace([-70,-69,-69.5,-65], 0)
-actdf=actdf.replace(-30, 1)   
-Activity=actdf.transpose()
-
-## from Activity dataframe generate Raster plot
-rasterPlot(Activity, envActivation)
-
-
-del actdf, timesteps
+''' ## Activity simulation Launcher'''
+#import pandas
+#from rasterPlot import rasterPlot
+#   
+#masterInfo, envActivation, timesteps = activityInit()
+#
+### Export activity to a binary dataframe
+#actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
+#actdf=actdf.replace([-70,-69,-69.5,-65], 0)
+#actdf=actdf.replace(-30, 1)   
+#Activity=actdf.transpose()
+#
+### from Activity dataframe generate Raster plot
+#rasterPlot(Activity, envActivation)
+#
+#
+#del actdf, timesteps
 
 
 
-'''## Activity compose Launcher'''
-
+''' ## Activity compose Launcher'''
 #import pandas
 #import time
 #import networkx as nx
@@ -202,7 +172,7 @@ del actdf, timesteps
 #    masterInfo, envActivation, timesteps = activityInit()
 #    
 #    ## If simulation survived, export activity to a dataframe in binary
-#    if len(masterInfo['mainInfoGraded']['activitydata'][0])==timesteps:
+#    if len(masterInfo['mainInfoGraded']['activitydata'][0])>=50:
 #        actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])
 #        actdf=actdf.replace([-70,-69,-65], 0)
 #        actdf=actdf.replace(-30, 1)   
@@ -228,35 +198,35 @@ del actdf, timesteps
 
 
 ''' ## parameter Testing '''
-#import pandas
-#import time
-#
-#paramTestData=pandas.DataFrame()
-#
-### Run simulations
-#masterInfo, surviveTime, inATT, rrp2rest, envActiv, Activity= paramTest()
-#
-### Gather data from simulations
-#for Psens, ris in surviveTime.items():
-#    for ri, cs in ris.items():
-#        for c, atts in cs.items():
-#            for att in list(surviveTime[Psens][ri][c]):
-#                for i in list(surviveTime[Psens][ri][c].index):
-#                    dic={'Psens':Psens,'RI':ri,'c':c,'att':att,'surviveTime':surviveTime[Psens][ri][c][att][i],
-#                         'inATT':inATT[Psens][ri][c][att][i], 'rrp2rest':rrp2rest[Psens][ri][c][att][i],
-#                         'sens':len(envActiv[Psens][ri][c][att][i]['active']),'sensG':len(envActiv[Psens][ri][c][att][i]['activeG']),
-#                         'sensSG':len(envActiv[Psens][ri][c][att][i]['activeSG']),'sensNode':len(envActiv[Psens][ri][c][att][i]['activeNode']),
-#                         'minNodeActivity':Activity[Psens][ri][c][att]}
-#                    
-#                    paramTestData=paramTestData.append(dic, ignore_index=True)
-#
-### Export data to .csv
-#localtime = time.asctime(time.localtime(time.time()))
-#paramTestData.to_csv('data/parameterTesting/dataSomatic_'+localtime+'.csv', index=False)
-#
-### Clear variables
-#del c, cs, att, atts, ri, dic, i, localtime, surviveTime, Psens
-#del envActiv, inATT, rrp2rest, ris, Activity
+import pandas
+import time
+
+paramTestData=pandas.DataFrame()
+
+## Run simulations
+masterInfo, surviveTime, inATT, rrp2rest, envActiv, Activity= paramTest()
+
+## Gather data from simulations
+for Psens, ris in surviveTime.items():
+    for ri, cs in ris.items():
+        for c, atts in cs.items():
+            for att in list(surviveTime[Psens][ri][c]):
+                for i in list(surviveTime[Psens][ri][c].index):
+                    dic={'Psens':Psens,'RI':ri,'c':c,'att':att,'surviveTime':surviveTime[Psens][ri][c][att][i],
+                         'inATT':inATT[Psens][ri][c][att][i], 'rrp2rest':rrp2rest[Psens][ri][c][att][i],
+                         'sens':len(envActiv[Psens][ri][c][att][i]['active']),'sensG':len(envActiv[Psens][ri][c][att][i]['activeG']),
+                         'sensSG':len(envActiv[Psens][ri][c][att][i]['activeSG']),'sensNode':len(envActiv[Psens][ri][c][att][i]['activeNode']),
+                         'minNodeActivity':Activity[Psens][ri][c][att]}
+                    
+                    paramTestData=paramTestData.append(dic, ignore_index=True)
+
+## Export data to .csv
+localtime = time.asctime(time.localtime(time.time()))
+paramTestData.to_csv('data/parameterTesting/dataPharynx_'+localtime+'.csv', index=False)
+
+## Clear variables
+del c, cs, att, atts, ri, dic, i, localtime, surviveTime, Psens
+del envActiv, inATT, rrp2rest, ris, Activity
 
 
             
