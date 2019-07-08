@@ -1,9 +1,9 @@
 #!/bin/sh
 # Grid Engine options (lines prefixed with #$)
-#$ -N Models          
+#$ -N GA          
 #$ -cwd                  
-#$ -l h_rt=24:00:00 
-#$ -l h_vmem=10G
+#$ -l h_rt=240:00:00 
+#$ -l h_vmem=128G
 #  These options are:
 #  job name: -N
 #  use the current working directory: -cwd

@@ -49,7 +49,7 @@ rm(ceb,clp,cfg,colrs,kc, netSimply)
 # Generate dataframe for nodes with updated network attributes, and ordered by community/group
 nodes=get.data.frame(graph, what='vertices')
 #nodes_ordered = nodes[order(nodes$community),] 
-nodes_ordered = nodes[order(nodes$group),] 
+nodes_ordered = nodes[order(nodes$group),]   ## groups based on cell type as in: elegansPharynx/simulator/data/networksetup/cell_typesPharynx.csv 
 all_nodes = nodes_ordered$name
 
 rm (nodes_ordered)
@@ -387,8 +387,10 @@ SFdf$catF[SFdf$connWxGC>0]=1
 SFdf$catF[SFdf$connWxGC==0]=-1
 SFdf$catF[SFdf$connWxGC<0]=-1
 
+SFdf$catB=0
 SFdf$catB[SFdf$connWxGC<0 & SFdf$logsumEC<=0]=-1
 SFdf$catB[SFdf$connWxGC>0 & SFdf$logsumEC>0]=1
+
 
 ## Examining categorical existance of connection in Structural connectome or functional one. 
 table(SFdf$catF,SFdf$catE)
@@ -407,15 +409,16 @@ ggplot(SFdf, aes(catE, fill=as.factor(catF)))+
 ggplot(SFdf, aes(catE, ..count..)) +
   geom_bar(aes(fill = as.factor(catF)), position = "dodge")
 
-#Sensibility to predict structural connections
 
-## i.e.  functional&structural==1/structural connections==1
+# Sensitivity of granger analysis to predict structural connections
+## The ability to detect the existance of a connection
+Sensitivity=sum(SFdf$catB[SFdf$catB==1])/sum(SFdf$catE[SFdf$catE==1])
+Sensitivity
 
-#Especificity to predict structural conneciton
-
-## i.e. functional&structural==0/structural==0
-
-
+# Specificity of granger analysis to predict absent structural connecitons
+## The ability to reject the existance of a connection when actually there isn't
+Specificity=abs(sum(SFdf$catB[SFdf$catB==-1]))/length(SFdf$catE[SFdf$catE==0])
+Specificity
 
 ### Plot correlation between structural and functional weights
 ggplot(SFdf, aes(logsumEC, connWeight))+

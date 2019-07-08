@@ -35,9 +35,9 @@ def paramTest():
     
     ### Define simulation variables
     timesteps = 50
-    sim_no = 50
+    sim_no = 100
     
-    Psenss=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]   # Probability of sensory neurons being excited by environment
+    Psenss=[0.2,0.4,0.6,0.8]   # Probability of sensory neurons being excited by environment
     
     
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
@@ -47,16 +47,16 @@ def paramTest():
              ## 'propioHead', 'chemosensor', 'osmoceptor', 'nociceptor', 'thermosensor', 'thermonociceptive'. 
              
     ##Independent Variable 1 (RI)
-    ratioRandomInit=[0.1,0.2,0.3,0.4,0.5,0.6] 
+    ratioRandomInit=[0.1,0.2,0.3,0.4,0.5] 
     
     
     ## Independent Variable 2 (c): free parameter influence of weights [exin*(100*c)*weight]
     #clist=[0.4,0.45,0.5,0.55,0.6,0.7,0.8,0.9,1,1.1]    for logWeight
-    clist=[0.01,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.36,0.37,0.38,0.39,0.4,0.41,0.42,0.43,0.44,0.45,0.5,0.6,0.7]
+    clist=[0.01,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.37,0.39,0.41,0.43,0.45,0.5,0.6,0.7]
     
     ## Independent variable 3(att)
 #    lis=list(range(-71,-80,-0.5))
-    atts=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
+    atts=[0.2,0.4,0.6,0.8,0.9]
 
     surviveTime={}  
     inATT={}
@@ -65,18 +65,24 @@ def paramTest():
     Activity={}
     
     for Psens in Psenss:
+        print(str(Psens) + 'psensSIMULACIONES')
+        print()
         surviveTime[Psens]={}
         inATT[Psens]={}
         rrp2rest[Psens]={} 
         envActiv[Psens]={}
         Activity[Psens]={}
         for ri in ratioRandomInit:
+            print(str(ri)+ 'riSIMULACIONES')
+            print()
             surviveTime[Psens][ri]={}
             inATT[Psens][ri]={}
             rrp2rest[Psens][ri]={}
             envActiv[Psens][ri]={}
             Activity[Psens][ri]={}
             for c in clist:
+                print(str(c)+ 'cSIMULACIONES')
+                print()
                 surviveTime[Psens][ri][c]=pandas.DataFrame()
                 inATT[Psens][ri][c]=pandas.DataFrame()
                 rrp2rest[Psens][ri][c]=pandas.DataFrame()
@@ -84,6 +90,8 @@ def paramTest():
                 Activity[Psens][ri][c]={}
                 
                 for att in atts:
+                    print(str(att)+ 'attSIMULACIONES')
+                    print()
                     G, masterInfo, simInitActivity, pathLength, hpTest, envActivation = simulation (timesteps, sim_no, ri, c, area, LRb, sensor, Psens, att)
                     
                     actdf=pandas.DataFrame(masterInfo['mainInfoGraded']['activitydata'][0])

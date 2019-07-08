@@ -6,7 +6,7 @@
 % load result_sim.mat;
 %load data_Pharynx1Sim.mat
 %load PharynxModels50ht.mat
-
+load ModelsF.mat
 
 % Selected spiking history orders by AIC
 % ht = 2*[3 2 3 3 3 2 2 3 3];      % for 9-neuron network

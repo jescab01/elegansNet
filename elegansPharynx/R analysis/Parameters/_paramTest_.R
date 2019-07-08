@@ -70,17 +70,13 @@ ggplot(sampled, aes(c, ocrrp2spike, group=att, colour=as.factor(att))) +
   ylab("Attenuated spikes \n(normalized)")+
   labs(colour="Attenuation\ncoefficient")
 
-# ggplot(sampled, aes(RI, ocrrp2spike))+
-#   geom_jitter()+
-#   geom_smooth()
-  
 
 
   # Distributions of rrp2rest and rrp2spike
 datasurvive=filter(paramTest1, surviveBinary==1)
 ggplot(datasurvive, aes(rrp2rest))+
-  geom_histogram(binwidth = 3, colour="red", alpha=0.5)+
-  geom_histogram(aes(rrp2spike), binwidth = 3, colour="grey", alpha=0.5)
+  geom_histogram(binwidth = 3, alpha=0.5)+
+  geom_histogram(aes(rrp2spike), binwidth = 3, alpha=0.5)
   
 
 

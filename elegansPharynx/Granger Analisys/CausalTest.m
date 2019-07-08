@@ -76,5 +76,5 @@ Psi2 = SGN.*temp2;
 
 % Save results
 % save('CausalMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2');
-save ('PharynxGC1Jul','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2','ht')
+save ('PharynxGC1PROBE','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2','ht')
 % save ('elegansMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')
