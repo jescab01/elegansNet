@@ -3,7 +3,7 @@
 #$ -N GA16ht          
 #$ -cwd                  
 #$ -l h_rt=90:00:00 
-#$ -l h_vmem=128G
+#$ -l h_vmem=64G
 #  These options are:
 #  job name: -N
 #  use the current working directory: -cwd

@@ -9,7 +9,7 @@ original_edgelist <- read.csv("2.1hermSomatic_connections.csv", stringsAsFactors
 original_nodelist <- read.csv("1.2cell_typesSomatic.csv", stringsAsFactors = FALSE)
 
 
-# Create iGraph object and calculate network properties
+#### Create iGraph object and calculate network properties -------
 graph <- graph.data.frame(original_edgelist, directed = TRUE, vertices = original_nodelist)
 
 V(graph)$degree <- degree(graph)
@@ -68,12 +68,12 @@ rm(chemConn,elecConn)
 
 # # Determine a community for each edge. If two nodes belong to the same community, label the edge with that community. 
 # # If not, the edge community value is 'NA'
-# edgesChem = get.data.frame(chemGraph, what = "edges") %>% 
+# edgesChem = get.data.frame(chemGraph, what = "edges") %>%
 #   inner_join(nodes %>% select(name, community), by = c("from" = "name")) %>%
 #   inner_join(nodes %>% select(name, community), by = c("to" = "name")) %>%
 #    mutate(comm = ifelse(community.x == community.y, community.x, NA) %>% factor())
 # 
-# edgesElec = get.data.frame(elecGraph, what = "edges") %>% 
+# edgesElec = get.data.frame(elecGraph, what = "edges") %>%
 #   inner_join(nodes %>% select(name, community), by = c("from" = "name")) %>%
 #   inner_join(nodes %>% select(name, community), by = c("to" = "name")) %>%
 #   mutate(comm = ifelse(community.x == community.y, community.x, NA) %>% factor())
@@ -81,12 +81,12 @@ rm(chemConn,elecConn)
 
 # Determine a group for each edge. If two nodes belong to the same cell type group, label the edge with that group. 
 # If not, the edge group value is 'NA'
-edgesChem = get.data.frame(chemGraph, what = "edges") %>% 
+edgesChem = get.data.frame(chemGraph, what = "edges") %>%
   inner_join(nodes %>% select(name, group), by = c("from" = "name")) %>%
   inner_join(nodes %>% select(name, group), by = c("to" = "name")) %>%
   mutate(group = ifelse(group.x == group.y, group.x, NA) %>% factor())
 
-edgesElec = get.data.frame(elecGraph, what = "edges") %>% 
+edgesElec = get.data.frame(elecGraph, what = "edges") %>%
   inner_join(nodes %>% select(name, group), by = c("from" = "name")) %>%
   inner_join(nodes %>% select(name, group), by = c("to" = "name")) %>%
   mutate(group = ifelse(group.x == group.y, group.x, NA) %>% factor())
@@ -125,16 +125,16 @@ ggplot(edgesChem, aes(x = from, y = to, color=group)) +
 
 
 ## Create structural adjacency matrix showing weights*inh/exc 
-ggplot(edgesChem, aes(x = from, y = to, color=logWeight)) +
+ggplot(edgesChem, aes(x = from, y = to, color=logWxSGN)) +
   geom_point(shape=18, size=edgesChem$logWeight/2) +
-  geom_point(data = edgesElec, aes(x=from, y=to), size=edgesElec$logWeight/2, color='grey17', alpha=0.4)+
+  geom_point(data = edgesElec, aes(x=from, y=to), size=edgesElec$logWeight/2, color=c(1='grey17',-1='purple'), alpha=0.4)+
   theme_light() +
   # Because we need the x and y axis to display every node,
   # not just the nodes that have connections to each other,
   # make sure that ggplot does not drop unused factor levels
   scale_x_discrete(drop = FALSE) +
   scale_y_discrete(drop = FALSE) +
-  scale_colour_gradient(low = 'lightgoldenrod2', high = 'orangered')+
+  scale_colour_gradient2(low = 'skyblue', high = 'orangered')+
   theme(
     # Rotate the x-axis lables so they are legible
     axis.text.x = element_text(angle = 270, hjust = 0),

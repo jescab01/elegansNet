@@ -16,7 +16,7 @@ ht = I;
 
 % Re-optimizing a model after excluding a trigger neuron's effect and then
 % Estimating causality matrices based on the likelihood ratio
-for target = 161:200
+for target = 41:50
     LLK0(target) = LLK(ht(target),target);              % Likelihood of full model
     % LLK0(target) = log_likelihood_win(bhat{ht(target),target},X,ht(target),target);
     for trigger = 1:N

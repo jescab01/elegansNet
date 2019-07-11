@@ -1,8 +1,8 @@
 %clear all;
 
 %%% Load data from simulations
-%  X=table2array(X);
-%  X=logical(X);
+ X=table2array(X);
+ X=logical(X);
 
 
 % load data_sim_9neuron.mat;     % 9-neuron network
@@ -14,7 +14,7 @@
 
 % To fit GLM models with different history orders
 for neuron = 1:N                            % neuron
-    for ht = 2:2:8                         % history, when W=2ms
+    for ht = 2:2:10                         % history, when W=2ms
         [bhat{ht,neuron}] = glmwin(X,neuron,ht,200,2);
         disp ('Calculating Models')
         disp ('Neuron: ')
@@ -26,7 +26,7 @@ end
 
 % To select a model order, calculate AIC
 for neuron = 1:N
-    for ht = 2:2:8
+    for ht = 2:2:10
         LLK(ht,neuron) = log_likelihood_win(bhat{ht,neuron},X,ht,neuron,2); % Log-likelihood
         aic(ht,neuron) = -2*LLK(ht,neuron) + 2*(N*ht/2 + 1);                % AIC
         disp ('Calculating AIC')
@@ -37,14 +37,26 @@ for neuron = 1:N
     end
 end
 
-% % To plot AIC 
-% a=round(sqrt(N)+0.5);
-%  
-% figure(neuron);
-% for neuron = 1:N
-%     subplot(a,a,neuron)
-%     plot(aic(2:2:20,neuron));
-% end
+% To plot AIC 
+a=round(sqrt(N/3)+0.5);
+ 
+figure();
+for neuron = 1:N/3
+    subplot(a-2,a+2,neuron)
+    plot(aic(2:2:14,neuron));
+end
+
+figure(Second93);
+for neuron = N/3:2*N/3
+    subplot(a-2,a+2,neuron)
+    plot(aic(2:2:14,neuron));
+end
+
+figure(Third93);
+for neuron = 2*N/3:N
+    subplot(a-2,a+2,neuron)
+    plot(aic(2:2:14,neuron));
+end
 
 
 % Save results

@@ -1,35 +1,29 @@
 % mount models after fragmented analysis
 
 load GC1A.mat
-SGNF=SGN;
 bhatcF=bhatc;
 LLKCf=LLKC;
 LLKRf=LLKR;
+SGNF=SGN;
 
-%checar que tengo que hacer
+for i=1:7
+    str=strcat('GC',num2str(i),'A.mat');
+    disp(str)
+    load (str)
+    [tg,~]=size(bhatcF);
+    [tgn,~]=size(bhactc);
 
-load SomaticModels4ht.mat
-[ht,~]=size(aicF);
-[htn,~]=size(aic);
-
-aicF(ht+1:htn,:)=aic(ht+1:htn,:);
-bhatF(ht+1:htn,:)=bhat(ht+1:htn,:);
-LLKf(ht+1:htn,:)=LLK(ht+1:htn,:);
+    bhatcF(tg+1:tgn,:)=bhatc(tg+1:tgn,:);
+    LLKCf(tg+1:tgn,:)=LLKC(tg+1:tgn,:);
+    LLKRf(tg+1:tgn,:)=LLKR(tg+1:tgn,:);
+    SGNF(tg+1:tgn,:)=SGN(tg+1:tgn,:);
+end
 
 
-load SomaticModels6ht.mat
-[ht,~]=size(aicF);
-[htn,~]=size(aic);
+bhatc=bhatcF;
+LLKC=LLKCf;
+LLKR=LLKRf;
+SGN=SGNF;
 
-aicF(ht+1:htn,:)=aic(ht+1:htn,:);
-bhatF(ht+1:htn,:)=bhat(ht+1:htn,:);
-LLKf(ht+1:htn,:)=LLK(ht+1:htn,:);
-
-...
-
-aic=aicF;
-bhat=bhatF;
-LLK=LLKf;
-
-save('ModelsF', 'aic', 'LLK', 'bhat')
-clear aic bhat LLK htn ht
+save('GAf', 'bhatc', 'LLKC', 'LLKR', 'SGN')
+clear bhatcF LLKCf LLKRf SGNF i str

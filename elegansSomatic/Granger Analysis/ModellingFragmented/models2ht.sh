@@ -2,8 +2,8 @@
 # Grid Engine options (lines prefixed with #$)
 #$ -N GA2ht          
 #$ -cwd                  
-#$ -l h_rt=80:00:00 
-#$ -l h_vmem=128G
+#$ -l h_rt=90:00:00 
+#$ -l h_vmem=64G
 #  These options are:
 #  job name: -N
 #  use the current working directory: -cwd

@@ -6,7 +6,7 @@ library("ggplot2", lib.loc="~/anaconda3/envs/rstudio/lib/R/library")
 
 
 
-paramTest=read.csv('dataSomatic_Tue Jul  2 13:43:21 2019.csv')
+paramTest=read.csv('dataSomatic_Sat Jul  6 09:19:37 2019.csv')
 # paramTestB=read.csv('data_Mon Apr  8 19:41:57 2019.csv')
 # paramTestC=read.csv('data_Tue Apr  9 10:38:00 2019.csv')
 # paramTest=rbind(paramTestA,paramTestB,paramTestC)
@@ -18,10 +18,13 @@ paramTest1=mutate(paramTest, surviveBinary = surviveTime, rrp2spike=inATT-rrp2re
 paramTest1$surviveBinary[paramTest1$surviveBinary!=50]=0
 paramTest1$surviveBinary[paramTest1$surviveBinary==50]=1
 
+################################### Sampling
+sampled=sample_n(paramTest1, 40000)
 
-##### working on survival
 
-modelsurv=glm(surviveBinary~RI+c+att, data = paramTest1, family = "binomial")
+##### working on survival -----
+
+modelsurv=glm(surviveBinary~RI+c+att+Psens, data = paramTest1, family = "binomial")
 summary(modelsurv)
 
 ggplot(paramTest1, aes(c, surviveBinary, group=as.factor(RI), colour=as.factor(RI))) +
@@ -31,76 +34,89 @@ ggplot(paramTest1, aes(c, surviveBinary, group=as.factor(RI), colour=as.factor(R
   labs(colour = "Initial\nactivity\n(RI)")
 
 
-#### Working on minimum activity node
+
+#### Working on minimum activity node -----
 # filtered=filter(paramTest1, c==0.5, RI==0.4| RI==0.3|RI==0.5)
-# sampled=sample_n(paramTest1, 1000)
-ggplot(paramTest1, aes(c, minNodeActivity, group=as.factor(RI), colour=as.factor(RI))) +
-  geom_jitter()+
+ggplot(sampled, aes(c, minNodeActivity, group=as.factor(RI), colour=as.factor(RI))) +
+  geom_jitter(size=0.7)+
   xlab("Synaptic efficacy (c)")+
   ylab("minNodeActivity")+
   labs(colour = "Initial\nactivity\n(RI)")
 
 
-##### working on attenuation coefficient
+##### working on attenuation coefficient ------
+modeladt=glm(ocrrp2spike~att+c+RI+Psens, data = paramTest1, family = "binomial")
+summary(modeladt)
 
-filtered=filter(paramTest1, surviveBinary==1)
-
-modelrrp=glm(ocrrp2spike~att+c+RI+Psens, data = filtered, family = "binomial")
-summary(modelrrp)
-
-
+filtered=filter(paramTest1, c==0.1|c==0.15|c==0.2|c==0.25|c==0.3|c==0.35|c==0.41|c==0.45|c==0.5, surviveBinary==1)
 ggplot(filtered, aes(att, ocrrp2spike, group=c, colour=as.factor(c))) +
-  geom_jitter(size=0.5)+
+  geom_jitter(size=0.5, alpha=0.1)+
   geom_smooth(method = 'glm', method.args = list(family=binomial), se=F)+
   xlab("attenuation coefficient (att)")+
   ylab("Attenuated spikes \n(normalized)")+
   labs(colour="Synaptic\neffcicacy")
 
-ggplot(sampled, aes(RI, ocrrp2spike))+
-  geom_jitter()+
-  geom_smooth()
-  
 
 
   #Distributions of rrp2rest and rrp2spike
 datasurvive=filter(paramTest1, surviveBinary==1)
 ggplot(datasurvive, aes(rrp2rest))+
-  geom_histogram(binwidth = 3, colour="red")+
-  geom_histogram(aes(rrp2spike), binwidth = 5, colour="grey")
-
-mutation=mutate(paramTest1, normalizedrrp2spike=rrp2spike/max(rrp2spike))
-mutation=filter(mutation, RI==0.05 & c==0.2 | c==0.275 |c==0.3| c==0.35 |c==0.5)
-sampled2=sample_n(mutation, 3000)
-
-ggplot(sampled2, aes(att, normalizedrrp2spike, group=c, colour=as.factor(c)))+
-  geom_jitter(size=0.5)+
-  geom_smooth()
+  geom_histogram(binwidth = 3, alpha=0.5)+
+  geom_histogram(alpha=0.5, aes(rrp2spike), binwidth = 5)
 
 
+#### Working with randomSens model -----
 
-##################### 
+cycles=12
+nG=1
+nSG=3
+avgN=(5+5+3)/3 #Average number of neurons per group.
 
-## Working with randomSens model
+psens=mutate(sampled, ocsens= sens/cycles, ocsensG=sensG/(nG*sens), 
+             ocsensSG=sensSG/(nSG*sensG), ocsensNode= sensNode/(avgN*sensSG))
 
-psensmutation=mutate(filtered, ocactive= active/50, ocactiveG= activeG/(11*active), 
-                     ocactiveSG= activeSG /(3*activeG), ocactiveNode= activeNode/(10*activeSG))
+# Proportions. Hopefully stright lines.
+ggplot(psens, aes(Psens, ocsens))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Proportion of stimulations')
+
+ggplot(psens, aes(Psens,ocsensG))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Proportion of activated groups')
+
+ggplot(psens, aes(Psens,ocsensSG))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Proportion of activated subgroups')
+
+ggplot(psens, aes(Psens,ocsensNode))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Proportion of activated nodes')
 
 
+## Absolute numbers.
+ggplot(psens, aes(Psens, sens))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Number of stimulations')
 
-ggplot(psensmutation, aes(Psens, ocactive))+
-  geom_point()+
-  scale_y_continuous(limits = c(0,0.5))
+ggplot(psens, aes(Psens,sensG))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Number of activated groups')
 
-ggplot(psensmutation, aes(Psens,activeG))+
-  geom_point()
+ggplot(psens, aes(Psens,sensSG))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Number of activated subgroups')
 
-ggplot(psensmutation, aes(Psens,activeSG))+
-  geom_point()
-
-ggplot(psensmutation, aes(Psens,activeNode))+
-  geom_point()
-
-
+ggplot(psens, aes(Psens,sensNode))+
+  geom_point(alpha=0.1, color='grey40')+ 
+  stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
+  ylab('Number of activated nodes')
 
 
 
