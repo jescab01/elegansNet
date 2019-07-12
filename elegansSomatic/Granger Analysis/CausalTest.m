@@ -17,15 +17,21 @@ aicM=aic;
 aicM(aic==0)=NaN;
 [V,I]=min(aicM);
 
-ht = I;
+ht = [I];
 
 
 % Dimension of data (L: length, N: number of neurons)
 [L,N] = size(X);
 
+% Preallocate to speed up the process
+bhatc=cell(N,N);
+LLKC=zeros(N,N);
+LLKR=zeros(N,N);
+SGN=zeros(N,N);
+
 % Re-optimizing a model after excluding a trigger neuron's effect and then
 % Estimating causality matrices based on the likelihood ratio
-for target = 1:N
+for target = 1
     LLK0(target) = LLK(ht(target),target);              % Likelihood of full model
     % LLK0(target) = log_likelihood_win(bhat{ht(target),target},X,ht(target),target);
     for trigger = 1:N

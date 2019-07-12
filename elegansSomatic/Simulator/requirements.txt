@@ -16,3 +16,4 @@ pytz==2018.7
 six==1.12.0
 subprocess32==3.5.3
 opencv-contrib-python==4.0.0.21
+plotly==3.6.1
