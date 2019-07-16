@@ -1,16 +1,5 @@
-%clear all;
-
 % Load data
-% load data_sim_9neuron.mat;     % 9-neuron network
-% load data_sim_hidden.mat;      % 5-neuron network with hidden feedback
-% load result_sim.mat;
-%load data_Pharynx1Sim.mat
-%load PharynxModels50ht.mat
-
-
-% Selected spiking history orders by AIC
-% ht = 2*[3 2 3 3 3 2 2 3 3];      % for 9-neuron network
-% ht = 2*[5 2 2];  % for 5-neuron network with hidded feedback
+load data_pharynx.mat;
 
 % Choose automatically ht with minimum aic.
 aicM=aic;
@@ -18,7 +7,6 @@ aicM(aic==0)=NaN;
 [V,I]=min(aicM);
 
 ht = I;
-
 
 % Dimension of data (L: length, N: number of neurons)
 [L,N] = size(X);
@@ -75,6 +63,4 @@ Psi2 = SGN.*temp2;
  figure(3);imagesc(Psi2);xlabel('Triggers');ylabel('Targets');
 
 % Save results
-% save('CausalMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2');
 save ('PharynxGC1PROBE','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2','ht')
-% save ('elegansMaps','bhatc','LLK0','LLKC','LLKR','D','SGN','Phi','Psi1','Psi2')

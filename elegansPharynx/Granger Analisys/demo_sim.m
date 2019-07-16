@@ -1,13 +1,9 @@
-%clear all;
+% Load data from simulations
+load data_Pharynx.mat
 
-%%% Load data from simulations
+%%% Auxiliar funcitons
 %  X=table2array(X);
 %  X=logical(X);
-
-
-% load data_sim_9neuron.mat;     % 9-neuron network
-% load data_sim_hidden.mat;      % 5-neuron network with hidden feedback
-load data_Pharynx.mat
 
 % Dimension of input data (L: length, N: number of neurons)
 [L,N] = size(X);
@@ -37,7 +33,7 @@ for neuron = 1:N
     end
 end
 
-% % To plot AIC 
+%%% Plot AIC 
 % a=round(sqrt(N)+0.5);
 %  
 % figure();
@@ -47,9 +43,8 @@ end
 % end
 
 
-% Save results
-%save('result_sim','bhat','aic','LLK');
-save('PharynxModelsPROBE','bhat','aic','LLK','X')
+%%% Save results
+save('PharynxModels','bhat','aic','LLK','X')
 
-% Identify Granger causality
+%%% Identify Granger causality
 % CausalTest;

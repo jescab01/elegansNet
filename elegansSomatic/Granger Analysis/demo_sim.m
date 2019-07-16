@@ -1,12 +1,7 @@
-%clear all;
-
 %%% Load data from simulations
  X=table2array(X);
  X=logical(X);
 
-
-% load data_sim_9neuron.mat;     % 9-neuron network
-% load data_sim_hidden.mat;      % 5-neuron network with hidden feedback
  load data_somatic.mat
 
 % Dimension of input data (L: length, N: number of neurons)

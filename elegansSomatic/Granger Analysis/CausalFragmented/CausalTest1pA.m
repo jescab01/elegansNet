@@ -1,13 +1,13 @@
 %clear all;
 
-% Load data
+% % Load data
 load ModelsF.mat
-load ht.mat
+%load ht.mat
 
 % Choose automatically hts with minimum aic.
-% aicM=aic;
-% aicM(aic==0)=NaN;
-% [V,I]=min(aicM);
+aicM=aic;
+aicM(aic==0)=NaN;
+[V,I]=min(aicM);
 % 
 % ht = I;
 
