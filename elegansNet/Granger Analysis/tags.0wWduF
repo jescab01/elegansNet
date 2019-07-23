@@ -1,5 +1,0 @@
-FDR	FDR.m	/^function [GCMAP] = FDR(D,p,ht);$/;"	f
-glmcausal	glmcausal.m	/^function beta_new = glmcausal(X,n,trigger,ht,k,w)$/;"	f
-glmwin	glmwin.m	/^function beta_new = glmwin(X,n,ht,k,w)$/;"	f
-log_likelihood_causal	log_likelihood_causal.m	/^function [loglike] = log_likelihood_causal(bhat,Y,trigger,ht,neu,w)$/;"	f
-log_likelihood_win	log_likelihood_win.m	/^function [loglike] = log_likelihood_win(bhat,Y,ht,neu,w);$/;"	f

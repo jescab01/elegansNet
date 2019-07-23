@@ -1,0 +1,158 @@
+cell_name,area,sensor,LR,node
+ADEL,head,mechanosensor,L,n2
+ADER,head,mechanosensor,R,n3
+ADFL,head,chemosensor,L,n4
+ADFR,head,chemosensor,R,n5
+ADLL,head,chemosensor,L,n6
+ADLR,head,chemosensor,R,n7
+AFDL,head,"thermonociceptive, thermosensor",L,n8
+AFDR,head,"thermonociceptive, thermosensor",R,n9
+ALA,head,mechanosensor,b,n22
+ALML,body,mechanosensor,L,n23
+ALMR,body,mechanosensor,R,n24
+ALNL,tail,"propioSomatic, propioTail",L,n25
+ALNR,tail,"propioSomatic, propioTail",R,n26
+AQR,head,oxygen,R,n27
+ASEL,head,chemosensor,L,n39
+ASER,head,chemosensor,R,n40
+ASGL,head,chemosensor,L,n41
+ASGR,head,chemosensor,R,n42
+ASHL,head,"chemosensor, odorsensor, mechanosensor, osmoceptor, nociceptor ",L,n43
+ASHR,head,"chemosensor, odorsensor, mechanosensor, osmoceptor, nociceptor ",R,n44
+ASIL,head,chemosensor,L,n45
+ASIR,head,chemosensor,R,n46
+ASJL,head,chemosensor,L,n47
+ASJR,head,chemosensor,R,n48
+ASKL,head,chemosensor,L,n49
+ASKR,head,chemosensor,R,n50
+AVG,head,propioTail,b,n63
+AVM,body,mechanosensor,b,n71
+AWAL,head,odorsensor,L,n72
+AWAR,head,odorsensor,R,n73
+AWBL,head,odorsensor,L,n74
+AWBR,head,odorsensor,R,n75
+AWCL,head,"odorsensor, thermosensor",L,n76
+AWCR,head,"odorsensor, thermosensor",R,n77
+BAGL,head,oxygen,L,n78
+BAGR,head,oxygen,R,n79
+CEPDL,head,mechanosensor,L,n82
+CEPDR,head,mechanosensor,R,n83
+CEPVL,head,mechanosensor,L,n84
+CEPVR,head,mechanosensor,R,n85
+DA01,body,propioSomatic,b,n86
+DA02,body,propioSomatic,b,n87
+DA03,body,propioSomatic,b,n88
+DA04,body,propioSomatic,b,n89
+DA05,body,propioSomatic,b,n90
+DA06,body,propioSomatic,b,n91
+DA07,body,propioSomatic,b,n92
+DA08,body,propioSomatic,b,n93
+DA09,body,propioSomatic,b,n94
+DB01,body,propioSomatic,b,n95
+DB02,body,propioSomatic,b,n96
+DB03,body,propioSomatic,b,n97
+DB04,body,propioSomatic,b,n98
+DB05,body,propioSomatic,b,n99
+DB06,body,propioSomatic,b,n100
+DB07,body,propioSomatic,b,n101
+DVA,tail,propioSomatic,b,n108
+FLPL,head,"propioSomatic, mechanosensor, thermosensor, thermonociceptive",L,n111
+FLPR,head,"propioSomatic, mechanosensor, thermosensor, thermonociceptive",R,n112
+IL1DL,head,mechanosensor,L,n115
+IL1DR,head,mechanosensor,R,n116
+IL1L,head,mechanosensor,L,n117
+IL1R,head,mechanosensor,R,n118
+IL1VL,head,mechanosensor,L,n119
+IL1VR,head,mechanosensor,R,n120
+IL2DL,head,"chemosensor, mechanosensor",L,n121
+IL2DR,head,"chemosensor, mechanosensor",R,n122
+IL2L,head,"chemosensor, mechanosensor",L,n123
+IL2R,head,"chemosensor, mechanosensor",R,n124
+IL2VL,head,"chemosensor, mechanosensor",L,n125
+IL2VR,head,"chemosensor, mechanosensor",R,n126
+OLLL,head,mechanosensor,L,n129
+OLLR,head,mechanosensor,R,n130
+OLQDL,head,mechanosensor,L,n131
+OLQDR,head,mechanosensor,R,n132
+OLQVL,head,mechanosensor,L,n133
+OLQVR,head,mechanosensor,R,n134
+PDB,tail,propioTail,b,n136
+PDEL,body,mechanosensor,L,n137
+PDER,body,mechanosensor,R,n138
+PHAL,tail,chemosensor,L,n139
+PHAR,tail,chemosensor,R,n140
+PHBL,tail,chemosensor,L,n141
+PHBR,tail,chemosensor,R,n142
+PHCL,tail,"propioTail, thermosensor, thermonociceptive",L,n143
+PHCR,tail,"propioTail, thermosensor, thermonociceptive",R,n144
+PLML,tail,"propioTail, mechanosensor",L,n145
+PLMR,tail,"propioTail, mechanosensor",R,n146
+PLNL,tail,"propioTail, propioSomatic",L,n147
+PLNR,tail,"propioTail, propioSomatic",R,n148
+PQR,tail,oxygen,R,n149
+PVCL,tail,propioSomatic,L,n150
+PVCR,tail,propioSomatic,R,n151
+PVDL,body,"propioSomatic, mechanosensor, thermosensor, thermonociceptive",L,n152
+PVDR,body,"propioSomatic, mechanosensor, thermosensor, thermonociceptive",R,n153
+PVM,body,mechanosensor,b,n154
+PVR,tail,propioTail,b,n161
+SAADL,head,propioHead,L,n201
+SAADR,head,propioHead,R,n202
+SAAVL,head,propioHead,L,n203
+SAAVR,head,propioHead,R,n204
+SDQL,head,oxygen,L,n208
+SDQR,head,oxygen,R,n209
+SMBDL,head,propioHead,L,n218
+SMBDR,head,propioHead,R,n219
+SMBVL,head,propioHead,L,n220
+SMBVR,head,propioHead,R,n221
+SMDDL,head,propioHead,L,n222
+SMDDR,head,propioHead,R,n223
+SMDVL,head,propioHead,L,n224
+SMDVR,head,propioHead,R,n225
+URADL,head,putative,L,n226
+URADR,head,putative,R,n227
+URAVL,head,putative,L,n228
+URAVR,head,putative,R,n229
+URXL,head,oxygen,L,n232
+URXR,head,oxygen,R,n233
+URYDL,head,Unknown,L,n234
+URYDR,head,Unknown,R,n235
+URYVL,head,Unknown,L,n236
+URYVR,head,Unknown,R,n237
+VA01,body,propioSomatic,b,n238
+VA02,body,propioSomatic,b,n239
+VA03,body,propioSomatic,b,n240
+VA04,body,propioSomatic,b,n241
+VA05,body,propioSomatic,b,n242
+VA06,body,propioSomatic,b,n243
+VA07,body,propioSomatic,b,n244
+VA08,body,propioSomatic,b,n245
+VA09,body,propioSomatic,b,n246
+VA10,body,propioSomatic,b,n247
+VA11,body,propioSomatic,b,n248
+VA12,body,propioSomatic,b,n249
+VB01,body,propioSomatic,b,n250
+VB02,body,propioSomatic,b,n251
+VB03,body,propioSomatic,b,n252
+VB04,body,propioSomatic,b,n253
+VB05,body,propioSomatic,b,n254
+VB06,body,propioSomatic,b,n255
+VB07,body,propioSomatic,b,n256
+VB08,body,propioSomatic,b,n257
+VB09,body,propioSomatic,b,n258
+VB10,body,propioSomatic,b,n259
+VB11,body,propioSomatic,b,n260
+I3,head,propioPharynx,b,n285
+I5,head,propioPharynx,b,n287
+I6,head,propioPharynx,b,n288
+I1L,head,propioPharynx,L,n281
+I2L,head,propioPharynx,L,n283
+M3L,head,propioPharynx,L,n292
+MCL,head,propioPharynx,L,n296
+NSML,head,propioPharynx,L,n299
+I1R,head,propioPharynx,R,n282
+I2R,head,propioPharynx,R,n284
+M3R,head,propioPharynx,R,n293
+MCR,head,propioPharynx,R,n297
+NSMR,head,propioPharynx,R,n300

@@ -15,7 +15,7 @@ SGN=zeros(N,N);
 
 % Re-optimizing a model after excluding a trigger neuron's effect and then
 % Estimating causality matrices based on the likelihood ratio
-for target = 241
+for target = 243
     LLK0(target) = LLK(ht(target),target);              % Likelihood of full model
     % LLK0(target) = log_likelihood_win(bhat{ht(target),target},X,ht(target),target);
     for trigger = 1:N
@@ -41,4 +41,4 @@ end
 
 
 % Save results
-save ('SomaticGC49a','bhatc','LLKC','LLKR','SGN')
+save ('SomaticGC49c','bhatc','LLKC','LLKR','SGN')
