@@ -11,13 +11,13 @@ def activityInit():
     
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 100
+    timesteps = 50
     sim_no = 1
-    Psens=0.4   # Parameter for sensory neurons being excited by environment
+    Psens=0.2   # Parameter for sensory neurons being excited by environment
     
-    att=0.6     ## attenuatipon coefficient
+    att=0.7     ## attenuatipon coefficient
     
-    ratioRandomInit=0.4  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
+    ratioRandomInit=0.3  # ratio of active nodes from random function (e.g. if random() < 0.2 --> activate node).
     c=0.2  # free parameter influence of weights [exin*(100*c)*weight]
     ##### Sensor stimulation parameters. (Go to data/sensoryNeuronTable1.jpg to choose rational combinations)
     area=[] ## Area: 'head', 'body', 'tail'. 

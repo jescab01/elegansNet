@@ -1,8 +1,7 @@
 % Preparing connectivity analysis data to export to R and analize there.
-
-load ModelsF.mat
-%load GAf.mat
+load data_somatic
 load names
+load SomaticGC
 
 % Dimension of input data (L: length, N: number of neurons)
 [L,N] = size(X);
@@ -26,33 +25,6 @@ end
 colnames = {'from', 'to', 'connPhi', 'connPsi1', 'connPsi2'};
 fConn=cell2table(fConn,'VariableNames',colnames);
 
-writetable(fConn,'Results/fConn1Jul.csv')
+writetable(fConn,'fConnSomatic.csv')
 
 
-%% provisional just functional weights
-
-load ModelsF.mat
-load names
-fConn={'from', 'to', 'connWeight'};
-% Dimension of input data (L: length, N: number of neurons)
-[L,N] = size(X);
-
-aicM=aic;
-aicM(aic==0)=NaN;
-[~,I]=min(aicM);
-
-ht = I;
-
-for trigger = 1:N
-    for target=1:N
-        fConn{(trigger-1)*N+target,1}=names{2,trigger};
-        fConn{(trigger-1)*N+target,2}=names{2,target};
-        fConn{(trigger-1)*N+target,3}=sum(bhat{ht(target),target}(ht(target)/2*(trigger-1)+2:ht(target)/2*trigger+1));
-    end
-end
-
-
-colnames = {'from', 'to', 'connWeight'};
-fConn=cell2table(fConn,'VariableNames',colnames);
-
-writetable(fConn,'Results/fConnWonly1Jul.csv')
