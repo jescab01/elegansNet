@@ -395,6 +395,7 @@ ggplot(edges, aes(x = from, y = to, group=Syn, color=group, shape=Syn)) +
   theme(
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
     # Force the plot into a square aspect ratio
     aspect.ratio = 1,
     panel.grid.major = element_blank(),
@@ -402,7 +403,7 @@ ggplot(edges, aes(x = from, y = to, group=Syn, color=group, shape=Syn)) +
 
 ## Create structural adjacency matrix showing weights
 ggplot(edges, aes(x = from, y = to, group=Syn, color=lWxSGN, shape=Syn)) +
-  geom_point(alpha=0.9,size=0.7)+
+  geom_point(alpha=0.9, size=0.9)+
   geom_hline(yintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.2)+
   geom_vline(xintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.2)+
   theme_light() +
@@ -418,6 +419,7 @@ ggplot(edges, aes(x = from, y = to, group=Syn, color=lWxSGN, shape=Syn)) +
     legend.title.align = 0.5,
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
     # Force the plot into a square aspect ratio
     aspect.ratio = 1,
     panel.grid.major = element_blank(),
@@ -427,8 +429,8 @@ ggplot(edges, aes(x = from, y = to, group=Syn, color=lWxSGN, shape=Syn)) +
 ## Functional connectivity matrix
 ggplot(SFdf, aes(x = from, y = to, color=connPhiPsi)) +
   geom_point(shape=15) +
-  geom_hline(yintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.2)+
-  geom_vline(xintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.2)+
+  geom_hline(yintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.05)+
+  geom_vline(xintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.05)+
   theme_light() +
   # Because we need the x and y axis to display every node,
   # not just the nodes that have connections to each other,
@@ -442,6 +444,7 @@ ggplot(SFdf, aes(x = from, y = to, color=connPhiPsi)) +
     legend.title.align = 0.5,
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
     # Force the plot into a square aspect ratio
     aspect.ratio = 1,
     panel.grid.major = element_blank(),
@@ -465,6 +468,7 @@ ggplot(SFdf1, aes(x = from, y = to, color=connPhiPsi)) +
     legend.title.align = 0.5,
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
     # Force the plot into a square aspect ratio
     aspect.ratio = 1)
 
@@ -475,7 +479,7 @@ SFdf1$logPhiPsi[SFdf1$connPhiPsi<0]=SFdf1$logPhiPsi[SFdf1$connPhiPsi<0]*-1
 
 
 ggplot(SFdf1, aes(x = from, y = to, color=logPhiPsi)) +
-  geom_point(shape=3, alpha=0.5, size=0.5) +
+  geom_point(shape=3, size=0.2) +
   geom_hline(yintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.2)+
   geom_vline(xintercept =c(68.5, 78.5, 145.5, 167.5, 173.5, 196.5), alpha=0.2)+
   theme_light() +
@@ -491,6 +495,7 @@ ggplot(SFdf1, aes(x = from, y = to, color=logPhiPsi)) +
     legend.title.align = 0.5,
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
     # Force the plot into a square aspect ratio
     aspect.ratio = 1,
     panel.grid.major = element_blank(),

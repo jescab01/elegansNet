@@ -1,4 +1,4 @@
-setwd("~/elegansProject/elegansPharynx/R analysis/Parameters")
+setwd("~/elegansProject/elegansPharynx/R - param")
 library("dplyr")
 library("ggplot2")
 
@@ -32,8 +32,10 @@ survivals=filter(paramTest1, surviveBinary==1)
 modelMNA=glm(minNodeActivity~RI+c+att+Psens, data = survivals, family = "poisson")
 summary(modelMNA)
 
-ggplot(survivals, aes(c, minNodeActivity, group=as.factor(att), colour=as.factor(att))) +
-  geom_jitter(size=0.4)+
+filter=filter(survivals, att==0.9|att==0.7|att==0.5|att==0.3|att==0.1)
+
+ggplot(filter, aes(c, minNodeActivity, group=as.factor(att), colour=as.factor(att))) +
+  geom_jitter(size=0.2)+
   geom_smooth(method = "glm",  method.args = list(family = "poisson"))+
   xlab("Synaptic efficacy (c)")+
   ylab("Potentials count")+
@@ -49,10 +51,10 @@ attc=cbind(survivals$rrp2spike, survivals$rrp2rest)
 modelrrp=glm(attc~RI+c+att+Psens, data = survivals, family = 'binomial')
 summary(modelrrp)
 
-f2plot=filter(survivals, c==0.1|c==0.2|c==0.3|c==0.4|c==0.5|c==0.6|c==0.7|c==0.8|c==0.9)
+f2plot=filter(survivals, c==0.1|c==0.3|c==0.5|c==0.7|c==0.9)
 
 ggplot(f2plot, aes(att, ocrrp2spike, group=c, colour=as.factor(c))) +
-  geom_jitter(size=0.3, alpha=0.5)+
+  geom_jitter(size=0.2, alpha=0.2)+
   geom_smooth(method = 'glm', method.args = list(family=binomial), se=F)+
   xlab("Attenuation coefficient (att)")+
   ylab("Proportion of attenuated potentials")+

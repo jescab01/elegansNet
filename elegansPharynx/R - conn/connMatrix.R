@@ -308,6 +308,9 @@ ggplot(edges, aes(x = from, y = to, group=Syn, color=group, shape=Syn, size=lWxS
     aspect.ratio = 1)
 
 
+## NA connections as 0 to plot.
+SFdf$connPhiPsi[is.na(SFdf$connPhiPsi)]=0
+SFdf1$connPhiPsi[is.na(SFdf1$connPhiPsi)]=0
 ## Functiona matrix w/ weighted connectivity
 ggplot(SFdf, aes(x = from, y = to, color=connPhiPsi)) +
   geom_point(shape=15, size=6) +

@@ -51,7 +51,7 @@ attc=cbind(survivals$rrp2spike, survivals$rrp2rest)
 modelrrp=glm(attc~RI+c+att+Psens, data = survivals, family = 'binomial')
 summary(modelrrp)
 
-f2plot=filter(survivals, c==0.1|c==0.2|c==0.3|c==0.41|c==0.5|c==0.6|c==0.7)
+f2plot=filter(survivals, c==0.1|c==0.2|c==0.3|c==0.5|c==0.7)
 
 ggplot(f2plot, aes(att, ocrrp2spike, group=c, colour=as.factor(c))) +
   geom_jitter(size=0.3, alpha=0.5)+
@@ -123,11 +123,3 @@ ggplot(survivals, aes(Psens,sensNode, group=Psens))+
 #   geom_point(alpha=0.1, color='grey40')+ 
 #   stat_summary(fun.y = "mean", colour = "darkred", size = 4,shape=18, geom = "point")+
 #   ylab('Proportion of activated nodes')
-
-
-
-
-
-
-
-
