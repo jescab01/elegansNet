@@ -4,7 +4,7 @@ The project is related to the relationship between structural and functional neu
 
 Thus, the repository is devided in three directories:
 
-	- elegansNet just for whole network simulator (python). Used to validate our system 3D 		representations in front of electrophysiological recordings.
+	- elegansNet just for whole network simulator (python). Used to validate our system 3D representations in front of electrophysiological recordings.
 	
 	- elegansPharynx for pharyngeal system simulation (python), Granger Causality analysis (MATLAB) and data analysis (R).
 
