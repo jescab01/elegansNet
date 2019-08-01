@@ -21,7 +21,7 @@ def nxWriter(info, folder):
     import os
     
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output/'+str(info)+'Plots/'+str(folder)+'/0Nx'+str(info)+'.avi',fourcc, 3.0, (648,792))
+    out = cv2.VideoWriter('output/'+str(info)+'Plots/'+str(folder)+'/0Nx'+str(info)+'.avi',fourcc, 2.0, (576,936))
     
     image_list=glob.glob(f'output/'+str(info)+'Plots/'+str(folder)+'/*.jpg')
     sorted_images = sorted(image_list, key=os.path.getmtime)

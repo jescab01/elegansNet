@@ -146,12 +146,12 @@ def representation(G, masterInfo, sim_no, timesteps, simInitActivity):
         for sim in range(sim_no):
             if datasets['deactivated'][sim]=='None':
                 plotting2D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
-                plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
+          #      plotting3D(G, sim, timesteps, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
             else:
                 timeplt=datasets['deactivated'][sim]
                 plotting2D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
-                plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
+           #     plotting3D(G, sim, timeplt, datasets['activitydata'][sim], simInitActivity[sim], infos)
     
     
     ## Ad-hoc 3Dhtml representation to deepen

@@ -11,7 +11,7 @@ def activityInit():
     
     from _simulation_ import simulation, representation
     ### Define simulation variables
-    timesteps = 50
+    timesteps = 500
     sim_no = 1
     Psens=0.2   # Parameter for sensory neurons being excited by environment
     
