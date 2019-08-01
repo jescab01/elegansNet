@@ -68,7 +68,6 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
     import networkx as nx
 #    from chemicalWorm import infoC, chemicalWorm
 #    from electricalWorm import infoE, electricalWorm
- #   from mainWorm import infoM, mainWorm
     from mainWormGraded import infoG, mainWormGraded
     
     
@@ -83,7 +82,6 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
     '''
 #    chemicalInfo=infoC(G, sim_no)
 #    electricalInfo=infoE(G,sim_no)
-#    mainInfo=infoM(G, sim_no)
     mainInfoGraded=infoG(G, sim_no)
     
     hpTest={}
@@ -103,13 +101,11 @@ def simulation(timesteps, sim_no, ratioRandomInit, c, area, LRb, sensor, Psens, 
           
 #        chemicalInfo=chemicalWorm(G, sim, timesteps, initActivity, activityDic, activity, chemicalInfo, c)
 #        electricalInfo=electricalWorm(G, sim, timesteps, initActivity, activityDic, activity, electricalInfo, c)
-#        mainInfo, hpTest, envActivation = mainWorm(G, sim, timesteps, initActivity, activityDic, activity, mainInfo, c, hpTest, Psens, envActivation)
         mainInfoGraded, hpTest, envActivation = mainWormGraded(G, sim, timesteps, initActivity, activityDic, activity, mainInfoGraded, c, hpTest, Psens, envActivation, att)
     
     masterInfo={}
 #    masterInfo['chemicalInfo']=chemicalInfo
 #    masterInfo['electricalInfo']=electricalInfo
-#    masterInfo['mainInfo']=mainInfo
     masterInfo['mainInfoGraded']=mainInfoGraded
     
     
